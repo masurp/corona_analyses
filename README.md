@@ -85,7 +85,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="100%" />
+<img src="figures/unnamed-chunk-1-1.png" width="100%" />
 
 ``` r
 
@@ -106,7 +106,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-1-2.png" width="100%" />
+<img src="figures/unnamed-chunk-1-2.png" width="100%" />
 
 ``` r
 
@@ -127,7 +127,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-1-3.png" width="100%" />
+<img src="figures/unnamed-chunk-1-3.png" width="100%" />
 
 ``` r
 
@@ -150,7 +150,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-1-4.png" width="100%" />
+<img src="figures/unnamed-chunk-1-4.png" width="100%" />
 
 ``` r
 
