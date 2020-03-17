@@ -1,67 +1,95 @@
 
-# Visualizing total cases against a) active cases, b) deaths, and c) recovered cases
+# Visualizing the Corona (COVID-19) pandemic
 
-The analysis detailed below uses data taken from the official 2019 Novel
-Coronavirus COVID-19 (2019-nCoV) Data Repository by Johns Hopkins CSSE:
-<https://github.com/CSSEGISandData/COVID-19>
+## Basic idea
 
-All three data sets can be downloaded here:
-<https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_time_series>
+I generally think that the news do a good job in describing and
+visualizing the corona pandemic. However, there are two things that I
+believe are quite problematic and that I am missing the any news
+coverage on the pandemic.
 
-The same data sets are used to update this visual dashboard:
+1.  Visualizations of the growth curves often log-transform the x-axis
+    instead of showing the actual *exponential* growth.
+2.  Visualizations never plot *total* cases against a) deaths, b)
+    recovered, AND c) active cases.
+
+With regard to the former, I recently wrote [this
+blogpost](http://philippmasur.de/blog/2020/03/13/understanding-exponential-growth-the-corona-pandemic/)
+that explains why exponential growth is so hard to grasp. With regard to
+the latter, I believe that showing only the total cases growth curve can
+be misleading or at least is not sufficient to understand the pandemic
+and to judge whether certain measures work or not. Visualizations would
+become a lot more informative, if we also look at the active cases
+vs. recovered cases vs. deaths. Looking at all *four* curves
+simultaneously, we see how well a country succeeds in stopping the
+infections.
+
+In what follows, I am using actual data on worldwide total infections,
+death rates, and number of recoveries to produce more insightful
+visualizations.
+
+### Where does the data come frome?
+
+The analyses and visualizations are based on the data provided by the
+John Hopkins University in the [Official 2019 Novel Coronavirus COVID-19
+(2019-nCoV) Data
+Repository](https://github.com/CSSEGISandData/COVID-19). The same data
+sets are used to constantly update this visual dashboard:
 <https://coronavirus.jhu.edu/map.html>
 
-## More information:
+### Will these figures be updated?
 
-I have explained the meaning of these plots in the following
-Twitter-Thread:
-<https://twitter.com/MasurPhil/status/1239630219922804736>
+Yes, I will update these figures every morning. The last update was made
+on 2020-03-17 18:07:32.
+
+## The analyses
+
+The following code downloads the data sets and transforms them directly
+to be ready for the visualizations. Overall, the data is already in a
+very tidy format. As I am not focusing on provinces, we only summarize
+the cases across countries and dates (NOT provinces). That said, I
+distinguish China and Hong Kong due to their different timelines in
+responding to the virus outbreak.
 
 ``` r
 library(tidyverse)
 library(readr)
 
-# Get total cases per country/region
-d.cases <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv" 
-
-d.cases <- read_csv(url(d.cases)) %>%
+# Function to crawl data from the github repository
+get_data <- function(url) {
+  read_csv(url(url)) %>%
   select(-Lat, -Long) %>%
   rename(province = "Province/State",
          country = "Country/Region") %>%
-  gather(date, cases, -country, -province) %>%
-  mutate(cases = as.numeric(cases),
+  gather(date, type, -country, -province) %>%
+  mutate(type = as.numeric(type),
          date = lubridate::mdy(date)) %>% 
   tbl_df
+}
+
+# Get total cases per country/region
+cases <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv" 
 
 # Get number of deaths per country/region
-d.deaths <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv" 
-
-d.deaths <- read_csv(url(d.deaths)) %>%
-  select(-Lat, -Long) %>%
-  rename(province = "Province/State",
-         country = "Country/Region") %>%
-  gather(date, deaths, -country, -province) %>%
-  mutate(deaths = as.numeric(deaths),
-         date = lubridate::mdy(date)) %>%
-  tbl_df
+deaths <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv" 
 
 # Get number of recovered cases per country/region
-d.recovered <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv" 
+recovered <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv" 
 
-d.recovered <- read_csv(url(d.recovered)) %>%
-  select(-Lat, -Long) %>%
-  rename(province = "Province/State",
-         country = "Country/Region") %>%
-  gather(date, recovered, -country, -province) %>%
-  mutate(recovered = as.numeric(recovered),
-         date = lubridate::mdy(date)) %>% 
-  tbl_df
+# Prepare data
+d_cases <- get_data(cases) %>%
+  rename(cases = type)
+d_deaths <- get_data(deaths) %>%
+  rename(deaths = type)
+d_recovered <- get_data(recovered) %>%
+  rename(recovered = type)
 
 # Join data sets by country, province, and date
-d <- d.cases %>%
-  left_join(d.deaths) %>%
-  left_join(d.recovered) 
+d <- d_cases %>%
+  left_join(d_deaths) %>%
+  left_join(d_recovered) 
 
+# Distinguish Hong Kong and China
 d$country[d$province=="Hong Kong"] <- "Hong Kong"
 
 # Prepare data for visualization
@@ -72,112 +100,185 @@ data <- d %>%
             recovered = sum(recovered)) %>%
   filter(country != "") %>%
   mutate(active = cases - (deaths + recovered)) %>%
-  magrittr::set_colnames(c("country", "date", "total cases", "deaths", "recovered", "active"))
+  magrittr::set_colnames(c("country", "date", "total cases", "deaths", "recovered", "active")) %>%
+  ungroup
+```
 
+### 1\. Most exemplary developments of the corona pandemic
 
-# Plot for China, Germany, Italy and Iran (first figure in Twitter-Thread)
+In a first step, I am comparing China, South Korea, Italy, and Germany.
+Why these four countries? These four countries are at different stages
+during the corona pandemic. China was the first to experience the
+outbreak and they have almost contained the spreading of the virus by
+now. South Korea is close to containg the virus. Italy is experiencing
+the second worst pandemic after China and drastic measures have been
+taken. The virus has reached Germany considerably later, but the growth
+rate is very steep. By comparing these countries, we can learn a lot
+about “typical” growth rates and patterns.
+
+``` r
+# Example plot for China, Germany, Italy and South Korea
 data %>%
   filter(`total cases` >= 1) %>%
   filter(country == "China" | country == "Germany" | 
-         country == "Italy" | country == "Iran") %>%
+         country == "Italy" | country == "Korea, South") %>%
+  mutate(country = factor(country, 
+                          levels = c("China", "Korea, South", 
+                                     "Italy", "Germany"))) %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
   geom_line() +
   scale_color_brewer(palette = "Set2") +
-  facet_wrap(~country, scales = "free") +
+  facet_wrap(~country, scales = "free_y") +
   theme_bw() +
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-1-1.png" width="100%" />
+<img src="figures/unnamed-chunk-2-1.png" width="100%" />
 
 ``` r
 
 ggsave("figures/plot_1.png",
        width = 8,
        height = 7)
+```
 
+CHINA (upper left): The number of *total* confirmed cases is still
+rising (pink), but only very slowly and almost comes to a halt. But, the
+number of *active* cases (green) is declining steeply and at the same
+time the number of *recovered* cases (blue) is increasing a lot, slowly
+approximating the number of *total* cases. This is how it should look
+like as this pattern shows that measures are working and the spreading
+of the virus is stopping.
 
-# Plot for Hong Kong, Taiwan, and Singapore (Second figure in Twitter-Thread)
+SOUTH KOREA (upper right): The number of *total* confirmed cases is
+still rising (pink), but the growth rate slowly resembles a S-curve.
+This is a good sign, because new infections are fewer. The number of
+*active* cases (green) is hence starting to decline (since the 15th of
+March) and at the same time the number of *recovered* cases (blue) is
+starting to grow.
+
+ITALY (lower left): the number of *total* confirmed cases is growing
+exponentially. More importantly, the number of *active* cases is almost
+equivalent to the number of *total* cases. The number of *recovered*
+cases sadly equals the number of *deaths*. So far, we do not see
+implications of the drastic measures taken by the Italian government.
+Yet, recent analyses of the number of *total* cases suggest the curve is
+slowly declining (which would be a sign of hope\!).
+
+GERMANY (lower right): The number of *total* confirmed cases likewise
+grows exponentially. Again (see Italy), the number of *active* cases is
+practically equivalent to the number of *total* cases (so far, luckily
+only few *deaths*, but also only few recovered).
+
+**Conclusion:** As long as we do not see signs that the curves approach
+a similar pattern as in China, the virus is still spreading
+uncontrollably.
+
+### 2\. Development in countries that reacted fast
+
+Although the number of cases in these countries is small (a good
+thing\!), we should look at the distributions of countries that reacted
+fast and efficiently (e.g., Hong Kong, Taiwan, Singapore).
+
+``` r
+# Plot for Hong Kong, Taiwan, and Singapore 
 data %>%
   filter(`total cases` >= 1) %>%
-  filter(country == "Hong Kong" | country == "Taiwan*" | country == "Singapore") %>%
+  filter(country == "Hong Kong" | 
+         country == "Taiwan*" | 
+         country == "Singapore") %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
   geom_line() +
-  facet_wrap(~country, scales = "free") +
+  facet_wrap(~country, scales = "free_y") +
   theme_bw() +
   scale_color_brewer(palette = "Set2") +
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-1-2.png" width="100%" />
+<img src="figures/unnamed-chunk-3-1.png" width="100%" />
 
 ``` r
 
 ggsave("figures/plot_2.png",
-       width = 7,
+       width = 8,
        height = 3)
+```
 
+We clearly see that the number of *active* cases is declining earlier.
+At the same time the number of *total* cases increases not
+exponentially\!
 
-## North America
-# Plot for USA and Canada, 
+### The situation in Europe
+
+A comparative plot of all countries with more than 500 confirmed total
+cases.
+
+``` r
+data %>%
+  filter(`total cases` >= 1) %>%
+  filter(country %in% c("Italy", "Spain", "Germany", "France", 
+                        "Switzerland", "United Kingdom", "Netherlands", 
+                        "Norway", "Austria", "Sweden", "Belgium", "Denmark")) %>%
+  gather(key, value, -country, -date) %>%
+  ggplot(aes(x = date, y = value, color = key)) +
+  geom_line() +
+  facet_wrap(~country, scales = "free_y") +
+  theme_bw() +
+  scale_color_brewer(palette = "Set2") +
+  labs(x = "date", y = "cases", color = "")
+```
+
+<img src="figures/unnamed-chunk-4-1.png" width="100%" />
+
+``` r
+
+ggsave("figures/plot_3.png",
+       width = 10,
+       height = 6)
+```
+
+### USA and Canada
+
+``` r
 data %>%
   filter(`total cases` >= 1) %>%
   filter(country == "US" | country == "Canada") %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
   geom_line() +
-  facet_wrap(~country, scales = "free") +
+  facet_wrap(~country, scales = "free_y") +
   theme_bw() +
   scale_color_brewer(palette = "Set2") +
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-1-3.png" width="100%" />
-
-``` r
-
-ggsave("figures/plot_3.png",
-       width = 6,
-       height = 2.5)
-
-## Europe
-# Plot for European countries with > 500 total cases
-data %>%
-  filter(`total cases` >= 1) %>%
-  filter(country %in% c("Italy", "Spain", "Germany", "France", "Switzerland", "United Kingdom", "Netherlands", "Norway", "Austria", "Sweden", "Belgium", "Denmark")) %>%
-  gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
-```
-
-<img src="figures/unnamed-chunk-1-4.png" width="100%" />
+<img src="figures/unnamed-chunk-5-1.png" width="100%" />
 
 ``` r
 
 ggsave("figures/plot_4.png",
-       width = 18,
-       height = 10)
+       width = 7,
+       height = 3)
+```
 
-## Asia
-# Plot for Asian countries with > 500 cases
+### Middle East
+
+``` r
 data %>%
-  filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
+  filter(country %in% c("Iran", "Qatar", 
+                        "Israel", "Pakistan")) %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
   geom_line() +
-  facet_wrap(~country, scales = "free") +
+  facet_wrap(~country, scales = "free_y") +
   theme_bw() +
   scale_color_brewer(palette = "Set2") +
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-1-5.png" width="100%" />
+<img src="figures/unnamed-chunk-6-1.png" width="100%" />
 
 ``` r
 
@@ -185,3 +286,30 @@ ggsave("figures/plot_5.png",
        width = 8,
        height = 7)
 ```
+
+### Asia
+
+Plot for Asian countries with \> 500 cases.
+
+``` r
+data %>%
+  filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
+  gather(key, value, -country, -date) %>%
+  ggplot(aes(x = date, y = value, color = key)) +
+  geom_line() +
+  facet_wrap(~country, scales = "free_y") +
+  theme_bw() +
+  scale_color_brewer(palette = "Set2") +
+  labs(x = "date", y = "cases", color = "")
+```
+
+<img src="figures/unnamed-chunk-7-1.png" width="100%" />
+
+``` r
+
+ggsave("figures/plot_6.png",
+       width = 8,
+       height = 7)
+```
+
+Let me know if I should include any other countries in on this page.
