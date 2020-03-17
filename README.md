@@ -77,6 +77,7 @@ data <- d %>%
 
 # Plot for China, Germany, Italy and Iran (first figure in Twitter-Thread)
 data %>%
+  filter(`total cases` >= 1) %>%
   filter(country == "China" | country == "Germany" | 
          country == "Italy" | country == "Iran") %>%
   gather(key, value, -country, -date) %>%
@@ -99,6 +100,7 @@ ggsave("figures/plot_1.png",
 
 # Plot for Hong Kong, Taiwan, and Singapore (Second figure in Twitter-Thread)
 data %>%
+  filter(`total cases` >= 1) %>%
   filter(country == "Hong Kong" | country == "Taiwan*" | country == "Singapore") %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
@@ -114,13 +116,14 @@ data %>%
 ``` r
 
 ggsave("figures/plot_2.png",
-       width = 10,
-       height = 5)
+       width = 7,
+       height = 3)
 
 
 ## North America
 # Plot for USA and Canada, 
 data %>%
+  filter(`total cases` >= 1) %>%
   filter(country == "US" | country == "Canada") %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
@@ -137,11 +140,12 @@ data %>%
 
 ggsave("figures/plot_3.png",
        width = 6,
-       height = 4)
+       height = 2.5)
 
 ## Europe
 # Plot for European countries with > 500 total cases
 data %>%
+  filter(`total cases` >= 1) %>%
   filter(country %in% c("Italy", "Spain", "Germany", "France", "Switzerland", "United Kingdom", "Netherlands", "Norway", "Austria", "Sweden", "Belgium", "Denmark")) %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
@@ -157,8 +161,8 @@ data %>%
 ``` r
 
 ggsave("figures/plot_4.png",
-       width = 15,
-       height = 9)
+       width = 18,
+       height = 10)
 
 ## Asia
 # Plot for Asian countries with > 500 cases
