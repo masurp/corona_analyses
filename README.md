@@ -40,7 +40,7 @@ sets are used to constantly update this visual dashboard:
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-18 07:59:10. The data of the John Hopkins University,
+on 2020-03-18 08:04:26. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-17 at 23:59.
 
@@ -112,7 +112,7 @@ In a first step, I am comparing China, South Korea, Italy, and Germany.
 Why these four countries? These four countries are at different stages
 during the corona pandemic. China was the first to experience the
 outbreak and they have almost contained the spreading of the virus by
-now. South Korea is close to containg the virus. Italy is experiencing
+now. South Korea is close to containing the virus. Italy is experiencing
 the second worst pandemic after China and drastic measures have been
 taken. The virus has reached Germany considerably later, but the growth
 rate is very steep. By comparing these countries, we can learn a lot
@@ -270,7 +270,9 @@ We clearly see that the number of *active* cases is declining earlier.
 At the same time the number of *total* cases increases not
 exponentially\!
 
-### The situation in Europe
+### 3\. Worldwide developments
+
+#### The situation in Europe
 
 A comparative plot of all countries with more than 500 confirmed total
 cases.
@@ -337,7 +339,7 @@ ggsave("figures/plot_3.png",
        height = 6)
 ```
 
-### USA and Canada
+#### USA and Canada
 
 ``` r
 # Current cases 
@@ -387,7 +389,7 @@ ggsave("figures/plot_4.png",
        height = 3)
 ```
 
-### Middle East
+#### Middle East
 
 ``` r
 # Current cases 
@@ -440,7 +442,7 @@ ggsave("figures/plot_5.png",
        height = 7)
 ```
 
-### Asia
+#### Asia
 
 Plot for Asian countries with \> 500 cases.
 

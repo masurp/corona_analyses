@@ -94,7 +94,7 @@ data <- d %>%
 
 ### 1. Most exemplary developments of the corona pandemic
 
-In a first step, I am comparing China, South Korea, Italy, and Germany. Why these four countries? These four countries are at different stages during the corona pandemic. China was the first to experience the outbreak and they have almost contained the spreading of the virus by now. South Korea is close to containg the virus. Italy is experiencing the second worst pandemic after China and drastic measures have been taken. The virus has reached Germany considerably later, but the growth rate is very steep. By comparing these countries, we can learn a lot about "typical" growth rates and patterns. 
+In a first step, I am comparing China, South Korea, Italy, and Germany. Why these four countries? These four countries are at different stages during the corona pandemic. China was the first to experience the outbreak and they have almost contained the spreading of the virus by now. South Korea is close to containing the virus. Italy is experiencing the second worst pandemic after China and drastic measures have been taken. The virus has reached Germany considerably later, but the growth rate is very steep. By comparing these countries, we can learn a lot about "typical" growth rates and patterns. 
 
 ```{r,results = 'asis'}
 # Current cases 
@@ -176,8 +176,9 @@ ggsave("figures/plot_2.png",
 
 We clearly see that the number of *active* cases is declining earlier. At the same time the number of *total* cases increases not exponentially!
 
+### 3. Worldwide developments
 
-### The situation in Europe
+#### The situation in Europe
 
 A comparative plot of all countries with more than 500 confirmed total cases.
 
@@ -211,7 +212,7 @@ ggsave("figures/plot_3.png",
        height = 6)
 ```
 
-### USA and Canada
+#### USA and Canada
 
 ```{r,results = 'asis'}
 # Current cases 
@@ -239,7 +240,7 @@ ggsave("figures/plot_4.png",
        height = 3)
 ```
 
-### Middle East
+#### Middle East
 
 ```{r,results = 'asis'}
 # Current cases 
@@ -268,7 +269,7 @@ ggsave("figures/plot_5.png",
        height = 7)
 ```
 
-### Asia
+#### Asia
 
 Plot for Asian countries with > 500 cases.
 
