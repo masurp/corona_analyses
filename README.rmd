@@ -106,7 +106,7 @@ table <- data %>%
 papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r fig.height=7, fig.width=8}
+```{r examples, fig.height=7, fig.width=8}
 # Example plot for China, Germany, Italy and South Korea
 data %>%
   filter(`total cases` >= 1) %>%
@@ -154,7 +154,7 @@ table2 <- data %>%
 papaja::apa_table(table2, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r fig.height=3, fig.width = 8}
+```{r hongkong, fig.height=3, fig.width = 8}
 # Plot for Hong Kong, Taiwan, and Singapore 
 data %>%
   filter(`total cases` >= 1) %>%
@@ -181,7 +181,7 @@ We clearly see that the number of *active* cases is declining earlier. At the sa
 
 A comparative plot of all countries with more than 500 confirmed total cases.
 
-```{r,results = 'asis'}
+```{r, results = 'asis'}
 europe <- c("Italy", "Spain", "Germany", "France", 
             "Switzerland", "United Kingdom", "Netherlands", 
             "Norway", "Austria", "Sweden", "Belgium", "Denmark")
@@ -194,7 +194,7 @@ table3 <- data %>%
 papaja::apa_table(table3, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ``` 
 
-```{r, fig.height=6, fig.width = 10}
+```{r europe, fig.height=6, fig.width = 10}
 data %>%
   filter(`total cases` >= 1) %>%
   filter(country %in% europe) %>%
@@ -222,7 +222,7 @@ table4 <- data %>%
 papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r, fig.height=3, fig.width = 7}
+```{r northamerica, fig.height=3, fig.width = 7}
 data %>%
   filter(`total cases` >= 1) %>%
   filter(country == "US" | country == "Canada") %>%
@@ -251,7 +251,7 @@ table5 <- data %>%
 papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r, fig.height=7, fig.width = 8}
+```{r middleeast, fig.height=7, fig.width = 8}
 data %>%
   filter(country %in% c("Iran", "Qatar", 
                         "Israel", "Pakistan")) %>%
@@ -281,7 +281,7 @@ table6 <- data %>%
 papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```
 
-```{r, fig.height=7, fig.width = 8}
+```{r asia, fig.height=7, fig.width = 8}
 data %>%
   filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
   gather(key, value, -country, -date) %>%

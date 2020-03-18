@@ -40,7 +40,7 @@ sets are used to constantly update this visual dashboard:
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-18 07:53:36. The data of the John Hopkins University,
+on 2020-03-18 07:59:10. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-17 at 23:59.
 
@@ -165,7 +165,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-3-1.png" width="100%" />
+<img src="figures/examples-1.png" width="100%" />
 
 ``` r
 
@@ -225,7 +225,7 @@ papaja::apa_table(table2, format = "html", digits = 0, align = c("l", "c", rep("
 
 <caption>
 
-(\#tab:unnamed-chunk-4)
+(\#tab:unnamed-chunk-3)
 
 </caption>
 
@@ -257,7 +257,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-5-1.png" width="100%" />
+<img src="figures/hongkong-1.png" width="100%" />
 
 ``` r
 
@@ -290,7 +290,7 @@ papaja::apa_table(table3, format = "html", digits = 0, align = c("l", "c", rep("
 
 <caption>
 
-(\#tab:unnamed-chunk-6)
+(\#tab:unnamed-chunk-4)
 
 </caption>
 
@@ -328,7 +328,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-7-1.png" width="100%" />
+<img src="figures/europe-1.png" width="100%" />
 
 ``` r
 
@@ -350,7 +350,7 @@ papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("
 
 <caption>
 
-(\#tab:unnamed-chunk-8)
+(\#tab:unnamed-chunk-5)
 
 </caption>
 
@@ -378,7 +378,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-9-1.png" width="100%" />
+<img src="figures/northamerica-1.png" width="100%" />
 
 ``` r
 
@@ -401,7 +401,7 @@ papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("
 
 <caption>
 
-(\#tab:unnamed-chunk-10)
+(\#tab:unnamed-chunk-6)
 
 </caption>
 
@@ -431,7 +431,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-11-1.png" width="100%" />
+<img src="figures/middleeast-1.png" width="100%" />
 
 ``` r
 
@@ -455,7 +455,7 @@ papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("
 
 <caption>
 
-(\#tab:unnamed-chunk-12)
+(\#tab:unnamed-chunk-7)
 
 </caption>
 
@@ -484,7 +484,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-13-1.png" width="100%" />
+<img src="figures/asia-1.png" width="100%" />
 
 ``` r
 
