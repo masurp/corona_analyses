@@ -40,7 +40,9 @@ sets are used to constantly update this visual dashboard:
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-17 18:07:32.
+on 2020-03-18 07:51:30. The data of the John Hopkins University,
+however, is always updated at 23:59. What you see is hence the situation
+on 2020-03-17 at 23:59.
 
 ## The analyses
 
@@ -117,6 +119,35 @@ rate is very steep. By comparing these countries, we can learn a lot
 about “typical” growth rates and patterns.
 
 ``` r
+# Current cases 
+table <- data %>%
+  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(country == "China" | country == "Germany" | 
+         country == "Italy" | country == "Korea, South") %>%
+  arrange(desc(`total cases`))
+papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```
+
+<caption>
+
+(\#tab:unnamed-chunk-2)
+
+</caption>
+
+<caption>
+
+\*\*
+
+</caption>
+
+| country      |    date    | total cases | deaths | recovered | active |
+| :----------- | :--------: | ----------: | -----: | --------: | -----: |
+| China        | 2020-03-17 |      80,896 |  3,226 |    68,710 |  8,960 |
+| Italy        | 2020-03-17 |      31,506 |  2,503 |     2,941 | 26,062 |
+| Germany      | 2020-03-17 |       9,257 |     24 |        67 |  9,166 |
+| Korea, South | 2020-03-17 |       8,320 |     81 |     1,407 |  6,832 |
+
+``` r
 # Example plot for China, Germany, Italy and South Korea
 data %>%
   filter(`total cases` >= 1) %>%
@@ -134,7 +165,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-2-1.png" width="100%" />
+<img src="figures/unnamed-chunk-3-1.png" width="100%" />
 
 ``` r
 
@@ -182,6 +213,35 @@ thing\!), we should look at the distributions of countries that reacted
 fast and efficiently (e.g., Hong Kong, Taiwan, Singapore).
 
 ``` r
+# Current cases 
+table2 <- data %>%
+  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(country == "Hong Kong" | 
+         country == "Taiwan*" | 
+         country == "Singapore") %>%
+  arrange(desc(`total cases`))
+papaja::apa_table(table2, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```
+
+<caption>
+
+(\#tab:unnamed-chunk-4)
+
+</caption>
+
+<caption>
+
+\*\*
+
+</caption>
+
+| country   |    date    | total cases | deaths | recovered | active |
+| :-------- | :--------: | ----------: | -----: | --------: | -----: |
+| Singapore | 2020-03-17 |         266 |      0 |       114 |    152 |
+| Hong Kong | 2020-03-17 |         162 |      4 |        88 |     70 |
+| Taiwan\*  | 2020-03-17 |          77 |      1 |        22 |     54 |
+
+``` r
 # Plot for Hong Kong, Taiwan, and Singapore 
 data %>%
   filter(`total cases` >= 1) %>%
@@ -197,7 +257,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-3-1.png" width="100%" />
+<img src="figures/unnamed-chunk-5-1.png" width="100%" />
 
 ``` r
 
@@ -216,11 +276,49 @@ A comparative plot of all countries with more than 500 confirmed total
 cases.
 
 ``` r
+europe <- c("Italy", "Spain", "Germany", "France", 
+            "Switzerland", "United Kingdom", "Netherlands", 
+            "Norway", "Austria", "Sweden", "Belgium", "Denmark")
+
+# Current cases 
+table3 <- data %>%
+  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(country %in% europe) %>%
+  arrange(desc(`total cases`))
+papaja::apa_table(table3, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```
+
+<caption>
+
+(\#tab:unnamed-chunk-6)
+
+</caption>
+
+<caption>
+
+\*\*
+
+</caption>
+
+| country        |    date    | total cases | deaths | recovered | active |
+| :------------- | :--------: | ----------: | -----: | --------: | -----: |
+| Italy          | 2020-03-17 |      31,506 |  2,503 |     2,941 | 26,062 |
+| Spain          | 2020-03-17 |      11,748 |    533 |     1,028 | 10,187 |
+| Germany        | 2020-03-17 |       9,257 |     24 |        67 |  9,166 |
+| France         | 2020-03-17 |       7,699 |    148 |        12 |  7,539 |
+| Switzerland    | 2020-03-17 |       2,700 |     27 |         4 |  2,669 |
+| United Kingdom | 2020-03-17 |       1,960 |     56 |        53 |  1,851 |
+| Netherlands    | 2020-03-17 |       1,708 |     43 |         2 |  1,663 |
+| Norway         | 2020-03-17 |       1,463 |      3 |         1 |  1,459 |
+| Austria        | 2020-03-17 |       1,332 |      3 |         1 |  1,328 |
+| Belgium        | 2020-03-17 |       1,243 |     10 |         1 |  1,232 |
+| Sweden         | 2020-03-17 |       1,190 |      7 |         1 |  1,182 |
+| Denmark        | 2020-03-17 |       1,024 |      4 |         1 |  1,019 |
+
+``` r
 data %>%
   filter(`total cases` >= 1) %>%
-  filter(country %in% c("Italy", "Spain", "Germany", "France", 
-                        "Switzerland", "United Kingdom", "Netherlands", 
-                        "Norway", "Austria", "Sweden", "Belgium", "Denmark")) %>%
+  filter(country %in% europe) %>%
   gather(key, value, -country, -date) %>%
   ggplot(aes(x = date, y = value, color = key)) +
   geom_line() +
@@ -230,7 +328,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-4-1.png" width="100%" />
+<img src="figures/unnamed-chunk-7-1.png" width="100%" />
 
 ``` r
 
@@ -240,6 +338,32 @@ ggsave("figures/plot_3.png",
 ```
 
 ### USA and Canada
+
+``` r
+# Current cases 
+table4 <- data %>%
+  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(country == "US" | country == "Canada") %>%
+  arrange(desc(`total cases`))
+papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```
+
+<caption>
+
+(\#tab:unnamed-chunk-8)
+
+</caption>
+
+<caption>
+
+\*\*
+
+</caption>
+
+| country |    date    | total cases | deaths | recovered | active |
+| :------ | :--------: | ----------: | -----: | --------: | -----: |
+| US      | 2020-03-17 |       6,421 |    108 |        17 |  6,296 |
+| Canada  | 2020-03-17 |         478 |      5 |         9 |    464 |
 
 ``` r
 data %>%
@@ -254,7 +378,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-5-1.png" width="100%" />
+<img src="figures/unnamed-chunk-9-1.png" width="100%" />
 
 ``` r
 
@@ -264,6 +388,35 @@ ggsave("figures/plot_4.png",
 ```
 
 ### Middle East
+
+``` r
+# Current cases 
+table5 <- data %>%
+  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(country %in% c("Iran", "Qatar", 
+                        "Israel", "Pakistan")) %>%
+  arrange(desc(`total cases`))
+papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```
+
+<caption>
+
+(\#tab:unnamed-chunk-10)
+
+</caption>
+
+<caption>
+
+\*\*
+
+</caption>
+
+| country  |    date    | total cases | deaths | recovered | active |
+| :------- | :--------: | ----------: | -----: | --------: | -----: |
+| Iran     | 2020-03-17 |      16,169 |    988 |     5,389 |  9,792 |
+| Qatar    | 2020-03-17 |         439 |      0 |         4 |    435 |
+| Israel   | 2020-03-17 |         337 |      0 |        11 |    326 |
+| Pakistan | 2020-03-17 |         236 |      0 |         2 |    234 |
 
 ``` r
 data %>%
@@ -278,7 +431,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-6-1.png" width="100%" />
+<img src="figures/unnamed-chunk-11-1.png" width="100%" />
 
 ``` r
 
@@ -292,6 +445,34 @@ ggsave("figures/plot_5.png",
 Plot for Asian countries with \> 500 cases.
 
 ``` r
+# Current cases 
+table6 <- data %>%
+  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
+  arrange(desc(`total cases`))
+papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```
+
+<caption>
+
+(\#tab:unnamed-chunk-12)
+
+</caption>
+
+<caption>
+
+\*\*
+
+</caption>
+
+| country      |    date    | total cases | deaths | recovered | active |
+| :----------- | :--------: | ----------: | -----: | --------: | -----: |
+| China        | 2020-03-17 |      80,896 |  3,226 |    68,710 |  8,960 |
+| Korea, South | 2020-03-17 |       8,320 |     81 |     1,407 |  6,832 |
+| Japan        | 2020-03-17 |         878 |     29 |       144 |    705 |
+| Malaysia     | 2020-03-17 |         673 |      2 |        49 |    622 |
+
+``` r
 data %>%
   filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
   gather(key, value, -country, -date) %>%
@@ -303,7 +484,7 @@ data %>%
   labs(x = "date", y = "cases", color = "")
 ```
 
-<img src="figures/unnamed-chunk-7-1.png" width="100%" />
+<img src="figures/unnamed-chunk-13-1.png" width="100%" />
 
 ``` r
 
