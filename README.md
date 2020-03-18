@@ -40,7 +40,7 @@ sets are used to constantly update this visual dashboard:
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-18 07:51:30. The data of the John Hopkins University,
+on 2020-03-18 07:53:36. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-17 at 23:59.
 
