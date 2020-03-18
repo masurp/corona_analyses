@@ -92,7 +92,7 @@ data <- d %>%
   ungroup
 ```
 
-### 1. Most exemplary developments of the corona pandemic
+### 1. Analyzing China, South Korea, Italy, and Germany
 
 In a first step, I am comparing China, South Korea, Italy, and Germany. Why these four countries? These four countries are at different stages during the corona pandemic. China was the first to experience the outbreak and they have almost contained the spreading of the virus by now. South Korea is close to containing the virus. Italy is experiencing the second worst pandemic after China and drastic measures have been taken. The virus has reached Germany considerably later, but the growth rate is very steep. By comparing these countries, we can learn a lot about "typical" growth rates and patterns. 
 
@@ -132,7 +132,7 @@ CHINA (upper left): The number of *total* confirmed cases is still rising (pink)
 
 SOUTH KOREA (upper right): The number of *total* confirmed cases is still rising (pink), but the growth rate slowly resembles a S-curve. This is a good sign, because new infections are fewer.  The number of *active* cases (green) is hence starting to decline (since the 15th of March) and at the same time the number of *recovered* cases (blue) is starting to grow.
 
-ITALY (lower left): the number of *total* confirmed cases is growing exponentially. More importantly, the number of *active* cases is almost equivalent to the number of *total* cases. The number of *recovered* cases sadly equals the number of *deaths*. So far, we do not see implications of the drastic measures taken by the Italian government. Yet, recent analyses of the number of *total* cases suggest the curve is slowly declining (which would be a sign of hope!).
+ITALY (lower left): the number of *total* confirmed cases is growing exponentially. More importantly, the number of *active* cases is almost equivalent to the number of *total* cases (hopefully the slight deviation from the exponential trend will prove to be real). The number of *recovered* cases sadly equals the number of *deaths*. So far, we do not see implications of the drastic measures taken by the Italian government. Yet, recent analyses of the number of *total* cases suggest the curve is slowly declining (which would be a sign of hope!).
 
 GERMANY (lower right): The number of *total* confirmed cases likewise grows exponentially. Again (see Italy), the number of *active* cases is practically equivalent to the number of *total* cases (so far, luckily only few *deaths*, but also only few recovered).
 

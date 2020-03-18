@@ -40,7 +40,7 @@ sets are used to constantly update this visual dashboard:
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-18 08:04:26. The data of the John Hopkins University,
+on 2020-03-18 10:55:48. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-17 at 23:59.
 
@@ -106,7 +106,7 @@ data <- d %>%
   ungroup
 ```
 
-### 1\. Most exemplary developments of the corona pandemic
+### 1\. Analyzing China, South Korea, Italy, and Germany
 
 In a first step, I am comparing China, South Korea, Italy, and Germany.
 Why these four countries? These four countries are at different stages
@@ -191,11 +191,12 @@ starting to grow.
 
 ITALY (lower left): the number of *total* confirmed cases is growing
 exponentially. More importantly, the number of *active* cases is almost
-equivalent to the number of *total* cases. The number of *recovered*
-cases sadly equals the number of *deaths*. So far, we do not see
-implications of the drastic measures taken by the Italian government.
-Yet, recent analyses of the number of *total* cases suggest the curve is
-slowly declining (which would be a sign of hope\!).
+equivalent to the number of *total* cases (hopefully the slight
+deviation from the exponential trend will prove to be real). The number
+of *recovered* cases sadly equals the number of *deaths*. So far, we do
+not see implications of the drastic measures taken by the Italian
+government. Yet, recent analyses of the number of *total* cases suggest
+the curve is slowly declining (which would be a sign of hope\!).
 
 GERMANY (lower right): The number of *total* confirmed cases likewise
 grows exponentially. Again (see Italy), the number of *active* cases is
