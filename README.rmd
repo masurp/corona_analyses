@@ -20,16 +20,19 @@ knitr::opts_chunk$set(
 I generally think that the news do a good job in describing and visualizing the corona pandemic. However, there are two things that I believe are quite problematic and that I am missing the any news coverage on the pandemic. 
 
 1. Visualizations of the growth curves often log-transform the x-axis instead of showing the actual *exponential* growth.
-2. Visualizations never plot *total* cases against a) deaths, b) recovered, AND c) active cases. 
+2. Visualizations almost never plot *total* cases against a) deaths, b) recovered, AND c) active cases. 
 
 With regard to the former, I recently wrote [this blogpost](http://philippmasur.de/blog/2020/03/13/understanding-exponential-growth-the-corona-pandemic/) that explains why exponential growth is so hard to grasp.
-With regard to the latter, I believe that showing only the total cases growth curve can be misleading or at least is not sufficient to understand the pandemic and to judge whether certain measures work or not. Visualizations would become a lot more informative, if we also look at the active cases vs. recovered cases vs. deaths. Looking at all *four* curves simultaneously, we see how well a country succeeds in stopping the infections. 
+With regard to the latter, I believe that showing only the total cases growth curve can be misleading or at least is not sufficient to understand the pandemic and to try to judge whether certain measures work or not. From my point of view, these visualizations would become a bit more informative, if we also look at the active cases vs. recovered cases vs. deaths. Looking at all *four* curves simultaneously, we can at least partly see how well a country succeeds in stopping the infections (BUT: see disclaimer further below!)
 
-In what follows, I am using actual data on worldwide total infections, death rates, and number of recoveries to produce more insightful visualizations. 
+In what follows, I am using actual data on worldwide total infections, death rates, and number of recoveries to produce these more insightful visualizations. 
 
 ### Where does the data come frome?
 
 The analyses and visualizations are based on the data provided by the John Hopkins University in the [Official 2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository](https://github.com/CSSEGISandData/COVID-19). The same data sets are used to constantly update this visual dashboard: https://coronavirus.jhu.edu/map.html
+
+**IMPORTANT DISCLAIMER:**
+Although I do believe that these data and visualization help us to understand the pandemic, they are nonetheless flawed! When we want to make sense of positive test results (i.e., total cases and in the long run then mortality rates and recovering processes), we need to know how many tests were conducted. For example, Italy has an unusually high mortality rate at this moment (~8%). However, Italy ran only ~150k tests, thus the real rate of infections is probably much higher, implying a lower mortality rate. South Korea, in contrast, has tested more than 270,000 people, which amounts to more than 5200 tests per million inhabitants — more than any other country! A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions. For more information, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science.
 
 ### Will these figures be updated?
 
