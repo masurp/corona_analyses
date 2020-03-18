@@ -32,7 +32,7 @@ In what follows, I am using actual data on worldwide total infections, death rat
 The analyses and visualizations are based on the data provided by the John Hopkins University in the [Official 2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository](https://github.com/CSSEGISandData/COVID-19). The same data sets are used to constantly update this visual dashboard: https://coronavirus.jhu.edu/map.html
 
 **IMPORTANT DISCLAIMER:**
-Although I do believe that these data and visualization help us to understand the pandemic, they are nonetheless flawed! When we want to make sense of positive test results (i.e., total cases and in the long run then mortality rates and recovering processes), we need to know how many tests were conducted. For example, Italy has an unusually high mortality rate at this moment (~8%). However, Italy ran only ~150k tests, thus the real rate of infections is probably much higher, implying a lower mortality rate. South Korea, in contrast, has tested more than 270,000 people, which amounts to more than 5200 tests per million inhabitants — more than any other country! A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions. For more information, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science.
+Although I do believe that these data and visualization help us to understand the pandemic, they are nonetheless flawed! When we want to make sense of positive test results (i.e., total cases and in the long run then mortality rates and recovering processes), we need to know how many tests were conducted. For example, Italy has an unusually high mortality rate at this moment (~8%). However, Italy ran only ~150k tests, thus the real rate of infections is probably much higher, implying a lower mortality rate. South Korea, in contrast, has tested more than 270,000 people, which amounts to more than 5200 tests per million inhabitants — more than any other country! A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions. For more information, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science. For this reasons, I believe that the value of these visualization lies not in the actual numbers, but in the patterns that emerge by comparing all four curves. 
 
 ### Will these figures be updated?
 
@@ -144,7 +144,7 @@ GERMANY (lower right): The number of *total* confirmed cases likewise grows expo
 
 ### 2. Development in countries that reacted fast
 
-Although the number of cases in these countries is small (a good thing!), we should look at the distributions of countries that reacted fast and efficiently (e.g., Hong Kong, Taiwan, Singapore).
+Although the number of cases in these countries is small (a good thing!), we should look at the distributions of countries that reacted faster (e.g., Hong Kong, Taiwan, Singapore).
 
 ```{r,results = 'asis'}
 # Current cases 
@@ -177,7 +177,7 @@ ggsave("figures/plot_2.png",
        height = 3)
 ```
 
-We clearly see that the number of *active* cases is declining earlier. At the same time the number of *total* cases increases not exponentially!
+We clearly see that the number of *active* cases is declining earlier. At the same time the number of *total* cases increases, but not exponentially!
 
 ### 3. Worldwide developments
 

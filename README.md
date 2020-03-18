@@ -52,12 +52,14 @@ A high diagnostic capacity at scale is hence key to epidemic control as
 it provides us with precise estimates and growth rate predictions. For
 more information, see [this
 article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8)
-in Science.
+in Science. For this reasons, I believe that the value of these
+visualization lies not in the actual numbers, but in the patterns that
+emerge by comparing all four curves.
 
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-18 21:13:26. The data of the John Hopkins University,
+on 2020-03-18 21:44:02. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-17 at 23:59.
 
@@ -228,7 +230,7 @@ uncontrollably.
 
 Although the number of cases in these countries is small (a good
 thing\!), we should look at the distributions of countries that reacted
-fast and efficiently (e.g., Hong Kong, Taiwan, Singapore).
+faster (e.g., Hong Kong, Taiwan, Singapore).
 
 ``` r
 # Current cases 
@@ -285,7 +287,7 @@ ggsave("figures/plot_2.png",
 ```
 
 We clearly see that the number of *active* cases is declining earlier.
-At the same time the number of *total* cases increases not
+At the same time the number of *total* cases increases, but not
 exponentially\!
 
 ### 3\. Worldwide developments
