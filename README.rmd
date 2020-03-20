@@ -122,7 +122,7 @@ data %>%
   ggplot(aes(x = date, y = value, color = key)) +
   geom_line() +
   scale_color_brewer(palette = "Set2") +
-  facet_wrap(~country) +
+  facet_wrap(~country, scale = "free_y") +
   theme_bw() +
   labs(x = "date", y = "cases", color = "")
 

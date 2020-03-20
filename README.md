@@ -59,7 +59,7 @@ emerge by comparing all four curves.
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-20 08:03:36. The data of the John Hopkins University,
+on 2020-03-20 08:06:20. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-19 at 23:59.
 
@@ -179,7 +179,7 @@ data %>%
   ggplot(aes(x = date, y = value, color = key)) +
   geom_line() +
   scale_color_brewer(palette = "Set2") +
-  facet_wrap(~country) +
+  facet_wrap(~country, scale = "free_y") +
   theme_bw() +
   labs(x = "date", y = "cases", color = "")
 ```
