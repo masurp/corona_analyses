@@ -126,7 +126,7 @@ data %>%
   theme_bw() +
   labs(x = "date", y = "cases", color = "")
 
-ggsave("figures/plot_1_new.png",
+ggsave("figures/plot_1.png",
        width = 8,
        height = 7)
 ```

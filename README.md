@@ -59,9 +59,9 @@ emerge by comparing all four curves.
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-20 08:06:20. The data of the John Hopkins University,
+on 2020-03-21 09:18:03. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
-on 2020-03-19 at 23:59.
+on 2020-03-20 at 23:59.
 
 ## The analyses
 
@@ -161,10 +161,10 @@ papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r
 
 | country      |    date    | total cases | deaths | recovered | active |
 | :----------- | :--------: | ----------: | -----: | --------: | -----: |
-| China        | 2020-03-19 |      80,948 |  3,245 |    70,440 |  7,263 |
-| Italy        | 2020-03-19 |      41,035 |  3,405 |     4,440 | 33,190 |
-| Germany      | 2020-03-19 |      15,320 |     44 |       113 | 15,163 |
-| Korea, South | 2020-03-19 |       8,565 |     91 |     1,540 |  6,934 |
+| China        | 2020-03-20 |      80,994 |  3,249 |    71,168 |  6,577 |
+| Italy        | 2020-03-20 |      47,021 |  4,032 |     4,440 | 38,549 |
+| Germany      | 2020-03-20 |      19,848 |     67 |       180 | 19,601 |
+| Korea, South | 2020-03-20 |       8,652 |     94 |     1,540 |  7,018 |
 
 ``` r
 # Example plot for China, Germany, Italy and South Korea
@@ -188,7 +188,7 @@ data %>%
 
 ``` r
 
-ggsave("figures/plot_1_new.png",
+ggsave("figures/plot_1.png",
        width = 8,
        height = 7)
 ```
@@ -257,9 +257,9 @@ papaja::apa_table(table2, format = "html", digits = 0, align = c("l", "c", rep("
 
 | country   |    date    | total cases | deaths | recovered | active |
 | :-------- | :--------: | ----------: | -----: | --------: | -----: |
-| Singapore | 2020-03-19 |         345 |      0 |       114 |    231 |
-| Hong Kong | 2020-03-19 |         208 |      4 |        95 |    109 |
-| Taiwan\*  | 2020-03-19 |         108 |      1 |        26 |     81 |
+| Singapore | 2020-03-20 |         385 |      0 |       124 |    261 |
+| Hong Kong | 2020-03-20 |         256 |      4 |        98 |    154 |
+| Taiwan\*  | 2020-03-20 |         135 |      2 |        26 |    107 |
 
 ``` r
 # Plot for Hong Kong, Taiwan, and Singapore 
@@ -324,18 +324,18 @@ papaja::apa_table(table3, format = "html", digits = 0, align = c("l", "c", rep("
 
 | country        |    date    | total cases | deaths | recovered | active |
 | :------------- | :--------: | ----------: | -----: | --------: | -----: |
-| Italy          | 2020-03-19 |      41,035 |  3,405 |     4,440 | 33,190 |
-| Spain          | 2020-03-19 |      17,963 |    830 |     1,107 | 16,026 |
-| Germany        | 2020-03-19 |      15,320 |     44 |       113 | 15,163 |
-| France         | 2020-03-19 |      10,947 |    243 |        12 | 10,692 |
-| Switzerland    | 2020-03-19 |       4,075 |     41 |        15 |  4,019 |
-| United Kingdom | 2020-03-19 |       2,716 |    138 |        67 |  2,511 |
-| Netherlands    | 2020-03-19 |       2,467 |     77 |         2 |  2,388 |
-| Austria        | 2020-03-19 |       2,013 |      6 |         9 |  1,998 |
-| Belgium        | 2020-03-19 |       1,795 |     21 |        31 |  1,743 |
-| Norway         | 2020-03-19 |       1,746 |      7 |         1 |  1,738 |
-| Sweden         | 2020-03-19 |       1,439 |     11 |        16 |  1,412 |
-| Denmark        | 2020-03-19 |       1,225 |      6 |         1 |  1,218 |
+| Italy          | 2020-03-20 |      47,021 |  4,032 |     4,440 | 38,549 |
+| Spain          | 2020-03-20 |      20,410 |  1,043 |     1,588 | 17,779 |
+| Germany        | 2020-03-20 |      19,848 |     67 |       180 | 19,601 |
+| France         | 2020-03-20 |      12,726 |    450 |        12 | 12,264 |
+| Switzerland    | 2020-03-20 |       5,294 |     54 |        15 |  5,225 |
+| United Kingdom | 2020-03-20 |       4,014 |    178 |        67 |  3,769 |
+| Netherlands    | 2020-03-20 |       3,003 |    107 |         2 |  2,894 |
+| Austria        | 2020-03-20 |       2,388 |      6 |         9 |  2,373 |
+| Belgium        | 2020-03-20 |       2,257 |     37 |         1 |  2,219 |
+| Norway         | 2020-03-20 |       1,914 |      7 |         1 |  1,906 |
+| Sweden         | 2020-03-20 |       1,639 |     16 |        16 |  1,607 |
+| Denmark        | 2020-03-20 |       1,337 |      9 |         1 |  1,327 |
 
 ``` r
 data %>%
@@ -384,8 +384,8 @@ papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("
 
 | country |    date    | total cases | deaths | recovered | active |
 | :------ | :--------: | ----------: | -----: | --------: | -----: |
-| US      | 2020-03-19 |      13,677 |    200 |         0 | 13,477 |
-| Canada  | 2020-03-19 |         800 |      9 |         9 |    782 |
+| US      | 2020-03-20 |      19,100 |    244 |         0 | 18,856 |
+| Canada  | 2020-03-20 |         943 |     12 |         9 |    922 |
 
 ``` r
 data %>%
@@ -435,10 +435,10 @@ papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("
 
 | country  |    date    | total cases | deaths | recovered | active |
 | :------- | :--------: | ----------: | -----: | --------: | -----: |
-| Iran     | 2020-03-19 |      18,407 |  1,284 |     5,710 | 11,413 |
-| Israel   | 2020-03-19 |         677 |      0 |        11 |    666 |
-| Qatar    | 2020-03-19 |         460 |      0 |         4 |    456 |
-| Pakistan | 2020-03-19 |         454 |      2 |        13 |    439 |
+| Iran     | 2020-03-20 |      19,644 |  1,433 |     6,745 | 11,466 |
+| Israel   | 2020-03-20 |         705 |      0 |        14 |    691 |
+| Pakistan | 2020-03-20 |         501 |      3 |        13 |    485 |
+| Qatar    | 2020-03-20 |         470 |      0 |        10 |    460 |
 
 ``` r
 data %>%
@@ -489,10 +489,10 @@ papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("
 
 | country      |    date    | total cases | deaths | recovered | active |
 | :----------- | :--------: | ----------: | -----: | --------: | -----: |
-| China        | 2020-03-19 |      80,948 |  3,245 |    70,440 |  7,263 |
-| Korea, South | 2020-03-19 |       8,565 |     91 |     1,540 |  6,934 |
-| Japan        | 2020-03-19 |         924 |     29 |       150 |    745 |
-| Malaysia     | 2020-03-19 |         900 |      2 |        75 |    823 |
+| China        | 2020-03-20 |      80,994 |  3,249 |    71,168 |  6,577 |
+| Korea, South | 2020-03-20 |       8,652 |     94 |     1,540 |  7,018 |
+| Malaysia     | 2020-03-20 |       1,030 |      3 |        87 |    940 |
+| Japan        | 2020-03-20 |         963 |     33 |       191 |    739 |
 
 ``` r
 data %>%
