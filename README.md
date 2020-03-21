@@ -59,7 +59,7 @@ emerge by comparing all four curves.
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-21 09:18:03. The data of the John Hopkins University,
+on 2020-03-21 12:51:13. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-20 at 23:59.
 
@@ -86,6 +86,17 @@ get_data <- function(url) {
   mutate(type = as.numeric(type),
          date = lubridate::mdy(date)) %>% 
   tbl_df
+}
+
+# Function to plot figures
+
+plot_graph <- function(data, size = .75){
+  ggplot(data, aes(x = date, y = value, color = key)) +
+  geom_line(size = size) +
+  scale_color_brewer(palette = "Dark2") +
+  facet_wrap(~country, scale = "free_y") +
+  theme_linedraw() +
+  labs(x = "date", y = "cases", color = "")
 }
 
 # Get total cases per country/region
@@ -176,12 +187,7 @@ data %>%
                           levels = c("China", "Korea, South", 
                                      "Italy", "Germany"))) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  scale_color_brewer(palette = "Set2") +
-  facet_wrap(~country, scale = "free_y") +
-  theme_bw() +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 ```
 
 <img src="figures/examples-1.png" width="100%" />
@@ -189,8 +195,8 @@ data %>%
 ``` r
 
 ggsave("figures/plot_1.png",
-       width = 8,
-       height = 7)
+       width = 7,
+       height = 6)
 ```
 
 CHINA (upper left): The number of *total* confirmed cases is still
@@ -269,12 +275,7 @@ data %>%
          country == "Taiwan*" | 
          country == "Singapore") %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 ```
 
 <img src="figures/hongkong-1.png" width="100%" />
@@ -283,7 +284,7 @@ data %>%
 
 ggsave("figures/plot_2.png",
        width = 8,
-       height = 3)
+       height = 2.5)
 ```
 
 We clearly see that the number of *active* cases is declining earlier.
@@ -294,13 +295,14 @@ exponentially\!
 
 #### The situation in Europe
 
-A comparative plot of all countries with more than 500 confirmed total
+A comparative plot of all countries with more than \~500 confirmed total
 cases.
 
 ``` r
 europe <- c("Italy", "Spain", "Germany", "France", 
             "Switzerland", "United Kingdom", "Netherlands", 
-            "Norway", "Austria", "Sweden", "Belgium", "Denmark")
+            "Norway", "Austria", "Sweden", "Belgium", "Denmark",
+            "Portugal", "Czechia", "Ireland", "Turkey")
 
 # Current cases 
 table3 <- data %>%
@@ -336,18 +338,17 @@ papaja::apa_table(table3, format = "html", digits = 0, align = c("l", "c", rep("
 | Norway         | 2020-03-20 |       1,914 |      7 |         1 |  1,906 |
 | Sweden         | 2020-03-20 |       1,639 |     16 |        16 |  1,607 |
 | Denmark        | 2020-03-20 |       1,337 |      9 |         1 |  1,327 |
+| Portugal       | 2020-03-20 |       1,020 |      6 |         5 |  1,009 |
+| Czechia        | 2020-03-20 |         833 |      0 |         4 |    829 |
+| Ireland        | 2020-03-20 |         683 |      3 |         5 |    675 |
+| Turkey         | 2020-03-20 |         359 |      4 |         0 |    355 |
 
 ``` r
 data %>%
   filter(`total cases` >= 1) %>%
   filter(country %in% europe) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph(size = .6)
 ```
 
 <img src="figures/europe-1.png" width="100%" />
@@ -359,13 +360,15 @@ ggsave("figures/plot_3.png",
        height = 6)
 ```
 
-#### USA and Canada
+#### North, Middle and South America
 
 ``` r
+america <- c("US", "Canada", "Brazil")
+
 # Current cases 
 table4 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country == "US" | country == "Canada") %>%
+  filter(country %in% america) %>%
   arrange(desc(`total cases`))
 papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```
@@ -386,18 +389,14 @@ papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("
 | :------ | :--------: | ----------: | -----: | --------: | -----: |
 | US      | 2020-03-20 |      19,100 |    244 |         0 | 18,856 |
 | Canada  | 2020-03-20 |         943 |     12 |         9 |    922 |
+| Brazil  | 2020-03-20 |         793 |     11 |         2 |    780 |
 
 ``` r
 data %>%
   filter(`total cases` >= 1) %>%
-  filter(country == "US" | country == "Canada") %>%
+  filter(country %in% america) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 ```
 
 <img src="figures/northamerica-1.png" width="100%" />
@@ -405,7 +404,7 @@ data %>%
 ``` r
 
 ggsave("figures/plot_4.png",
-       width = 7,
+       width = 9,
        height = 3)
 ```
 
@@ -445,12 +444,7 @@ data %>%
   filter(country %in% c("Iran", "Qatar", 
                         "Israel", "Pakistan")) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 ```
 
 <img src="figures/middleeast-1.png" width="100%" />
@@ -498,12 +492,7 @@ papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("
 data %>%
   filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 ```
 
 <img src="figures/asia-1.png" width="100%" />

@@ -58,6 +58,17 @@ get_data <- function(url) {
   tbl_df
 }
 
+# Function to plot figures
+
+plot_graph <- function(data, size = .75){
+  ggplot(data, aes(x = date, y = value, color = key)) +
+  geom_line(size = size) +
+  scale_color_brewer(palette = "Dark2") +
+  facet_wrap(~country, scale = "free_y") +
+  theme_linedraw() +
+  labs(x = "date", y = "cases", color = "")
+}
+
 # Get total cases per country/region
 cases <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv" 
 
@@ -109,7 +120,7 @@ table <- data %>%
 papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r examples, fig.height=7, fig.width=8}
+```{r examples, fig.height=6, fig.width=7}
 # Example plot for China, Germany, Italy and South Korea
 data %>%
   filter(`total cases` >= 1) %>%
@@ -119,16 +130,11 @@ data %>%
                           levels = c("China", "Korea, South", 
                                      "Italy", "Germany"))) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  scale_color_brewer(palette = "Set2") +
-  facet_wrap(~country, scale = "free_y") +
-  theme_bw() +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 
 ggsave("figures/plot_1.png",
-       width = 8,
-       height = 7)
+       width = 7,
+       height = 6)
 ```
 
 CHINA (upper left): The number of *total* confirmed cases is still rising (pink), but only very slowly and almost comes to a halt. But, the number of *active* cases (green) is declining steeply and at the same time the number of *recovered* cases (blue) is increasing a lot, slowly approximating the number of *total* cases. This is how it should look like as this pattern shows that measures are working and the spreading of the virus is stopping. 
@@ -157,7 +163,7 @@ table2 <- data %>%
 papaja::apa_table(table2, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r hongkong, fig.height=3, fig.width = 8}
+```{r hongkong, fig.height=2.5, fig.width = 7}
 # Plot for Hong Kong, Taiwan, and Singapore 
 data %>%
   filter(`total cases` >= 1) %>%
@@ -165,16 +171,11 @@ data %>%
          country == "Taiwan*" | 
          country == "Singapore") %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 
 ggsave("figures/plot_2.png",
        width = 8,
-       height = 3)
+       height = 2.5)
 ```
 
 We clearly see that the number of *active* cases is declining earlier. At the same time the number of *total* cases increases, but not exponentially!
@@ -183,12 +184,13 @@ We clearly see that the number of *active* cases is declining earlier. At the sa
 
 #### The situation in Europe
 
-A comparative plot of all countries with more than 500 confirmed total cases.
+A comparative plot of all countries with more than ~500 confirmed total cases.
 
 ```{r, results = 'asis'}
 europe <- c("Italy", "Spain", "Germany", "France", 
             "Switzerland", "United Kingdom", "Netherlands", 
-            "Norway", "Austria", "Sweden", "Belgium", "Denmark")
+            "Norway", "Austria", "Sweden", "Belgium", "Denmark",
+            "Portugal", "Czechia", "Ireland", "Turkey")
 
 # Current cases 
 table3 <- data %>%
@@ -203,43 +205,35 @@ data %>%
   filter(`total cases` >= 1) %>%
   filter(country %in% europe) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph(size = .6)
 
 ggsave("figures/plot_3.png",
        width = 10,
        height = 6)
 ```
 
-#### USA and Canada
+#### North, Middle and South America
 
 ```{r,results = 'asis'}
+america <- c("US", "Canada", "Brazil")
+
 # Current cases 
 table4 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country == "US" | country == "Canada") %>%
+  filter(country %in% america) %>%
   arrange(desc(`total cases`))
 papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r northamerica, fig.height=3, fig.width = 7}
+```{r northamerica, fig.height=3, fig.width = 9}
 data %>%
   filter(`total cases` >= 1) %>%
-  filter(country == "US" | country == "Canada") %>%
+  filter(country %in% america) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 
 ggsave("figures/plot_4.png",
-       width = 7,
+       width = 9,
        height = 3)
 ```
 
@@ -260,12 +254,7 @@ data %>%
   filter(country %in% c("Iran", "Qatar", 
                         "Israel", "Pakistan")) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 
 ggsave("figures/plot_5.png",
        width = 8,
@@ -289,12 +278,7 @@ papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("
 data %>%
   filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
   gather(key, value, -country, -date) %>%
-  ggplot(aes(x = date, y = value, color = key)) +
-  geom_line() +
-  facet_wrap(~country, scales = "free_y") +
-  theme_bw() +
-  scale_color_brewer(palette = "Set2") +
-  labs(x = "date", y = "cases", color = "")
+  plot_graph
 
 ggsave("figures/plot_6.png",
        width = 8,
@@ -303,3 +287,6 @@ ggsave("figures/plot_6.png",
 
 
 Let me know if I should include any other countries in on this page. 
+
+
+
