@@ -59,7 +59,7 @@ emerge by comparing all four curves.
 ### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-21 12:51:13. The data of the John Hopkins University,
+on 2020-03-21 12:56:38. The data of the John Hopkins University,
 however, is always updated at 23:59. What you see is hence the situation
 on 2020-03-20 at 23:59.
 
@@ -348,7 +348,8 @@ data %>%
   filter(`total cases` >= 1) %>%
   filter(country %in% europe) %>%
   gather(key, value, -country, -date) %>%
-  plot_graph(size = .6)
+  plot_graph(size = .6) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 
 <img src="figures/europe-1.png" width="100%" />
@@ -356,8 +357,8 @@ data %>%
 ``` r
 
 ggsave("figures/plot_3.png",
-       width = 10,
-       height = 6)
+       width = 9,
+       height = 5.75)
 ```
 
 #### North, Middle and South America

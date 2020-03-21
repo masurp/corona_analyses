@@ -200,16 +200,17 @@ table3 <- data %>%
 papaja::apa_table(table3, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ``` 
 
-```{r europe, fig.height=6, fig.width = 10}
+```{r europe, fig.height=5.75, fig.width = 9}
 data %>%
   filter(`total cases` >= 1) %>%
   filter(country %in% europe) %>%
   gather(key, value, -country, -date) %>%
-  plot_graph(size = .6)
+  plot_graph(size = .6) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
 ggsave("figures/plot_3.png",
-       width = 10,
-       height = 6)
+       width = 9,
+       height = 5.75)
 ```
 
 #### North, Middle and South America
