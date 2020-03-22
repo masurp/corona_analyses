@@ -22,14 +22,16 @@ I generally think that the news do a good job in describing and visualizing the 
 1. Visualizations of the growth curves often log-transform the x-axis instead of showing the actual *exponential* growth.
 2. Visualizations almost never plot *total* cases against a) deaths, b) recovered, AND c) active cases. 
 
-With regard to the former, I recently wrote [this blogpost](http://philippmasur.de/blog/2020/03/13/understanding-exponential-growth-the-corona-pandemic/) that explains why exponential growth is so hard to grasp. With regard to the latter, I believe that showing only the total cases can be misleading or at least is not sufficient to understand the pandemic. From my point of view, visualizations of the growth cuvres would become a bit more informative if we plot total cases, active cases, recovered cases, and deaths. If we plot all *four* curves simultaneously, patterns emerge that tell us something about the phase that a country is it. We may even see how well a country succeeds in stopping the infections (BUT: see disclaimer further below!). In what follows, I am using actual data on worldwide total infections, death rates, and number of recoveries to produce these more insightful visualizations. 
+With regard to the former, I recently wrote [this blogpost](http://philippmasur.de/blog/2020/03/13/understanding-exponential-growth-the-corona-pandemic/) that explains why exponential growth is so hard to grasp. With regard to the latter, I believe that visualizations would become a bit more informative if we plot total cases, active cases, recovered cases, and deaths. If we plot all *four* curves simultaneously, patterns emerge that might tell us something about the "phase"" that a country is it. We may also see whether a country succeeds in stopping the infections (BUT: see disclaimer further below!). In what follows, I am using the data on worldwide total infections, death rates, and number of recoveries to produce these (potentially) a bit more insightful visualizations. 
 
 #### Where does the data come frome?
 
 The analyses and visualizations are based on the data provided by the John Hopkins University in the [Official 2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository](https://github.com/CSSEGISandData/COVID-19). The same data sets are used to constantly update this visual dashboard: https://coronavirus.jhu.edu/map.html
 
 **IMPORTANT DISCLAIMER:**
-Although I do believe that these data help us to understand the pandemic, they are nonetheless very imprecise. When we want to make sense of positive test results (i.e., total cases and in the long run mortality rates and recovering processes), we need to know how many tests were conducted. For example, Italy has an unusually high mortality rate at this moment (~8%). However, Italy ran only ~150k tests.  The real rate of infections is probably much higher, implying a lower mortality rate. South Korea, in contrast, has tested > 270,000 people, which amounts to more than 5,200 tests per million inhabitants — more tests than any other country! A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions (for more information on this, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science). For this reasons, I believe that the value of these visualization lies not in comparing the actual numbers, but in the understanding the patterns that emerge by comparing all four curves. 
+Although I do believe that these data help us to understand the pandemic, they are nonetheless very imprecise. When we want to make sense of positive test results (i.e., total cases and in the long run mortality rates and recovering processes), we need to know how many tests were conducted. For example, Italy has an unusually high mortality rate at this moment (~8%). However, Italy ran only ~150k tests.  The real rate of infections is probably much higher, implying a lower mortality rate. South Korea, in contrast, has tested > 270,000 people, which amounts to more than 5,200 tests per million inhabitants — more tests than any other country! A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions (for more information on this, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science). For this reasons, I believe that the value of these visualization lies NOT in comparing the actual numbers, but in the understanding the patterns that emerge by comparing all four curves. 
+
+Furthermore, I would like to emphasize that I am not an expert on epidemology or virus outbreaks and I am not working in the health sector. On this page, I am only visualizing the data by the John Hopkins University in a different way that most news or other outlets do. Reliance on the these visualizations for medical guidance or use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
@@ -106,7 +108,7 @@ data <- d %>%
 
 ### 1. Analyzing China, South Korea, Italy, and Germany
 
-In a first step, I am comparing China, South Korea, Italy, and Germany. Why these countries? These four countries are at different stages. China was the first to experience the outbreak and they have almost contained the spreading of the virus by now. South Korea is starting to control the virus outbreak. Italy is currently experiencing one of the worst outbreaks and drastic measures have been taken in the last weeks. The virus has reached Germany considerably later, but the growth rate is very steep at this moment. By comparing these countries, we can learn a lot about "typical" patterns between the four curves. 
+In a first step, I am comparing China, South Korea, Italy, and Germany. Why these countries? These four countries are at very different stages. China was the first to experience the outbreak and they have almost contained the spreading of the virus by now. South Korea is starting to control the virus outbreak. Italy is currently experiencing one of the worst outbreaks and drastic measures have been taken in the last weeks. The virus has reached Germany considerably later, but the growth rate is very steep at this moment. 
 
 ```{r example,results = 'asis'}
 # Current cases 
@@ -143,46 +145,12 @@ ITALY (lower left): The number of *total* confirmed cases is still growing expon
 
 GERMANY (lower right): The number of *total* confirmed cases likewise grows exponentially. Again, the number of *active* cases is practically equivalent to the number of *total* cases. 
 
-**Conclusion:** As long as we do not see signs that the curves approach a similar pattern as in China, the virus is still spreading uncontrollably. 
 
+### 2. Worldwide developments
 
-### 2. Development in countries that reacted fast
+#### Europe
 
-Although the number of cases in these countries is small (a good thing!), we should look at the distributions of countries that reacted faster (e.g., Hong Kong, Taiwan, Singapore).
-
-```{r fastcountries,results = 'asis'}
-# Current cases 
-table2 <- data %>%
-  filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country == "Hong Kong" | 
-         country == "Taiwan*" | 
-         country == "Singapore") %>%
-  arrange(desc(`total cases`))
-papaja::apa_table(table2, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
-```  
-
-```{r hongkong, fig.height=2.5, fig.width = 7}
-# Plot for Hong Kong, Taiwan, and Singapore 
-data %>%
-  filter(`total cases` >= 1) %>%
-  filter(country == "Hong Kong" | 
-         country == "Taiwan*" | 
-         country == "Singapore") %>%
-  gather(key, value, -country, -date) %>%
-  plot_graph
-
-ggsave("figures/plot_2.png",
-       width = 8,
-       height = 2.5)
-```
-
-We clearly see that the number of *active* cases is declining earlier. At the same time the number of *total* cases increases, but not exponentially.
-
-### 3. Worldwide developments
-
-#### The situation in Europe
-
-A comparative plot of all countries with more than ~500 confirmed total cases.
+Countries with more than ~500 confirmed total cases.
 
 ```{r europe, results = 'asis', comment = ""}
 europe <- c("Italy", "Spain", "Germany", "France", 
@@ -243,7 +211,7 @@ ggsave("figures/plot_4.png",
 
 #### Middle East
 
-Plot for countries in the middle east with > 400 cases.
+Countries in the middle east with > 400 cases.
 
 ```{r,results = 'asis'}
 # Current cases 
@@ -269,7 +237,7 @@ ggsave("figures/plot_5.png",
 
 #### Asia
 
-Plot for Asian countries with > 500 cases.
+Asian countries with > 500 cases.
 
 ```{r,results = 'asis'}
 # Current cases 
@@ -290,8 +258,6 @@ ggsave("figures/plot_6.png",
        width = 8,
        height = 7)
 ```
-
-Let me know if I should include any other countries in on this page. 
 
 
 

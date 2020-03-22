@@ -16,16 +16,14 @@ coverage on the pandemic.
 With regard to the former, I recently wrote [this
 blogpost](http://philippmasur.de/blog/2020/03/13/understanding-exponential-growth-the-corona-pandemic/)
 that explains why exponential growth is so hard to grasp. With regard to
-the latter, I believe that showing only the total cases can be
-misleading or at least is not sufficient to understand the pandemic.
-From my point of view, visualizations of the growth cuvres would become
-a bit more informative if we plot total cases, active cases, recovered
-cases, and deaths. If we plot all *four* curves simultaneously, patterns
-emerge that tell us something about the phase that a country is it. We
-may even see how well a country succeeds in stopping the infections
-(BUT: see disclaimer further below\!). In what follows, I am using
-actual data on worldwide total infections, death rates, and number of
-recoveries to produce these more insightful visualizations.
+the latter, I believe that visualizations would become a bit more
+informative if we plot total cases, active cases, recovered cases, and
+deaths. If we plot all *four* curves simultaneously, patterns emerge
+that might tell us something about the “phase”" that a country is it. We
+may also see whether a country succeeds in stopping the infections (BUT:
+see disclaimer further below\!). In what follows, I am using the data on
+worldwide total infections, death rates, and number of recoveries to
+produce these (potentially) a bit more insightful visualizations.
 
 #### Where does the data come frome?
 
@@ -51,13 +49,20 @@ estimates and growth rate predictions (for more information on this, see
 [this
 article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8)
 in Science). For this reasons, I believe that the value of these
-visualization lies not in comparing the actual numbers, but in the
+visualization lies NOT in comparing the actual numbers, but in the
 understanding the patterns that emerge by comparing all four curves.
+
+Furthermore, I would like to emphasize that I am not an expert on
+epidemology or virus outbreaks and I am not working in the health
+sector. On this page, I am only visualizing the data by the John Hopkins
+University in a different way that most news or other outlets do.
+Reliance on the these visualizations for medical guidance or use of
+these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-22 16:58:53. The data of the John Hopkins University,
+on 2020-03-22 17:14:23. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
 situation on 2020-03-21 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
@@ -75,14 +80,13 @@ If you are interested in the R code, please see the
 ### 1\. Analyzing China, South Korea, Italy, and Germany
 
 In a first step, I am comparing China, South Korea, Italy, and Germany.
-Why these countries? These four countries are at different stages. China
-was the first to experience the outbreak and they have almost contained
-the spreading of the virus by now. South Korea is starting to control
-the virus outbreak. Italy is currently experiencing one of the worst
-outbreaks and drastic measures have been taken in the last weeks. The
-virus has reached Germany considerably later, but the growth rate is
-very steep at this moment. By comparing these countries, we can learn a
-lot about “typical” patterns between the four curves.
+Why these countries? These four countries are at very different stages.
+China was the first to experience the outbreak and they have almost
+contained the spreading of the virus by now. South Korea is starting to
+control the virus outbreak. Italy is currently experiencing one of the
+worst outbreaks and drastic measures have been taken in the last weeks.
+The virus has reached Germany considerably later, but the growth rate is
+very steep at this moment.
 
 <caption>
 
@@ -131,46 +135,11 @@ GERMANY (lower right): The number of *total* confirmed cases likewise
 grows exponentially. Again, the number of *active* cases is practically
 equivalent to the number of *total* cases.
 
-**Conclusion:** As long as we do not see signs that the curves approach
-a similar pattern as in China, the virus is still spreading
-uncontrollably.
+### 2\. Worldwide developments
 
-### 2\. Development in countries that reacted fast
+#### Europe
 
-Although the number of cases in these countries is small (a good
-thing\!), we should look at the distributions of countries that reacted
-faster (e.g., Hong Kong, Taiwan, Singapore).
-
-<caption>
-
-(\#tab:fastcountries)
-
-</caption>
-
-<caption>
-
-\*\*
-
-</caption>
-
-| country   |    date    | total cases | deaths | recovered | active |
-| :-------- | :--------: | ----------: | -----: | --------: | -----: |
-| Singapore | 2020-03-21 |         432 |      2 |       140 |    290 |
-| Hong Kong | 2020-03-21 |         273 |      4 |        98 |    171 |
-| Taiwan\*  | 2020-03-21 |         153 |      2 |        28 |    123 |
-
-<img src="figures/hongkong-1.png" width="100%" />
-
-We clearly see that the number of *active* cases is declining earlier.
-At the same time the number of *total* cases increases, but not
-exponentially.
-
-### 3\. Worldwide developments
-
-#### The situation in Europe
-
-A comparative plot of all countries with more than \~500 confirmed total
-cases.
+Countries with more than \~500 confirmed total cases.
 
 <caption>
 
@@ -229,7 +198,7 @@ cases.
 
 #### Middle East
 
-Plot for countries in the middle east with \> 400 cases.
+Countries in the middle east with \> 400 cases.
 
 <caption>
 
@@ -254,7 +223,7 @@ Plot for countries in the middle east with \> 400 cases.
 
 #### Asia
 
-Plot for Asian countries with \> 500 cases.
+Asian countries with \> 500 cases.
 
 <caption>
 
@@ -276,5 +245,3 @@ Plot for Asian countries with \> 500 cases.
 | Japan        | 2020-03-21 |       1,007 |     35 |       232 |    740 |
 
 <img src="figures/asia-1.png" width="100%" />
-
-Let me know if I should include any other countries in on this page.
