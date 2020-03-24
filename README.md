@@ -62,9 +62,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-23 07:46:34. The data of the John Hopkins University,
+on 2020-03-24 07:55:11. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-03-22 at 23:59:00. Also bear in mind that the
+situation on 2020-03-23 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
@@ -102,10 +102,10 @@ very steep at this moment.
 
 | country      |    date    | total cases | deaths | recovered | active |
 | :----------- | :--------: | ----------: | -----: | --------: | -----: |
-| China        | 2020-03-22 |      81,080 |  3,261 |    72,262 |  5,557 |
-| Italy        | 2020-03-22 |      59,138 |  5,476 |     7,024 | 46,638 |
-| Germany      | 2020-03-22 |      24,873 |     94 |       266 | 24,513 |
-| Korea, South | 2020-03-22 |       8,897 |    104 |     2,909 |  5,884 |
+| China        | 2020-03-23 |      81,122 |  3,270 |    72,714 |  5,138 |
+| Italy        | 2020-03-23 |      59,138 |  5,476 |     7,024 | 46,638 |
+| Germany      | 2020-03-23 |      24,873 |     94 |       266 | 24,513 |
+| Korea, South | 2020-03-23 |       8,897 |    104 |     2,909 |  5,884 |
 
 <img src="figures/unnamed-chunk-2-1.png" width="100%" />
 
@@ -155,22 +155,22 @@ Countries with more than \~500 confirmed total cases.
 
 | country        |    date    | total cases | deaths | recovered | active |
 | :------------- | :--------: | ----------: | -----: | --------: | -----: |
-| Italy          | 2020-03-22 |      59,138 |  5,476 |     7,024 | 46,638 |
-| Spain          | 2020-03-22 |      28,768 |  1,772 |     2,575 | 24,421 |
-| Germany        | 2020-03-22 |      24,873 |     94 |       266 | 24,513 |
-| France         | 2020-03-22 |      16,176 |    674 |     2,206 | 13,296 |
-| Switzerland    | 2020-03-22 |       7,245 |     98 |       131 |  7,016 |
-| United Kingdom | 2020-03-22 |       5,741 |    282 |        67 |  5,392 |
-| Netherlands    | 2020-03-22 |       4,216 |    180 |         2 |  4,034 |
-| Belgium        | 2020-03-22 |       3,401 |     75 |       263 |  3,063 |
-| Austria        | 2020-03-22 |       3,244 |     16 |         9 |  3,219 |
-| Norway         | 2020-03-22 |       2,383 |      7 |         1 |  2,375 |
-| Sweden         | 2020-03-22 |       1,934 |     21 |        16 |  1,897 |
-| Portugal       | 2020-03-22 |       1,600 |     14 |         5 |  1,581 |
-| Denmark        | 2020-03-22 |       1,514 |     13 |         1 |  1,500 |
-| Turkey         | 2020-03-22 |       1,236 |     30 |         0 |  1,206 |
-| Czechia        | 2020-03-22 |       1,120 |      1 |         6 |  1,113 |
-| Ireland        | 2020-03-22 |         906 |      4 |         5 |    897 |
+| Italy          | 2020-03-23 |      59,138 |  5,476 |     7,024 | 46,638 |
+| Spain          | 2020-03-23 |      28,768 |  1,772 |     2,575 | 24,421 |
+| Germany        | 2020-03-23 |      24,873 |     94 |       266 | 24,513 |
+| France         | 2020-03-23 |      16,044 |    674 |     2,200 | 13,170 |
+| Switzerland    | 2020-03-23 |       7,245 |     98 |       131 |  7,016 |
+| United Kingdom | 2020-03-23 |       5,741 |    282 |        67 |  5,392 |
+| Netherlands    | 2020-03-23 |       4,216 |    180 |         2 |  4,034 |
+| Belgium        | 2020-03-23 |       3,401 |     75 |       263 |  3,063 |
+| Austria        | 2020-03-23 |       3,244 |     16 |         9 |  3,219 |
+| Norway         | 2020-03-23 |       2,383 |      7 |         1 |  2,375 |
+| Sweden         | 2020-03-23 |       1,934 |     21 |        16 |  1,897 |
+| Portugal       | 2020-03-23 |       1,600 |     14 |         5 |  1,581 |
+| Denmark        | 2020-03-23 |       1,514 |     13 |         1 |  1,500 |
+| Turkey         | 2020-03-23 |       1,236 |     30 |         0 |  1,206 |
+| Czechia        | 2020-03-23 |       1,120 |      1 |         6 |  1,113 |
+| Ireland        | 2020-03-23 |         906 |      4 |         5 |    897 |
 
 <img src="figures/europe_plot-1.png" width="100%" />
 
@@ -190,9 +190,9 @@ Countries with more than \~500 confirmed total cases.
 
 | country |    date    | total cases | deaths | recovered | active |
 | :------ | :--------: | ----------: | -----: | --------: | -----: |
-| US      | 2020-03-22 |      33,272 |    417 |         0 | 32,855 |
-| Brazil  | 2020-03-22 |       1,593 |     25 |         2 |  1,566 |
-| Canada  | 2020-03-22 |       1,465 |     21 |        10 |  1,434 |
+| Brazil  | 2020-03-23 |       1,593 |     25 |         2 |  1,566 |
+| Canada  | 2020-03-23 |       1,470 |     21 |        10 |  1,439 |
+| US      | 2020-03-23 |          NA |     NA |        NA |     NA |
 
 <img src="figures/northamerica-1.png" width="100%" />
 
@@ -214,10 +214,10 @@ Countries in the middle east with \> 400 cases.
 
 | country  |    date    | total cases | deaths | recovered | active |
 | :------- | :--------: | ----------: | -----: | --------: | -----: |
-| Iran     | 2020-03-22 |      21,638 |  1,685 |     7,931 | 12,022 |
-| Israel   | 2020-03-22 |       1,071 |      1 |        37 |  1,033 |
-| Pakistan | 2020-03-22 |         776 |      5 |         5 |    766 |
-| Qatar    | 2020-03-22 |         494 |      0 |        33 |    461 |
+| Iran     | 2020-03-23 |      21,638 |  1,685 |     7,931 | 12,022 |
+| Israel   | 2020-03-23 |       1,071 |      1 |        37 |  1,033 |
+| Pakistan | 2020-03-23 |         776 |      5 |         5 |    766 |
+| Qatar    | 2020-03-23 |         494 |      0 |        33 |    461 |
 
 <img src="figures/middleeast-1.png" width="100%" />
 
@@ -239,9 +239,9 @@ Asian countries with \> 500 cases.
 
 | country      |    date    | total cases | deaths | recovered | active |
 | :----------- | :--------: | ----------: | -----: | --------: | -----: |
-| China        | 2020-03-22 |      81,080 |  3,261 |    72,262 |  5,557 |
-| Korea, South | 2020-03-22 |       8,897 |    104 |     2,909 |  5,884 |
-| Malaysia     | 2020-03-22 |       1,306 |     10 |       139 |  1,157 |
-| Japan        | 2020-03-22 |       1,086 |     40 |       235 |    811 |
+| China        | 2020-03-23 |      81,122 |  3,270 |    72,714 |  5,138 |
+| Korea, South | 2020-03-23 |       8,897 |    104 |     2,909 |  5,884 |
+| Malaysia     | 2020-03-23 |       1,306 |     10 |       139 |  1,157 |
+| Japan        | 2020-03-23 |       1,086 |     40 |       235 |    811 |
 
 <img src="figures/asia-1.png" width="100%" />
