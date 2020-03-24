@@ -61,6 +61,9 @@ these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
+!!!!!!!!! THE DATA ARE NO LONGER UPDATED ON THE JOHN HOPKINS UNIVERSIY DATA REPOSITORY !!!!!!!!
+
+
 Yes, I will update these figures every morning. The last update was made
 on 2020-03-24 07:55:11. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
