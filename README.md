@@ -38,18 +38,16 @@ sets are used to constantly update this visual dashboard:
 to understand the pandemic, they are nonetheless very imprecise. When we
 want to make sense of positive test results (i.e., total cases and in
 the long run mortality rates and recovering processes), we need to know
-how many tests were conducted. For example, Italy has an unusually high
-mortality rate at this moment (\~8%). However, Italy ran only \~150k
-tests. The real rate of infections is probably much higher, implying a
-lower mortality rate. South Korea, in contrast, has tested \> 270,000
-people, which amounts to more than 5,200 tests per million inhabitants —
-more tests than any other country\! A high diagnostic capacity at scale
+how many tests were conducted. South Korea, for example, has tested \>
+270,000 people, which amounts to more than 5,200 tests per million
+inhabitants. The numbers in South Korea are hence more trustworthy than
+the numbers of all other countries. A high diagnostic capacity at scale
 is hence key to epidemic control as it provides us with precise
 estimates and growth rate predictions (for more information on this, see
 [this
 article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8)
 in Science). For this reasons, I believe that the value of these
-visualization lies NOT in comparing the actual numbers, but in the
+visualization lies NOT in comparing the actual numbers, but in
 understanding the patterns that emerge by comparing all four curves.
 
 Furthermore, I would like to emphasize that I am not an expert on
@@ -62,17 +60,13 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-24 07:55:11. The data of the John Hopkins University,
+on 2020-03-31 18:24:38. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-03-23 at 23:59:00. Also bear in mind that the
+situation on 2020-03-30 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
 ## Visualizations
-
-Note: I am not focusing on provinces, I hence only summarize across
-countries and dates. That said, I distinguish China and Hong Kong due to
-their different timelines in responding to the virus outbreak.
 
 If you are interested in the R code, please see the
 [README.rmd](https://github.com/masurp/corona_analyses/blob/master/README.rmd).
@@ -100,46 +94,18 @@ very steep at this moment.
 
 </caption>
 
-| country      |    date    | total cases | deaths | recovered | active |
-| :----------- | :--------: | ----------: | -----: | --------: | -----: |
-| China        | 2020-03-23 |      81,122 |  3,270 |    72,714 |  5,138 |
-| Italy        | 2020-03-23 |      59,138 |  5,476 |     7,024 | 46,638 |
-| Germany      | 2020-03-23 |      24,873 |     94 |       266 | 24,513 |
-| Korea, South | 2020-03-23 |       8,897 |    104 |     2,909 |  5,884 |
+| country      |    date    | confirmed | deaths | recovered | active |
+| :----------- | :--------: | --------: | -----: | --------: | -----: |
+| Italy        | 2020-03-30 |   101,739 | 11,591 |    14,620 | 75,528 |
+| China        | 2020-03-30 |    82,198 |  3,308 |    75,923 |  2,967 |
+| Germany      | 2020-03-30 |    66,885 |    645 |    13,500 | 52,740 |
+| Korea, South | 2020-03-30 |     9,661 |    158 |     5,228 |  4,275 |
 
 <img src="figures/unnamed-chunk-2-1.png" width="100%" />
-
-CHINA (upper left): The number of *total* confirmed cases is still
-rising (pink), but only very slowly and almost comes to a halt. The
-number of *active* cases (green) is declining steeply and at the same
-time the number of *recovered* cases (blue) is increasing a lot, slowly
-approximating the number of *total* cases. This is how it should look
-like as this pattern shows that measures are working and the spreading
-of the virus is stopping.
-
-SOUTH KOREA (upper right): The number of *total* confirmed cases is
-still rising (pink), but the growth rate slowly resembles an S-curve.
-This is a good sign, because new infections are fewer. The number of
-*active* cases (green) is hence starting to decline (although it
-recently started to grow again) and at the same time the number of
-*recovered* cases (blue) is starting to grow.
-
-ITALY (lower left): The number of *total* confirmed cases is still
-growing exponentially. More importantly, the number of *active* cases is
-almost equivalent to the number of *total* cases. The number of
-*recovered* cases sadly equals the number of *deaths*. So far, we do not
-see implications of the drastic measures taken by the Italian
-government.
-
-GERMANY (lower right): The number of *total* confirmed cases likewise
-grows exponentially. Again, the number of *active* cases is practically
-equivalent to the number of *total* cases.
 
 ### 2\. Worldwide developments
 
 #### Europe
-
-Countries with more than \~500 confirmed total cases.
 
 <caption>
 
@@ -153,24 +119,24 @@ Countries with more than \~500 confirmed total cases.
 
 </caption>
 
-| country        |    date    | total cases | deaths | recovered | active |
-| :------------- | :--------: | ----------: | -----: | --------: | -----: |
-| Italy          | 2020-03-23 |      59,138 |  5,476 |     7,024 | 46,638 |
-| Spain          | 2020-03-23 |      28,768 |  1,772 |     2,575 | 24,421 |
-| Germany        | 2020-03-23 |      24,873 |     94 |       266 | 24,513 |
-| France         | 2020-03-23 |      16,044 |    674 |     2,200 | 13,170 |
-| Switzerland    | 2020-03-23 |       7,245 |     98 |       131 |  7,016 |
-| United Kingdom | 2020-03-23 |       5,741 |    282 |        67 |  5,392 |
-| Netherlands    | 2020-03-23 |       4,216 |    180 |         2 |  4,034 |
-| Belgium        | 2020-03-23 |       3,401 |     75 |       263 |  3,063 |
-| Austria        | 2020-03-23 |       3,244 |     16 |         9 |  3,219 |
-| Norway         | 2020-03-23 |       2,383 |      7 |         1 |  2,375 |
-| Sweden         | 2020-03-23 |       1,934 |     21 |        16 |  1,897 |
-| Portugal       | 2020-03-23 |       1,600 |     14 |         5 |  1,581 |
-| Denmark        | 2020-03-23 |       1,514 |     13 |         1 |  1,500 |
-| Turkey         | 2020-03-23 |       1,236 |     30 |         0 |  1,206 |
-| Czechia        | 2020-03-23 |       1,120 |      1 |         6 |  1,113 |
-| Ireland        | 2020-03-23 |         906 |      4 |         5 |    897 |
+| country        |    date    | confirmed | deaths | recovered | active |
+| :------------- | :--------: | --------: | -----: | --------: | -----: |
+| Italy          | 2020-03-30 |   101,739 | 11,591 |    14,620 | 75,528 |
+| Spain          | 2020-03-30 |    87,956 |  7,716 |    16,780 | 63,460 |
+| Germany        | 2020-03-30 |    66,885 |    645 |    13,500 | 52,740 |
+| France         | 2020-03-30 |    45,170 |  3,030 |     7,964 | 34,176 |
+| United Kingdom | 2020-03-30 |    22,453 |  1,411 |       171 | 20,871 |
+| Switzerland    | 2020-03-30 |    15,922 |    359 |     1,823 | 13,740 |
+| Belgium        | 2020-03-30 |    11,899 |    513 |     1,527 |  9,859 |
+| Netherlands    | 2020-03-30 |    11,817 |    865 |       253 | 10,699 |
+| Turkey         | 2020-03-30 |    10,827 |    168 |       162 | 10,497 |
+| Austria        | 2020-03-30 |     9,618 |    108 |       636 |  8,874 |
+| Portugal       | 2020-03-30 |     6,408 |    140 |        43 |  6,225 |
+| Norway         | 2020-03-30 |     4,445 |     32 |        12 |  4,401 |
+| Sweden         | 2020-03-30 |     4,028 |    146 |        16 |  3,866 |
+| Czechia        | 2020-03-30 |     3,001 |     23 |        25 |  2,953 |
+| Ireland        | 2020-03-30 |     2,910 |     54 |         5 |  2,851 |
+| Denmark        | 2020-03-30 |     2,755 |     77 |        73 |  2,605 |
 
 <img src="figures/europe_plot-1.png" width="100%" />
 
@@ -188,17 +154,15 @@ Countries with more than \~500 confirmed total cases.
 
 </caption>
 
-| country |    date    | total cases | deaths | recovered | active |
-| :------ | :--------: | ----------: | -----: | --------: | -----: |
-| Brazil  | 2020-03-23 |       1,593 |     25 |         2 |  1,566 |
-| Canada  | 2020-03-23 |       1,470 |     21 |        10 |  1,439 |
-| US      | 2020-03-23 |          NA |     NA |        NA |     NA |
+| country |    date    | confirmed | deaths | recovered |  active |
+| :------ | :--------: | --------: | -----: | --------: | ------: |
+| US      | 2020-03-30 |   161,807 |  2,978 |     5,644 | 153,185 |
+| Canada  | 2020-03-30 |     7,398 |     80 |       466 |   6,852 |
+| Brazil  | 2020-03-30 |     4,579 |    159 |       120 |   4,300 |
 
 <img src="figures/northamerica-1.png" width="100%" />
 
 #### Middle East
-
-Countries in the middle east with \> 400 cases.
 
 <caption>
 
@@ -212,18 +176,16 @@ Countries in the middle east with \> 400 cases.
 
 </caption>
 
-| country  |    date    | total cases | deaths | recovered | active |
-| :------- | :--------: | ----------: | -----: | --------: | -----: |
-| Iran     | 2020-03-23 |      21,638 |  1,685 |     7,931 | 12,022 |
-| Israel   | 2020-03-23 |       1,071 |      1 |        37 |  1,033 |
-| Pakistan | 2020-03-23 |         776 |      5 |         5 |    766 |
-| Qatar    | 2020-03-23 |         494 |      0 |        33 |    461 |
+| country  |    date    | confirmed | deaths | recovered | active |
+| :------- | :--------: | --------: | -----: | --------: | -----: |
+| Iran     | 2020-03-30 |    41,495 |  2,757 |    13,911 | 24,827 |
+| Israel   | 2020-03-30 |     4,695 |     16 |       161 |  4,518 |
+| Pakistan | 2020-03-30 |     1,717 |     21 |        76 |  1,620 |
+| Qatar    | 2020-03-30 |       693 |      1 |        51 |    641 |
 
 <img src="figures/middleeast-1.png" width="100%" />
 
 #### Asia
-
-Asian countries with \> 500 cases.
 
 <caption>
 
@@ -237,11 +199,11 @@ Asian countries with \> 500 cases.
 
 </caption>
 
-| country      |    date    | total cases | deaths | recovered | active |
-| :----------- | :--------: | ----------: | -----: | --------: | -----: |
-| China        | 2020-03-23 |      81,122 |  3,270 |    72,714 |  5,138 |
-| Korea, South | 2020-03-23 |       8,897 |    104 |     2,909 |  5,884 |
-| Malaysia     | 2020-03-23 |       1,306 |     10 |       139 |  1,157 |
-| Japan        | 2020-03-23 |       1,086 |     40 |       235 |    811 |
+| country      |    date    | confirmed | deaths | recovered | active |
+| :----------- | :--------: | --------: | -----: | --------: | -----: |
+| China        | 2020-03-30 |    82,198 |  3,308 |    75,923 |  2,967 |
+| Korea, South | 2020-03-30 |     9,661 |    158 |     5,228 |  4,275 |
+| Malaysia     | 2020-03-30 |     2,626 |     37 |       479 |  2,110 |
+| Japan        | 2020-03-30 |     1,866 |     54 |       424 |  1,388 |
 
 <img src="figures/asia-1.png" width="100%" />

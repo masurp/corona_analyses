@@ -6,3 +6,4 @@
 .DS_Store
 **/README_files
 README_new.Rmd
+*.csv

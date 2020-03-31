@@ -29,7 +29,7 @@ With regard to the former, I recently wrote [this blogpost](http://philippmasur.
 The analyses and visualizations are based on the data provided by the John Hopkins University in the [Official 2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository](https://github.com/CSSEGISandData/COVID-19). The same data sets are used to constantly update this visual dashboard: https://coronavirus.jhu.edu/map.html
 
 **IMPORTANT DISCLAIMER:**
-Although I do believe that these data help us to understand the pandemic, they are nonetheless very imprecise. When we want to make sense of positive test results (i.e., total cases and in the long run mortality rates and recovering processes), we need to know how many tests were conducted. For example, Italy has an unusually high mortality rate at this moment (~8%). However, Italy ran only ~150k tests.  The real rate of infections is probably much higher, implying a lower mortality rate. South Korea, in contrast, has tested > 270,000 people, which amounts to more than 5,200 tests per million inhabitants — more tests than any other country! A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions (for more information on this, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science). For this reasons, I believe that the value of these visualization lies NOT in comparing the actual numbers, but in the understanding the patterns that emerge by comparing all four curves. 
+Although I do believe that these data help us to understand the pandemic, they are nonetheless very imprecise. When we want to make sense of positive test results (i.e., total cases and in the long run mortality rates and recovering processes), we need to know how many tests were conducted. South Korea, for example, has tested > 270,000 people, which amounts to more than 5,200 tests per million inhabitants. The numbers in South Korea are hence more trustworthy than the numbers of all other countries. A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions (for more information on this, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science). For this reasons, I believe that the value of these visualization lies NOT in comparing the actual numbers, but in understanding the patterns that emerge by comparing all four curves. 
 
 Furthermore, I would like to emphasize that I am not an expert on epidemology or virus outbreaks and I am not working in the health sector. On this page, I am only visualizing the data by the John Hopkins University in a different way that most news or other outlets do. Reliance on the these visualizations for medical guidance or use of these visualization in commerce is strictly prohibited.
 
@@ -39,25 +39,12 @@ Yes, I will update these figures every morning. The last update was made on `r S
 
 ## Visualizations
 
-Note: I am not focusing on provinces, I hence only summarize across countries and dates. That said, I distinguish China and Hong Kong due to their different timelines in responding to the virus outbreak. 
-
 If you are interested in the R code, please see the [README.rmd](https://github.com/masurp/corona_analyses/blob/master/README.rmd). 
 
 ```{r, message = F, warning = F}
+library(tidycovid19)
 library(tidyverse)
-library(readr)
-
-# Function to crawl data from the github repository
-get_data <- function(url) {
-  read_csv(url(url)) %>%
-  select(-Lat, -Long) %>%
-  rename(province = "Province/State",
-         country = "Country/Region") %>%
-  gather(date, type, -country, -province) %>%
-  mutate(type = as.numeric(type),
-         date = lubridate::mdy(date)) %>% 
-  tbl_df
-}
+library(lubridate)
 
 # Function to plot figures
 plot_graph <- function(data, size = .75){
@@ -69,41 +56,13 @@ plot_graph <- function(data, size = .75){
   labs(x = "date", y = "cases", color = "")
 }
 
-# Get total cases per country/region
-cases <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Confirmed.csv" 
+# Get & wrangle data ####
+data <- download_jhu_csse_covid19_data() 
 
-# Get number of deaths per country/region
-deaths <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Deaths.csv" 
+data <- data %>%
+  select(-iso3c, -timestamp) %>%
+  mutate(active = confirmed - (deaths + recovered))
 
-# Get number of recovered cases per country/region
-recovered <- "https://raw.githubusercontent.com/CSSEGISandData/COVID-19/master/csse_covid_19_data/csse_covid_19_time_series/time_series_19-covid-Recovered.csv" 
-
-# Prepare data
-d_cases <- get_data(cases) %>%
-  rename(cases = type)
-d_deaths <- get_data(deaths) %>%
-  rename(deaths = type)
-d_recovered <- get_data(recovered) %>%
-  rename(recovered = type)
-
-# Join data sets by country, province, and date
-d <- d_cases %>%
-  left_join(d_deaths) %>%
-  left_join(d_recovered) 
-
-# Distinguish Hong Kong and China
-d$country[d$province=="Hong Kong"] <- "Hong Kong"
-
-# Prepare data for visualization
-data <- d %>%
-  group_by(country, date) %>%
-  summarize(cases = sum(cases),
-            deaths = sum(deaths),
-            recovered = sum(recovered)) %>%
-  filter(country != "") %>%
-  mutate(active = cases - (deaths + recovered)) %>%
-  magrittr::set_colnames(c("country", "date", "total cases", "deaths", "recovered", "active")) %>%
-  ungroup
 ```
 
 ### 1. Analyzing China, South Korea, Italy, and Germany
@@ -113,17 +72,17 @@ In a first step, I am comparing China, South Korea, Italy, and Germany. Why thes
 ```{r example,results = 'asis'}
 # Current cases 
 table <- data %>%
-  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(date == Sys.Date()-1) %>%
   filter(country == "China" | country == "Germany" | 
          country == "Italy" | country == "Korea, South") %>%
-  arrange(desc(`total cases`))
+  arrange(desc(confirmed))
 papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
 ```{r, fig.height=6, fig.width=7}
 # Example plot for China, Germany, Italy and South Korea
 data %>%
-  filter(`total cases` >= 1) %>%
+  filter(confirmed >= 1) %>%
   filter(country == "China" | country == "Germany" | 
          country == "Italy" | country == "Korea, South") %>%
   mutate(country = factor(country, 
@@ -137,20 +96,10 @@ ggsave("figures/plot_1.png",
        height = 6)
 ```
 
-CHINA (upper left): The number of *total* confirmed cases is still rising (pink), but only very slowly and almost comes to a halt. The number of *active* cases (green) is declining steeply and at the same time the number of *recovered* cases (blue) is increasing a lot, slowly approximating the number of *total* cases. This is how it should look like as this pattern shows that measures are working and the spreading of the virus is stopping. 
-
-SOUTH KOREA (upper right): The number of *total* confirmed cases is still rising (pink), but the growth rate slowly resembles an S-curve. This is a good sign, because new infections are fewer. The number of *active* cases (green) is hence starting to decline (although it recently started to grow again) and at the same time the number of *recovered* cases (blue) is starting to grow.
-
-ITALY (lower left): The number of *total* confirmed cases is still growing exponentially. More importantly, the number of *active* cases is almost equivalent to the number of *total* cases. The number of *recovered* cases sadly equals the number of *deaths*. So far, we do not see implications of the drastic measures taken by the Italian government.
-
-GERMANY (lower right): The number of *total* confirmed cases likewise grows exponentially. Again, the number of *active* cases is practically equivalent to the number of *total* cases. 
-
 
 ### 2. Worldwide developments
 
 #### Europe
-
-Countries with more than ~500 confirmed total cases.
 
 ```{r europe, results = 'asis', comment = ""}
 europe <- c("Italy", "Spain", "Germany", "France", 
@@ -162,7 +111,7 @@ europe <- c("Italy", "Spain", "Germany", "France",
 table3 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
   filter(country %in% europe) %>%
-  arrange(desc(`total cases`))
+  arrange(desc(confirmed))
 
 # Plot table
 papaja::apa_table(table3, 
@@ -173,9 +122,10 @@ papaja::apa_table(table3,
 
 ```{r europe_plot, fig.height=5.75, fig.width = 9}
 data %>%
-  filter(`total cases` >= 1) %>%
+  filter(confirmed >= 1) %>%
   filter(country %in% europe) %>%
   gather(key, value, -country, -date) %>%
+    mutate(date = lubridate::ymd(date)) %>%
   plot_graph(size = .6) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
@@ -193,15 +143,16 @@ america <- c("US", "Canada", "Brazil")
 table4 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
   filter(country %in% america) %>%
-  arrange(desc(`total cases`))
+  arrange(desc(confirmed))
 papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
 ```{r northamerica, fig.height=3, fig.width = 9}
 data %>%
-  filter(`total cases` >= 1) %>%
+  filter(confirmed >= 1) %>%
   filter(country %in% america) %>%
   gather(key, value, -country, -date) %>%
+  mutate(date = lubridate::ymd(date)) %>%
   plot_graph
 
 ggsave("figures/plot_4.png",
@@ -211,23 +162,23 @@ ggsave("figures/plot_4.png",
 
 #### Middle East
 
-Countries in the middle east with > 400 cases.
-
 ```{r,results = 'asis'}
 # Current cases 
 table5 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
   filter(country %in% c("Iran", "Qatar", 
                         "Israel", "Pakistan")) %>%
-  arrange(desc(`total cases`))
+  arrange(desc(confirmed))
 papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
 ```{r middleeast, fig.height=7, fig.width = 8}
 data %>%
+  filter(confirmed >=1) %>%
   filter(country %in% c("Iran", "Qatar", 
                         "Israel", "Pakistan")) %>%
   gather(key, value, -country, -date) %>%
+  mutate(date = lubridate::ymd(date)) %>%
   plot_graph
 
 ggsave("figures/plot_5.png",
@@ -237,21 +188,21 @@ ggsave("figures/plot_5.png",
 
 #### Asia
 
-Asian countries with > 500 cases.
-
 ```{r,results = 'asis'}
 # Current cases 
 table6 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
   filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
-  arrange(desc(`total cases`))
+  arrange(desc(confirmed))
 papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```
 
 ```{r asia, fig.height=7, fig.width = 8}
 data %>%
+  filter(confirmed >= 1) %>%
   filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
   gather(key, value, -country, -date) %>%
+  mutate(date = lubridate::ymd(date)) %>%
   plot_graph
 
 ggsave("figures/plot_6.png",
