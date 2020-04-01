@@ -211,4 +211,70 @@ ggsave("figures/plot_6.png",
 ```
 
 
+### 3. Alternative visualizations
+
+One thing that is constantly debatted is how to visualize growth at all. Log-transform the y-axis or not? Plot against the date? Plot against days after 100th case? Plot something entirely different?
+
+Here, I would like to explain some differences between visualizations that have been used in the media. All of them are helpful in their own regard. 
+
+1. LEFT: Here, I plotted total cases against days after the 100th cases *without* logarithmizing the y-axis. 
+
+2. MIDDLE: The y-axis is logarithmized. This figure is often shown in the news. 
+
+3. RIGHT: New cases per 7 days (y-axis) are plotted against total cases (x-axis), both axes are logarithmized.
+
+We see clearly that each plot has benefits and weaknesses. The first example provides perhaps the best comparison of the total numbers and shows quite drastically how exponential growth looks likes. S-curves represent positive developments towars a slower growth. Yet, changes are barely identifiable. The second example makes the actual growth more comparable and by logarithmizing the y-axsis, we can actually see changes in the growth. Here, it seesm that most countries are actually starting to slow the growth. Finally, the last example is hard to understand generally, but it shows best whether some sort of measure is working. The curve needs to sink drastically, otherwise, the growth is continuing uncontrollibly. 
+
+```{r warning = F, message = F, fig.height=5, fig.width = 12}
+
+p1 <- data %>%
+  filter(confirmed >= 100) %>%
+  filter(country == "Germany" | country == "US" |
+         country == "Italy" | country == "Korea, South") %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  ggplot(aes(x = days, y = confirmed, color = country)) + 
+  geom_line(size = .75) +
+  theme_linedraw() +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "none") +
+  labs(x = "days after 100 cases", y = "total cases", color = "")
+
+p2 <- data %>%
+  filter(confirmed >= 100) %>%
+  filter(country == "Germany" | country == "US" |
+         country == "Italy" | country == "Korea, South") %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  ggplot(aes(x = days, y = confirmed, color = country)) + 
+  geom_line(size = .75) +
+  theme_linedraw() +
+  scale_y_log10() +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "bottom") +
+  labs(x = "days after 100 cases", y = "total cases (log)", color = "")
+
+p3 <- data %>%
+  filter(confirmed >= 100) %>%
+  filter(country == "Germany" | country == "US" |
+         country == "Italy" | country == "Korea, South") %>%
+  group_by(country) %>%
+  mutate(new_cases = confirmed - lag(confirmed, 7)) %>%
+  ungroup %>%
+  ggplot(aes(x = confirmed, y = new_cases, color = country)) + 
+  geom_line(size = .75) +
+  scale_x_log10() +
+  scale_y_log10() +
+  theme_linedraw() +
+  scale_color_brewer(palette = "Dark2") +
+  theme(legend.position = "none") +
+  labs(x = "total cases (log)", y = "new cases (log)", color = "")
+
+cowplot::plot_grid(p1, p2, p3,
+                   align = "h",
+                   axis = "lbr",
+                   ncol = 3)
+  
+```
+
 

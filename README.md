@@ -60,9 +60,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-03-31 18:26:07. The data of the John Hopkins University,
+on 2020-04-01 08:31:30. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-03-30 at 23:59:00. Also bear in mind that the
+situation on 2020-03-31 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
@@ -96,10 +96,10 @@ very steep at this moment.
 
 | country      |    date    | confirmed | deaths | recovered | active |
 | :----------- | :--------: | --------: | -----: | --------: | -----: |
-| Italy        | 2020-03-30 |   101,739 | 11,591 |    14,620 | 75,528 |
-| China        | 2020-03-30 |    82,198 |  3,308 |    75,923 |  2,967 |
-| Germany      | 2020-03-30 |    66,885 |    645 |    13,500 | 52,740 |
-| Korea, South | 2020-03-30 |     9,661 |    158 |     5,228 |  4,275 |
+| Italy        | 2020-03-31 |   105,792 | 12,428 |    15,729 | 77,635 |
+| China        | 2020-03-31 |    82,279 |  3,309 |    76,206 |  2,764 |
+| Germany      | 2020-03-31 |    71,808 |    775 |    16,100 | 54,933 |
+| Korea, South | 2020-03-31 |     9,786 |    162 |     5,408 |  4,216 |
 
 <img src="figures/unnamed-chunk-2-1.png" width="100%" />
 
@@ -121,22 +121,22 @@ very steep at this moment.
 
 | country        |    date    | confirmed | deaths | recovered | active |
 | :------------- | :--------: | --------: | -----: | --------: | -----: |
-| Italy          | 2020-03-30 |   101,739 | 11,591 |    14,620 | 75,528 |
-| Spain          | 2020-03-30 |    87,956 |  7,716 |    16,780 | 63,460 |
-| Germany        | 2020-03-30 |    66,885 |    645 |    13,500 | 52,740 |
-| France         | 2020-03-30 |    45,170 |  3,030 |     7,964 | 34,176 |
-| United Kingdom | 2020-03-30 |    22,453 |  1,411 |       171 | 20,871 |
-| Switzerland    | 2020-03-30 |    15,922 |    359 |     1,823 | 13,740 |
-| Belgium        | 2020-03-30 |    11,899 |    513 |     1,527 |  9,859 |
-| Netherlands    | 2020-03-30 |    11,817 |    865 |       253 | 10,699 |
-| Turkey         | 2020-03-30 |    10,827 |    168 |       162 | 10,497 |
-| Austria        | 2020-03-30 |     9,618 |    108 |       636 |  8,874 |
-| Portugal       | 2020-03-30 |     6,408 |    140 |        43 |  6,225 |
-| Norway         | 2020-03-30 |     4,445 |     32 |        12 |  4,401 |
-| Sweden         | 2020-03-30 |     4,028 |    146 |        16 |  3,866 |
-| Czechia        | 2020-03-30 |     3,001 |     23 |        25 |  2,953 |
-| Ireland        | 2020-03-30 |     2,910 |     54 |         5 |  2,851 |
-| Denmark        | 2020-03-30 |     2,755 |     77 |        73 |  2,605 |
+| Italy          | 2020-03-31 |   105,792 | 12,428 |    15,729 | 77,635 |
+| Spain          | 2020-03-31 |    95,923 |  8,464 |    19,259 | 68,200 |
+| Germany        | 2020-03-31 |    71,808 |    775 |    16,100 | 54,933 |
+| France         | 2020-03-31 |    52,827 |  3,532 |     9,513 | 39,782 |
+| United Kingdom | 2020-03-31 |    25,481 |  1,793 |       179 | 23,509 |
+| Switzerland    | 2020-03-31 |    16,605 |    433 |     1,823 | 14,349 |
+| Turkey         | 2020-03-31 |    13,531 |    214 |       243 | 13,074 |
+| Belgium        | 2020-03-31 |    12,775 |    705 |     1,696 | 10,374 |
+| Netherlands    | 2020-03-31 |    12,667 |  1,040 |       253 | 11,374 |
+| Austria        | 2020-03-31 |    10,180 |    128 |     1,095 |  8,957 |
+| Portugal       | 2020-03-31 |     7,443 |    160 |        43 |  7,240 |
+| Norway         | 2020-03-31 |     4,641 |     39 |        13 |  4,589 |
+| Sweden         | 2020-03-31 |     4,435 |    180 |        16 |  4,239 |
+| Czechia        | 2020-03-31 |     3,308 |     31 |        45 |  3,232 |
+| Ireland        | 2020-03-31 |     3,235 |     71 |         5 |  3,159 |
+| Denmark        | 2020-03-31 |     3,039 |     90 |        77 |  2,872 |
 
 <img src="figures/europe_plot-1.png" width="100%" />
 
@@ -156,9 +156,9 @@ very steep at this moment.
 
 | country |    date    | confirmed | deaths | recovered |  active |
 | :------ | :--------: | --------: | -----: | --------: | ------: |
-| US      | 2020-03-30 |   161,807 |  2,978 |     5,644 | 153,185 |
-| Canada  | 2020-03-30 |     7,398 |     80 |       466 |   6,852 |
-| Brazil  | 2020-03-30 |     4,579 |    159 |       120 |   4,300 |
+| US      | 2020-03-31 |   188,172 |  3,873 |     7,024 | 177,275 |
+| Canada  | 2020-03-31 |     8,527 |    101 |     1,592 |   6,834 |
+| Brazil  | 2020-03-31 |     5,717 |    201 |       127 |   5,389 |
 
 <img src="figures/northamerica-1.png" width="100%" />
 
@@ -178,10 +178,10 @@ very steep at this moment.
 
 | country  |    date    | confirmed | deaths | recovered | active |
 | :------- | :--------: | --------: | -----: | --------: | -----: |
-| Iran     | 2020-03-30 |    41,495 |  2,757 |    13,911 | 24,827 |
-| Israel   | 2020-03-30 |     4,695 |     16 |       161 |  4,518 |
-| Pakistan | 2020-03-30 |     1,717 |     21 |        76 |  1,620 |
-| Qatar    | 2020-03-30 |       693 |      1 |        51 |    641 |
+| Iran     | 2020-03-31 |    44,605 |  2,898 |    14,656 | 27,051 |
+| Israel   | 2020-03-31 |     5,358 |     20 |       224 |  5,114 |
+| Pakistan | 2020-03-31 |     1,938 |     26 |        76 |  1,836 |
+| Qatar    | 2020-03-31 |       781 |      2 |        62 |    717 |
 
 <img src="figures/middleeast-1.png" width="100%" />
 
@@ -201,9 +201,42 @@ very steep at this moment.
 
 | country      |    date    | confirmed | deaths | recovered | active |
 | :----------- | :--------: | --------: | -----: | --------: | -----: |
-| China        | 2020-03-30 |    82,198 |  3,308 |    75,923 |  2,967 |
-| Korea, South | 2020-03-30 |     9,661 |    158 |     5,228 |  4,275 |
-| Malaysia     | 2020-03-30 |     2,626 |     37 |       479 |  2,110 |
-| Japan        | 2020-03-30 |     1,866 |     54 |       424 |  1,388 |
+| China        | 2020-03-31 |    82,279 |  3,309 |    76,206 |  2,764 |
+| Korea, South | 2020-03-31 |     9,786 |    162 |     5,408 |  4,216 |
+| Malaysia     | 2020-03-31 |     2,766 |     43 |       537 |  2,186 |
+| Japan        | 2020-03-31 |     1,953 |     56 |       424 |  1,473 |
 
 <img src="figures/asia-1.png" width="100%" />
+
+### 3\. Alternative visualizations
+
+One thing that is constantly debatted is how to visualize growth at all.
+Log-transform the y-axis or not? Plot against the date? Plot against
+days after 100th case? Plot something entirely different?
+
+Here, I would like to explain some differences between visualizations
+that have been used in the media. All of them are helpful in their own
+regard.
+
+1.  LEFT: Here, I plotted total cases against days after the 100th cases
+    *without* logarithmizing the y-axis.
+
+2.  MIDDLE: The y-axis is logarithmized. This figure is often shown in
+    the news.
+
+3.  RIGHT: New cases per 7 days (y-axis) are plotted against total cases
+    (x-axis), both axes are logarithmized.
+
+We see clearly that each plot has benefits and weaknesses. The first
+example provides perhaps the best comparison of the total numbers and
+shows quite drastically how exponential growth looks likes. S-curves
+represent positive developments towars a slower growth. Yet, changes are
+barely identifiable. The second example makes the actual growth more
+comparable and by logarithmizing the y-axsis, we can actually see
+changes in the growth. Here, it seesm that most countries are actually
+starting to slow the growth. Finally, the last example is hard to
+understand generally, but it shows best whether some sort of measure is
+working. The curve needs to sink drastically, otherwise, the growth is
+continuing uncontrollibly.
+
+<img src="figures/unnamed-chunk-6-1.png" width="100%" />
