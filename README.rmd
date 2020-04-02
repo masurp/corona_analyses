@@ -227,7 +227,7 @@ We see clearly that each plot has benefits and weaknesses. The first example pro
 
 ```{r warning = F, message = F, fig.height=5, fig.width = 12}
 
-p1 <- data %>%
+pg1 <- data %>%
   filter(confirmed >= 100) %>%
   filter(country == "Germany" | country == "US" |
          country == "Italy" | country == "Korea, South") %>%
@@ -240,7 +240,7 @@ p1 <- data %>%
   theme(legend.position = "none") +
   labs(x = "days after 100 cases", y = "total cases", color = "")
 
-p2 <- data %>%
+pg2 <- data %>%
   filter(confirmed >= 100) %>%
   filter(country == "Germany" | country == "US" |
          country == "Italy" | country == "Korea, South") %>%
@@ -254,7 +254,7 @@ p2 <- data %>%
   theme(legend.position = "bottom") +
   labs(x = "days after 100 cases", y = "total cases (log)", color = "")
 
-p3 <- data %>%
+pg3 <- data %>%
   filter(confirmed >= 100) %>%
   filter(country == "Germany" | country == "US" |
          country == "Italy" | country == "Korea, South") %>%
@@ -270,7 +270,7 @@ p3 <- data %>%
   theme(legend.position = "none") +
   labs(x = "total cases (log)", y = "new cases (log)", color = "")
 
-cowplot::plot_grid(p1, p2, p3,
+cowplot::plot_grid(pg1, pg2, pg3,
                    align = "h",
                    axis = "lbr",
                    ncol = 3)
