@@ -60,7 +60,7 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-04-03 09:13:57. The data of the John Hopkins University,
+on 2020-04-03 15:36:10. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
 situation on 2020-04-02 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
@@ -210,9 +210,10 @@ very steep at this moment.
 
 ### 3\. Alternative visualizations
 
-One thing that is constantly debatted is how to visualize growth at all.
-Log-transform the y-axis or not? Plot against the date? Plot against
-days after 100th case? Plot something entirely different?
+One thing that is constantly debatted is how to visualize growth (of
+total confirmed cases) at all. Log-transform the y-axis or not? Plot
+against the date? Plot against days after 100th case? Plot something
+entirely different?
 
 Here, I would like to explain some differences between visualizations
 that have been used in the media. All of them are helpful in their own
@@ -225,7 +226,8 @@ regard.
     the news.
 
 3.  RIGHT: New cases per 7 days (y-axis) are plotted against total cases
-    (x-axis), both axes are logarithmized.
+    (x-axis), both axes are logarithmized (Idea explained in this
+    [video](https://www.youtube.com/watch?v=54XLXg4fYsc).
 
 We see clearly that each plot has benefits and weaknesses. The first
 example provides perhaps the best comparison of the total numbers and

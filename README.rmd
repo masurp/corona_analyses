@@ -89,7 +89,7 @@ data %>%
                           levels = c("China", "Korea, South", 
                                      "Italy", "Germany"))) %>%
   gather(key, value, -country, -date) %>%
-  plot_graph
+  plot_graph 
 
 ggsave("figures/plot_1.png",
        width = 7,
@@ -213,7 +213,7 @@ ggsave("figures/plot_6.png",
 
 ### 3. Alternative visualizations
 
-One thing that is constantly debatted is how to visualize growth at all. Log-transform the y-axis or not? Plot against the date? Plot against days after 100th case? Plot something entirely different?
+One thing that is constantly debatted is how to visualize growth (of total confirmed cases) at all. Log-transform the y-axis or not? Plot against the date? Plot against days after 100th case? Plot something entirely different?
 
 Here, I would like to explain some differences between visualizations that have been used in the media. All of them are helpful in their own regard. 
 
@@ -221,48 +221,105 @@ Here, I would like to explain some differences between visualizations that have 
 
 2. MIDDLE: The y-axis is logarithmized. This figure is often shown in the news. 
 
-3. RIGHT: New cases per 7 days (y-axis) are plotted against total cases (x-axis), both axes are logarithmized.
+3. RIGHT: New cases per 7 days (y-axis) are plotted against total cases (x-axis), both axes are logarithmized (Idea explained in this [video](https://www.youtube.com/watch?v=54XLXg4fYsc). 
 
 We see clearly that each plot has benefits and weaknesses. The first example provides perhaps the best comparison of the total numbers and shows quite drastically how exponential growth curves look likes. S-curves represent positive developments towards a slower growth. Yet, changes are barely identifiable. The second example makes the actual growth more comparable and by logarithmizing the y-axsis, we can actually see changes in the growth. Here, it seesm that most countries are actually starting to slow the growth. Finally, the last example is hard to understand generally, but it shows best whether some sort of measure is working. The curve needs to sink drastically, otherwise, the growth is continuing uncontrollibly. 
 
-```{r warning = F, message = F, fig.height=5, fig.width = 12}
+```{r warning = F, message = F, fig.height=4.5, fig.width = 13}
+
+library(directlabels)
 
 pg1 <- data %>%
   filter(confirmed >= 100) %>%
-  filter(country == "Germany" | country == "US" |
-         country == "Italy" | country == "Korea, South") %>%
   group_by(country) %>%
   mutate(days = 1:n()) %>%
-  ggplot(aes(x = days, y = confirmed, color = country)) + 
-  geom_line(size = .75) +
+  ggplot(aes(x = days, y = confirmed, group = country)) + 
+  geom_line(size = .4, alpha = .7, color = "grey") +
+  geom_line(data = . %>% filter(country == "China"), 
+            aes(x = days, y = confirmed), colour="#00ace6", size=.8) +
+  geom_dl(data = . %>% filter(country == "China"), 
+          aes(label = country), color = "#00ace6", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "US"), 
+            aes(x = days, y = confirmed), colour="#00b359", size=.8) +
+  geom_dl(data = . %>% filter(country == "US"), 
+          aes(label = country), color = "#00b359", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Korea, South"), 
+            aes(x = days, y = confirmed), colour="#ffcc00", size=.8) +
+  geom_dl(data = . %>% filter(country == "Korea, South"), 
+          aes(label = country), color = "#ffcc00", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Italy"), 
+            aes(x = days, y = confirmed), colour="#1d1d63", size=.8) +
+  geom_dl(data = . %>% filter(country == "Italy"), 
+          aes(label = country), color = "#1d1d63", method = list(dl.combine("last.points"), cex = .65)) +
+    geom_line(data = . %>% filter(country == "Germany"), 
+            aes(x = days, y = confirmed), colour="#cc0000", size=.8) +
+  geom_dl(data = . %>% filter(country == "Germany"), 
+          aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
-  scale_color_brewer(palette = "Dark2") +
+  xlim(0,50) +
   theme(legend.position = "none") +
   labs(x = "days after 100 cases", y = "total cases", color = "")
 
 pg2 <- data %>%
   filter(confirmed >= 100) %>%
-  filter(country == "Germany" | country == "US" |
-         country == "Italy" | country == "Korea, South") %>%
   group_by(country) %>%
   mutate(days = 1:n()) %>%
-  ggplot(aes(x = days, y = confirmed, color = country)) + 
-  geom_line(size = .75) +
+  ggplot(aes(x = days, y = confirmed, group = country)) + 
+  geom_line(size = .4, alpha = .7, color = "grey") +
+  geom_line(data = . %>% filter(country == "China"), 
+            aes(x = days, y = confirmed), colour="#00ace6", size=.8) +
+  geom_dl(data = . %>% filter(country == "China"), 
+          aes(label = country), color = "#00ace6", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "US"), 
+            aes(x = days, y = confirmed), colour="#00b359", size=.8) +
+  geom_dl(data = . %>% filter(country == "US"), 
+          aes(label = country), color = "#00b359", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Korea, South"), 
+            aes(x = days, y = confirmed), colour="#ffcc00", size=.8) +
+  geom_dl(data = . %>% filter(country == "Korea, South"), 
+          aes(label = country), color = "#ffcc00", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Italy"), 
+            aes(x = days, y = confirmed), colour="#1d1d63", size=.8) +
+  geom_dl(data = . %>% filter(country == "Italy"), 
+          aes(label = country), color = "#1d1d63", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Germany"), 
+            aes(x = days, y = confirmed), colour="#cc0000", size=.8) +
+  geom_dl(data = . %>% filter(country == "Germany"), 
+          aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   scale_y_log10() +
+  xlim(0, 50) +
   scale_color_brewer(palette = "Dark2") +
   theme(legend.position = "bottom") +
   labs(x = "days after 100 cases", y = "total cases (log)", color = "")
 
 pg3 <- data %>%
   filter(confirmed >= 100) %>%
-  filter(country == "Germany" | country == "US" |
-         country == "Italy" | country == "Korea, South") %>%
   group_by(country) %>%
   mutate(new_cases = confirmed - lag(confirmed, 7)) %>%
   ungroup %>%
-  ggplot(aes(x = confirmed, y = new_cases, color = country)) + 
-  geom_line(size = .75) +
+  ggplot(aes(x = confirmed, y = new_cases, group = country)) + 
+  geom_line(size = .4, alpha = .7, color = "grey") +
+  geom_line(data = . %>% filter(country == "China"), 
+            aes(x = confirmed, y = new_cases), colour="#00ace6", size=.8) +
+  geom_dl(data = . %>% filter(country == "China"), 
+          aes(label = country), color = "#00ace6", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "US"), 
+            aes(x = confirmed, y = new_cases), colour="#00b359", size=.8) +
+  geom_dl(data = . %>% filter(country == "US"), 
+          aes(label = country), color = "#00b359", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Korea, South"), 
+            aes(x = confirmed, y = new_cases), colour="#ffcc00", size=.8) +
+  geom_dl(data = . %>% filter(country == "Korea, South"), 
+          aes(label = country), color = "#ffcc00", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Italy"), 
+            aes(x = confirmed, y = new_cases), colour="#1d1d63", size=.8) +
+  geom_dl(data = . %>% filter(country == "Italy"), 
+          aes(label = country), color = "#1d1d63", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Germany"), 
+            aes(x = confirmed, y = new_cases), colour="#cc0000", size=.8) +
+  geom_dl(data = . %>% filter(country == "Germany"), 
+          aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
   scale_x_log10() +
   scale_y_log10() +
   theme_linedraw() +
@@ -274,7 +331,11 @@ cowplot::plot_grid(pg1, pg2, pg3,
                    align = "h",
                    axis = "lbr",
                    ncol = 3)
-  
+
+ggsave("figures/plot_7.png",
+       width = 13,
+       height = 4.5,
+       dpi = 600)
 ```
 
 
