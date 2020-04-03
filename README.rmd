@@ -3,6 +3,7 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
+options(scipen = 10000000)
 knitr::opts_chunk$set(
   collapse = TRUE,
   fig.path = "figures/",
