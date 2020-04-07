@@ -60,9 +60,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-04-06 08:00:17. The data of the John Hopkins University,
+on 2020-04-07 08:10:43. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-04-05 at 23:59:00. Also bear in mind that the
+situation on 2020-04-06 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
@@ -96,10 +96,10 @@ very steep at this moment.
 
 | country      |    date    | confirmed | deaths | recovered | active |
 | :----------- | :--------: | --------: | -----: | --------: | -----: |
-| Italy        | 2020-04-05 |   128,948 | 15,887 |    21,815 | 91,246 |
-| Germany      | 2020-04-05 |   100,123 |  1,584 |    28,700 | 69,839 |
-| China        | 2020-04-05 |    82,602 |  3,333 |    77,207 |  2,062 |
-| Korea, South | 2020-04-05 |    10,237 |    183 |     6,463 |  3,591 |
+| Italy        | 2020-04-06 |   132,547 | 16,523 |    22,837 | 93,187 |
+| Germany      | 2020-04-06 |   103,374 |  1,810 |    28,700 | 72,864 |
+| China        | 2020-04-06 |    82,665 |  3,335 |    77,310 |  2,020 |
+| Korea, South | 2020-04-06 |    10,284 |    186 |     6,598 |  3,500 |
 
 <img src="figures/unnamed-chunk-2-1.png" width="100%" />
 
@@ -121,22 +121,22 @@ very steep at this moment.
 
 | country        |    date    | confirmed | deaths | recovered | active |
 | :------------- | :--------: | --------: | -----: | --------: | -----: |
-| Spain          | 2020-04-05 |   131,646 | 12,641 |    38,080 | 80,925 |
-| Italy          | 2020-04-05 |   128,948 | 15,887 |    21,815 | 91,246 |
-| Germany        | 2020-04-05 |   100,123 |  1,584 |    28,700 | 69,839 |
-| France         | 2020-04-05 |    93,773 |  8,093 |    16,349 | 69,331 |
-| United Kingdom | 2020-04-05 |    48,436 |  4,943 |       229 | 43,264 |
-| Turkey         | 2020-04-05 |    27,069 |    574 |     1,042 | 25,453 |
-| Switzerland    | 2020-04-05 |    21,100 |    715 |     6,415 | 13,970 |
-| Belgium        | 2020-04-05 |    19,691 |  1,447 |     3,751 | 14,493 |
-| Netherlands    | 2020-04-05 |    17,953 |  1,771 |       257 | 15,925 |
-| Austria        | 2020-04-05 |    12,051 |    204 |     2,998 |  8,849 |
-| Portugal       | 2020-04-05 |    11,278 |    295 |        75 | 10,908 |
-| Sweden         | 2020-04-05 |     6,830 |    401 |       205 |  6,224 |
-| Norway         | 2020-04-05 |     5,687 |     71 |        32 |  5,584 |
-| Ireland        | 2020-04-05 |     4,994 |    158 |        25 |  4,811 |
-| Czechia        | 2020-04-05 |     4,587 |     67 |        96 |  4,424 |
-| Denmark        | 2020-04-05 |     4,561 |    179 |     1,429 |  2,953 |
+| Spain          | 2020-04-06 |   136,675 | 13,341 |    40,437 | 82,897 |
+| Italy          | 2020-04-06 |   132,547 | 16,523 |    22,837 | 93,187 |
+| Germany        | 2020-04-06 |   103,374 |  1,810 |    28,700 | 72,864 |
+| France         | 2020-04-06 |    98,963 |  8,926 |    17,428 | 72,609 |
+| United Kingdom | 2020-04-06 |    52,279 |  5,385 |       287 | 46,607 |
+| Turkey         | 2020-04-06 |    30,217 |    649 |     1,326 | 28,242 |
+| Switzerland    | 2020-04-06 |    21,657 |    765 |     8,056 | 12,836 |
+| Belgium        | 2020-04-06 |    20,814 |  1,632 |     3,986 | 15,196 |
+| Netherlands    | 2020-04-06 |    18,926 |  1,874 |       258 | 16,794 |
+| Austria        | 2020-04-06 |    12,297 |    220 |     3,463 |  8,614 |
+| Portugal       | 2020-04-06 |    11,730 |    311 |       140 | 11,279 |
+| Sweden         | 2020-04-06 |     7,206 |    477 |       205 |  6,524 |
+| Norway         | 2020-04-06 |     5,865 |     76 |        32 |  5,757 |
+| Ireland        | 2020-04-06 |     5,364 |    174 |        25 |  5,165 |
+| Denmark        | 2020-04-06 |     4,875 |    187 |     1,489 |  3,199 |
+| Czechia        | 2020-04-06 |     4,822 |     78 |       121 |  4,623 |
 
 <img src="figures/europe_plot-1.png" width="100%" />
 
@@ -156,9 +156,9 @@ very steep at this moment.
 
 | country |    date    | confirmed | deaths | recovered |  active |
 | :------ | :--------: | --------: | -----: | --------: | ------: |
-| US      | 2020-04-05 |   337,072 |  9,619 |    17,448 | 310,005 |
-| Canada  | 2020-04-05 |    15,756 |    259 |     3,012 |  12,485 |
-| Brazil  | 2020-04-05 |    11,130 |    486 |       127 |  10,517 |
+| US      | 2020-04-06 |   366,614 | 10,783 |    19,581 | 336,250 |
+| Canada  | 2020-04-06 |    16,563 |    339 |     3,256 |  12,968 |
+| Brazil  | 2020-04-06 |    12,161 |    564 |       127 |  11,470 |
 
 <img src="figures/northamerica-1.png" width="100%" />
 
@@ -178,10 +178,10 @@ very steep at this moment.
 
 | country  |    date    | confirmed | deaths | recovered | active |
 | :------- | :--------: | --------: | -----: | --------: | -----: |
-| Iran     | 2020-04-05 |    58,226 |  3,603 |    19,736 | 34,887 |
-| Israel   | 2020-04-05 |     8,430 |     49 |       477 |  7,904 |
-| Pakistan | 2020-04-05 |     3,157 |     47 |       211 |  2,899 |
-| Qatar    | 2020-04-05 |     1,604 |      4 |       123 |  1,477 |
+| Iran     | 2020-04-06 |    60,500 |  3,739 |    24,236 | 32,525 |
+| Israel   | 2020-04-06 |     8,904 |     57 |       585 |  8,262 |
+| Pakistan | 2020-04-06 |     3,766 |     53 |       259 |  3,454 |
+| Qatar    | 2020-04-06 |     1,832 |      4 |       131 |  1,697 |
 
 <img src="figures/middleeast-1.png" width="100%" />
 
@@ -201,10 +201,10 @@ very steep at this moment.
 
 | country      |    date    | confirmed | deaths | recovered | active |
 | :----------- | :--------: | --------: | -----: | --------: | -----: |
-| China        | 2020-04-05 |    82,602 |  3,333 |    77,207 |  2,062 |
-| Korea, South | 2020-04-05 |    10,237 |    183 |     6,463 |  3,591 |
-| Malaysia     | 2020-04-05 |     3,662 |     61 |     1,005 |  2,596 |
-| Japan        | 2020-04-05 |     3,139 |     77 |       514 |  2,548 |
+| China        | 2020-04-06 |    82,665 |  3,335 |    77,310 |  2,020 |
+| Korea, South | 2020-04-06 |    10,284 |    186 |     6,598 |  3,500 |
+| Malaysia     | 2020-04-06 |     3,793 |     62 |     1,241 |  2,490 |
+| Japan        | 2020-04-06 |     3,654 |     85 |       575 |  2,994 |
 
 <img src="figures/asia-1.png" width="100%" />
 
