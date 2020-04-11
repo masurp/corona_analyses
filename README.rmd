@@ -49,12 +49,12 @@ library(lubridate)
 
 # Function to plot figures
 plot_graph <- function(data, size = .75){
-  ggplot(data, aes(x = date, y = value, color = key)) +
+  ggplot(data, aes(x = days, y = value, color = key)) +
   geom_line(size = size) +
   scale_color_brewer(palette = "Dark2") +
   facet_wrap(~country, scale = "free_y") +
   theme_linedraw() +
-  labs(x = "date", y = "cases", color = "")
+  labs(x = "days after 100 cases", y = "cases", color = "")
 }
 
 # Get & wrangle data ####
@@ -83,14 +83,17 @@ papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r
 ```{r, fig.height=6, fig.width=7}
 # Example plot for China, Germany, Italy and South Korea
 data %>%
-  filter(confirmed >= 1) %>%
+  filter(confirmed >= 100) %>%
   filter(country == "China" | country == "Germany" | 
          country == "Italy" | country == "Korea, South") %>%
   mutate(country = factor(country, 
                           levels = c("China", "Korea, South", 
                                      "Italy", "Germany"))) %>%
-  gather(key, value, -country, -date) %>%
-  plot_graph 
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  gather(key, value, -country, -date, -days) %>%
+  plot_graph +
+  xlim(0, 65)
 
 ggsave("figures/plot_1.png",
        width = 7,
@@ -123,10 +126,11 @@ papaja::apa_table(table3,
 
 ```{r europe_plot, fig.height=5.75, fig.width = 9}
 data %>%
-  filter(confirmed >= 1) %>%
+  filter(confirmed >= 100) %>%
   filter(country %in% europe) %>%
-  gather(key, value, -country, -date) %>%
-    mutate(date = lubridate::ymd(date)) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  gather(key, value, -country, -date, -days) %>%
   plot_graph(size = .6) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 
@@ -138,7 +142,7 @@ ggsave("figures/plot_3.png",
 #### North, Middle and South America
 
 ```{r,results = 'asis'}
-america <- c("US", "Canada", "Brazil")
+america <- c("US", "Canada", "Brazil", "Argentina", "Ecuador", "Mexico")
 
 # Current cases 
 table4 <- data %>%
@@ -150,10 +154,11 @@ papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("
 
 ```{r northamerica, fig.height=3, fig.width = 9}
 data %>%
-  filter(confirmed >= 1) %>%
+  filter(confirmed >= 100) %>%
   filter(country %in% america) %>%
-  gather(key, value, -country, -date) %>%
-  mutate(date = lubridate::ymd(date)) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  gather(key, value, -country, -date, -days) %>%
   plot_graph
 
 ggsave("figures/plot_4.png",
@@ -175,11 +180,12 @@ papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("
 
 ```{r middleeast, fig.height=7, fig.width = 8}
 data %>%
-  filter(confirmed >=1) %>%
+  filter(confirmed >=100) %>%
   filter(country %in% c("Iran", "Qatar", 
                         "Israel", "Pakistan")) %>%
-  gather(key, value, -country, -date) %>%
-  mutate(date = lubridate::ymd(date)) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  gather(key, value, -country, -date, -days) %>%
   plot_graph
 
 ggsave("figures/plot_5.png",
@@ -200,10 +206,11 @@ papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("
 
 ```{r asia, fig.height=7, fig.width = 8}
 data %>%
-  filter(confirmed >= 1) %>%
+  filter(confirmed >= 100) %>%
   filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
-  gather(key, value, -country, -date) %>%
-  mutate(date = lubridate::ymd(date)) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  gather(key, value, -country, -date, -days) %>%
   plot_graph
 
 ggsave("figures/plot_6.png",
@@ -252,10 +259,14 @@ pg1 <- data %>%
             aes(x = days, y = confirmed), colour="#1d1d63", size=.8) +
   geom_dl(data = . %>% filter(country == "Italy"), 
           aes(label = country), color = "#1d1d63", method = list(dl.combine("last.points"), cex = .65)) +
-    geom_line(data = . %>% filter(country == "Germany"), 
+  geom_line(data = . %>% filter(country == "Germany"), 
             aes(x = days, y = confirmed), colour="#cc0000", size=.8) +
   geom_dl(data = . %>% filter(country == "Germany"), 
           aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Austria"), 
+            aes(x = days, y = confirmed), colour="#9e2e9e", size=.8) +
+  geom_dl(data = . %>% filter(country == "Austria"), 
+          aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   xlim(0,50) +
   theme(legend.position = "none") +
@@ -287,6 +298,10 @@ pg2 <- data %>%
             aes(x = days, y = confirmed), colour="#cc0000", size=.8) +
   geom_dl(data = . %>% filter(country == "Germany"), 
           aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Austria"), 
+            aes(x = days, y = confirmed), colour="#9e2e9e", size=.8) +
+  geom_dl(data = . %>% filter(country == "Austria"), 
+          aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   scale_y_log10() +
   xlim(0, 50) +
@@ -321,6 +336,10 @@ pg3 <- data %>%
             aes(x = confirmed, y = new_cases), colour="#cc0000", size=.8) +
   geom_dl(data = . %>% filter(country == "Germany"), 
           aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "Austria"), 
+            aes(x = confirmed, y = new_cases), colour="#9e2e9e", size=.8) +
+  geom_dl(data = . %>% filter(country == "Austria"), 
+          aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   scale_x_log10() +
   scale_y_log10() +
   theme_linedraw() +

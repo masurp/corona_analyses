@@ -60,7 +60,7 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-04-11 09:40:16. The data of the John Hopkins University,
+on 2020-04-11 10:01:00. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
 situation on 2020-04-10 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
@@ -154,11 +154,14 @@ very steep at this moment.
 
 </caption>
 
-| country |    date    | confirmed | deaths | recovered |  active |
-| :------ | :--------: | --------: | -----: | --------: | ------: |
-| US      | 2020-04-10 |   496,535 | 18,586 |    28,790 | 449,159 |
-| Canada  | 2020-04-10 |    22,059 |    557 |     5,855 |  15,647 |
-| Brazil  | 2020-04-10 |    19,638 |  1,057 |       173 |  18,408 |
+| country   |    date    | confirmed | deaths | recovered |  active |
+| :-------- | :--------: | --------: | -----: | --------: | ------: |
+| US        | 2020-04-10 |   496,535 | 18,586 |    28,790 | 449,159 |
+| Canada    | 2020-04-10 |    22,059 |    557 |     5,855 |  15,647 |
+| Brazil    | 2020-04-10 |    19,638 |  1,057 |       173 |  18,408 |
+| Ecuador   | 2020-04-10 |     7,161 |    297 |       368 |   6,496 |
+| Mexico    | 2020-04-10 |     3,441 |    194 |       633 |   2,614 |
+| Argentina | 2020-04-10 |     1,975 |     82 |       375 |   1,518 |
 
 <img src="figures/northamerica-1.png" width="100%" />
 
