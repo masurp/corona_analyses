@@ -60,7 +60,7 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-04-12 09:14:20. The data of the John Hopkins University,
+on 2020-04-12 22:42:51. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
 situation on 2020-04-11 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
@@ -135,8 +135,14 @@ very steep at this moment.
 | Sweden         | 2020-04-11 |    10,151 |    887 |       381 |   8,883 |
 | Ireland        | 2020-04-11 |     8,928 |    320 |        25 |   8,583 |
 | Norway         | 2020-04-11 |     6,409 |    119 |        32 |   6,258 |
+| Poland         | 2020-04-11 |     6,356 |    208 |       375 |   5,773 |
 | Denmark        | 2020-04-11 |     6,191 |    260 |     2,111 |   3,820 |
+| Romania        | 2020-04-11 |     5,990 |    291 |       758 |   4,941 |
 | Czechia        | 2020-04-11 |     5,831 |    129 |       411 |   5,291 |
+| Serbia         | 2020-04-11 |     3,380 |     74 |         0 |   3,306 |
+| Luxembourg     | 2020-04-11 |     3,270 |     62 |       500 |   2,708 |
+| Finland        | 2020-04-11 |     2,905 |     49 |       300 |   2,556 |
+| Ukraine        | 2020-04-11 |     2,511 |     73 |        79 |   2,359 |
 
 <img src="figures/europe_plot-1.png" width="100%" />
 
@@ -154,14 +160,19 @@ very steep at this moment.
 
 </caption>
 
-| country   |    date    | confirmed | deaths | recovered |  active |
-| :-------- | :--------: | --------: | -----: | --------: | ------: |
-| US        | 2020-04-11 |   526,396 | 20,463 |    31,270 | 474,663 |
-| Canada    | 2020-04-11 |    23,316 |    654 |     6,589 |  16,073 |
-| Brazil    | 2020-04-11 |    20,727 |  1,124 |       173 |  19,430 |
-| Ecuador   | 2020-04-11 |     7,257 |    315 |       411 |   6,531 |
-| Mexico    | 2020-04-11 |     3,844 |    233 |       633 |   2,978 |
-| Argentina | 2020-04-11 |     1,975 |     83 |       440 |   1,452 |
+| country            |    date    | confirmed | deaths | recovered |  active |
+| :----------------- | :--------: | --------: | -----: | --------: | ------: |
+| US                 | 2020-04-11 |   526,396 | 20,463 |    31,270 | 474,663 |
+| Canada             | 2020-04-11 |    23,316 |    654 |     6,589 |  16,073 |
+| Brazil             | 2020-04-11 |    20,727 |  1,124 |       173 |  19,430 |
+| Ecuador            | 2020-04-11 |     7,257 |    315 |       411 |   6,531 |
+| Chile              | 2020-04-11 |     6,927 |     73 |     1,864 |   4,990 |
+| Peru               | 2020-04-11 |     6,848 |    181 |     1,739 |   4,928 |
+| Mexico             | 2020-04-11 |     3,844 |    233 |       633 |   2,978 |
+| Panama             | 2020-04-11 |     2,974 |     74 |        17 |   2,883 |
+| Dominican Republic | 2020-04-11 |     2,759 |    135 |       108 |   2,516 |
+| Colombia           | 2020-04-11 |     2,709 |    100 |       214 |   2,395 |
+| Argentina          | 2020-04-11 |     1,975 |     83 |       440 |   1,452 |
 
 <img src="figures/northamerica-1.png" width="100%" />
 
@@ -179,16 +190,18 @@ very steep at this moment.
 
 </caption>
 
-| country  |    date    | confirmed | deaths | recovered | active |
-| :------- | :--------: | --------: | -----: | --------: | -----: |
-| Iran     | 2020-04-11 |    70,029 |  4,357 |    41,947 | 23,725 |
-| Israel   | 2020-04-11 |    10,743 |    101 |     1,341 |  9,301 |
-| Pakistan | 2020-04-11 |     5,011 |     86 |       762 |  4,163 |
-| Qatar    | 2020-04-11 |     2,728 |      6 |       247 |  2,475 |
+| country              |    date    | confirmed | deaths | recovered | active |
+| :------------------- | :--------: | --------: | -----: | --------: | -----: |
+| Iran                 | 2020-04-11 |    70,029 |  4,357 |    41,947 | 23,725 |
+| Israel               | 2020-04-11 |    10,743 |    101 |     1,341 |  9,301 |
+| Pakistan             | 2020-04-11 |     5,011 |     86 |       762 |  4,163 |
+| Saudi Arabia         | 2020-04-11 |     4,033 |     52 |       720 |  3,261 |
+| United Arab Emirates | 2020-04-11 |     3,736 |     20 |       588 |  3,128 |
+| Qatar                | 2020-04-11 |     2,728 |      6 |       247 |  2,475 |
 
 <img src="figures/middleeast-1.png" width="100%" />
 
-#### Asia
+#### Asia, Indonesia, Australia
 
 <caption>
 
@@ -205,11 +218,39 @@ very steep at this moment.
 | country      |    date    | confirmed | deaths | recovered | active |
 | :----------- | :--------: | --------: | -----: | --------: | -----: |
 | China        | 2020-04-11 |    83,014 |  3,343 |    77,877 |  1,794 |
+| Russia       | 2020-04-11 |    13,584 |    106 |     1,045 | 12,433 |
 | Korea, South | 2020-04-11 |    10,480 |    211 |     7,243 |  3,026 |
+| India        | 2020-04-11 |     8,446 |    288 |       969 |  7,189 |
+| Australia    | 2020-04-11 |     6,303 |     57 |     1,806 |  4,440 |
 | Japan        | 2020-04-11 |     6,005 |     99 |       762 |  5,144 |
 | Malaysia     | 2020-04-11 |     4,530 |     73 |     1,995 |  2,462 |
+| Philippines  | 2020-04-11 |     4,428 |    247 |       157 |  4,024 |
+| Thailand     | 2020-04-11 |     2,518 |     35 |     1,135 |  1,348 |
 
 <img src="figures/asia-1.png" width="100%" />
+
+### Africa
+
+<caption>
+
+(\#tab:unnamed-chunk-6)
+
+</caption>
+
+<caption>
+
+\*\*
+
+</caption>
+
+| country      |    date    | confirmed | deaths | recovered | active |
+| :----------- | :--------: | --------: | -----: | --------: | -----: |
+| South Africa | 2020-04-11 |     2,028 |     25 |       410 |  1,593 |
+| Egypt        | 2020-04-11 |     1,939 |    146 |       426 |  1,367 |
+| Algeria      | 2020-04-11 |     1,825 |    275 |       460 |  1,090 |
+| Morocco      | 2020-04-11 |     1,545 |    111 |       146 |  1,288 |
+
+<img src="figures/africa-1.png" width="100%" />
 
 ### 3\. Alternative visualizations
 
@@ -244,4 +285,4 @@ hard to understand generally, but it shows best whether some sort of
 measure is working. The curve needs to sink drastically, otherwise, the
 growth is continuing uncontrollibly.
 
-<img src="figures/unnamed-chunk-6-1.png" width="100%" />
+<img src="figures/unnamed-chunk-7-1.png" width="100%" />

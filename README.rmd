@@ -109,7 +109,9 @@ ggsave("figures/plot_1.png",
 europe <- c("Italy", "Spain", "Germany", "France", 
             "Switzerland", "United Kingdom", "Netherlands", 
             "Norway", "Austria", "Sweden", "Belgium", "Denmark",
-            "Portugal", "Czechia", "Ireland", "Turkey")
+            "Portugal", "Czechia", "Ireland", "Turkey",
+            "Ireland", "Poland", "Romania", "Czechia",
+            "Serbia", "Luxembourg", "Finland", "Ukraine")
 
 # Current cases 
 table3 <- data %>%
@@ -124,7 +126,7 @@ papaja::apa_table(table3,
                   align = c("l", "c", rep("r", 4)))
 ``` 
 
-```{r europe_plot, fig.height=5.75, fig.width = 9}
+```{r europe_plot, fig.height=7, fig.width = 9}
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% europe) %>%
@@ -142,7 +144,9 @@ ggsave("figures/plot_3.png",
 #### North, Middle and South America
 
 ```{r,results = 'asis'}
-america <- c("US", "Canada", "Brazil", "Argentina", "Ecuador", "Mexico")
+america <- c("US", "Canada", "Brazil", "Chile",
+             "Argentina", "Ecuador", "Mexico", "Peru",
+             "Panama", "Dominican Republic", "Colombia")
 
 # Current cases 
 table4 <- data %>%
@@ -152,7 +156,7 @@ table4 <- data %>%
 papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r northamerica, fig.height=3, fig.width = 9}
+```{r northamerica, fig.height=6, fig.width = 9}
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% america) %>%
@@ -169,20 +173,21 @@ ggsave("figures/plot_4.png",
 #### Middle East
 
 ```{r,results = 'asis'}
+middleeast <- c("Iran", "Qatar", "Saudi Arabia", "Qatar",
+                "Israel", "Pakistan", "United Arab Emirates")
+
 # Current cases 
 table5 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country %in% c("Iran", "Qatar", 
-                        "Israel", "Pakistan")) %>%
+  filter(country %in% middleeast) %>%
   arrange(desc(confirmed))
 papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r middleeast, fig.height=7, fig.width = 8}
+```{r middleeast, fig.height=5, fig.width = 8}
 data %>%
   filter(confirmed >=100) %>%
-  filter(country %in% c("Iran", "Qatar", 
-                        "Israel", "Pakistan")) %>%
+  filter(country %in% middleeast) %>%
   group_by(country) %>%
   mutate(days = 1:n()) %>%
   gather(key, value, -country, -date, -days) %>%
@@ -193,13 +198,17 @@ ggsave("figures/plot_5.png",
        height = 7)
 ```
 
-#### Asia
+#### Asia, Indonesia, Australia
 
 ```{r,results = 'asis'}
+asia <- c("China", "Korea, South", "Japan", 
+          "Malaysia", "Russia", "India", "Australia",
+          "Philippines", "Thailand")
+
 # Current cases 
 table6 <- data %>%
   filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
+  filter(country %in% asia) %>%
   arrange(desc(confirmed))
 papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```
@@ -207,13 +216,41 @@ papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("
 ```{r asia, fig.height=7, fig.width = 8}
 data %>%
   filter(confirmed >= 100) %>%
-  filter(country %in% c("China", "Korea, South", "Japan", "Malaysia")) %>%
+  filter(country %in% asia) %>%
   group_by(country) %>%
   mutate(days = 1:n()) %>%
   gather(key, value, -country, -date, -days) %>%
   plot_graph
 
 ggsave("figures/plot_6.png",
+       width = 8,
+       height = 7)
+```
+
+### Africa
+
+
+```{r,results = 'asis'}
+africa <- c("South Africa", "Egypt", "Algeria", "Morocco")
+
+# Current cases 
+table6 <- data %>%
+  filter(date == as.character(Sys.Date()-1)) %>%
+  filter(country %in% africa) %>%
+  arrange(desc(confirmed))
+papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```
+
+```{r africa, fig.height=7, fig.width = 8}
+data %>%
+  filter(confirmed >= 100) %>%
+  filter(country %in% africa) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  gather(key, value, -country, -date, -days) %>%
+  plot_graph
+
+ggsave("figures/plot_8.png",
        width = 8,
        height = 7)
 ```
