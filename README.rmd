@@ -68,7 +68,7 @@ data <- data %>%
 
 ### 1. Analyzing China, South Korea, Italy, and Germany
 
-In a first step, I am comparing China, South Korea, Italy, and Germany. Why these countries? These four countries are at very different stages. China was the first to experience the outbreak and they have almost contained the spreading of the virus by now. South Korea is starting to control the virus outbreak. Italy is currently experiencing one of the worst outbreaks and drastic measures have been taken in the last weeks. The virus has reached Germany considerably later, but the growth rate is very steep at this moment. 
+In a first step, I am comparing China, South Korea, Italy, and Germany. Why these countries? These countries are at very different stages or show very different developments (in terms of size and patterns). China, for example, was the first to experience the outbreak and they seem to have contained the spreading of the virus by now. South Korea is similarly controlling the virus outbreak (the pattern follows China). Italy has been experiencing one of the worst outbreaks and drastic measures have been taken, we see the first signs that it slowly gets better. The virus has reached Germany considerably later. Although the growth rate was very steep in the beginning, it now starts to follow the pattern of China and South Korea. 
 
 ```{r example,results = 'asis'}
 # Current cases 
@@ -80,7 +80,7 @@ table <- data %>%
 papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r, fig.height=6, fig.width=7}
+```{r, fig.height=6, fig.width=8}
 # Example plot for China, Germany, Italy and South Korea
 data %>%
   filter(confirmed >= 100) %>%

@@ -60,9 +60,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-04-19 12:15:53. The data of the John Hopkins University,
+on 2020-04-20 08:26:06. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-04-18 at 23:59:00. Also bear in mind that the
+situation on 2020-04-19 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
@@ -74,13 +74,16 @@ If you are interested in the R code, please see the
 ### 1\. Analyzing China, South Korea, Italy, and Germany
 
 In a first step, I am comparing China, South Korea, Italy, and Germany.
-Why these countries? These four countries are at very different stages.
-China was the first to experience the outbreak and they have almost
-contained the spreading of the virus by now. South Korea is starting to
-control the virus outbreak. Italy is currently experiencing one of the
-worst outbreaks and drastic measures have been taken in the last weeks.
-The virus has reached Germany considerably later, but the growth rate is
-very steep at this moment.
+Why these countries? These countries are at very different stages or
+show very different developments (in terms of size and patterns). China,
+for example, was the first to experience the outbreak and they seem to
+have contained the spreading of the virus by now. South Korea is
+similarly controlling the virus outbreak (the pattern follows China).
+Italy has been experiencing one of the worst outbreaks and drastic
+measures have been taken, we see the first signs that it slowly gets
+better. The virus has reached Germany considerably later. Although the
+growth rate was very steep in the beginning, it now starts to follow the
+pattern of China and South Korea.
 
 <caption>
 
@@ -96,10 +99,10 @@ very steep at this moment.
 
 | country      |    date    | confirmed | deaths | recovered |  active |
 | :----------- | :--------: | --------: | -----: | --------: | ------: |
-| Italy        | 2020-04-18 |   175,925 | 23,227 |    44,927 | 107,771 |
-| Germany      | 2020-04-18 |   143,342 |  4,459 |    85,400 |  53,483 |
-| China        | 2020-04-18 |    83,787 |  4,636 |    77,614 |   1,537 |
-| Korea, South | 2020-04-18 |    10,653 |    232 |     7,937 |   2,484 |
+| Italy        | 2020-04-19 |   178,972 | 23,660 |    47,055 | 108,257 |
+| Germany      | 2020-04-19 |   145,184 |  4,586 |    88,000 |  52,598 |
+| China        | 2020-04-19 |    83,805 |  4,636 |    77,690 |   1,479 |
+| Korea, South | 2020-04-19 |    10,661 |    234 |     8,042 |   2,385 |
 
 <img src="figures/unnamed-chunk-2-1.png" width="100%" />
 
@@ -121,28 +124,28 @@ very steep at this moment.
 
 | country        |    date    | confirmed | deaths | recovered |  active |
 | :------------- | :--------: | --------: | -----: | --------: | ------: |
-| Spain          | 2020-04-18 |   191,726 | 20,043 |    74,797 |  96,886 |
-| Italy          | 2020-04-18 |   175,925 | 23,227 |    44,927 | 107,771 |
-| France         | 2020-04-18 |   149,149 | 19,345 |    36,587 |  93,217 |
-| Germany        | 2020-04-18 |   143,342 |  4,459 |    85,400 |  53,483 |
-| United Kingdom | 2020-04-18 |   115,314 | 15,498 |       414 |  99,402 |
-| Turkey         | 2020-04-18 |    82,329 |  1,890 |    10,453 |  69,986 |
-| Belgium        | 2020-04-18 |    37,183 |  5,453 |     8,348 |  23,382 |
-| Netherlands    | 2020-04-18 |    31,766 |  3,613 |       317 |  27,836 |
-| Switzerland    | 2020-04-18 |    27,404 |  1,368 |    17,100 |   8,936 |
-| Portugal       | 2020-04-18 |    19,685 |    687 |       610 |  18,388 |
-| Ireland        | 2020-04-18 |    14,758 |    571 |        77 |  14,110 |
-| Austria        | 2020-04-18 |    14,671 |    443 |    10,214 |   4,014 |
-| Sweden         | 2020-04-18 |    13,822 |  1,511 |       550 |  11,761 |
-| Poland         | 2020-04-18 |     8,742 |    347 |       981 |   7,414 |
-| Romania        | 2020-04-18 |     8,418 |    421 |     1,730 |   6,267 |
-| Denmark        | 2020-04-18 |     7,437 |    346 |     4,031 |   3,060 |
-| Norway         | 2020-04-18 |     7,036 |    164 |        32 |   6,840 |
-| Czechia        | 2020-04-18 |     6,606 |    181 |     1,227 |   5,198 |
-| Serbia         | 2020-04-18 |     5,994 |    117 |       637 |   5,240 |
-| Ukraine        | 2020-04-18 |     5,106 |    133 |       275 |   4,698 |
-| Finland        | 2020-04-18 |     3,681 |     90 |     1,700 |   1,891 |
-| Luxembourg     | 2020-04-18 |     3,537 |     72 |       601 |   2,864 |
+| Spain          | 2020-04-19 |   198,674 | 20,453 |    77,357 | 100,864 |
+| Italy          | 2020-04-19 |   178,972 | 23,660 |    47,055 | 108,257 |
+| France         | 2020-04-19 |   154,097 | 19,744 |    37,183 |  97,170 |
+| Germany        | 2020-04-19 |   145,184 |  4,586 |    88,000 |  52,598 |
+| United Kingdom | 2020-04-19 |   121,172 | 16,095 |       436 | 104,641 |
+| Turkey         | 2020-04-19 |    86,306 |  2,017 |    11,976 |  72,313 |
+| Belgium        | 2020-04-19 |    38,496 |  5,683 |     8,757 |  24,056 |
+| Netherlands    | 2020-04-19 |    32,838 |  3,697 |       322 |  28,819 |
+| Switzerland    | 2020-04-19 |    27,740 |  1,393 |    17,800 |   8,547 |
+| Portugal       | 2020-04-19 |    20,206 |    714 |       610 |  18,882 |
+| Ireland        | 2020-04-19 |    15,251 |    610 |        77 |  14,564 |
+| Austria        | 2020-04-19 |    14,749 |    452 |    10,501 |   3,796 |
+| Sweden         | 2020-04-19 |    14,385 |  1,540 |       550 |  12,295 |
+| Poland         | 2020-04-19 |     9,287 |    360 |     1,040 |   7,887 |
+| Romania        | 2020-04-19 |     8,746 |    451 |     1,892 |   6,403 |
+| Denmark        | 2020-04-19 |     7,580 |    355 |     4,328 |   2,897 |
+| Norway         | 2020-04-19 |     7,078 |    165 |        32 |   6,881 |
+| Czechia        | 2020-04-19 |     6,746 |    186 |     1,298 |   5,262 |
+| Serbia         | 2020-04-19 |     6,318 |    122 |       753 |   5,443 |
+| Ukraine        | 2020-04-19 |     5,449 |    141 |       347 |   4,961 |
+| Finland        | 2020-04-19 |     3,783 |     94 |     1,700 |   1,989 |
+| Luxembourg     | 2020-04-19 |     3,550 |     73 |       627 |   2,850 |
 
 <img src="figures/europe_plot-1.png" width="100%" />
 
@@ -162,17 +165,17 @@ very steep at this moment.
 
 | country            |    date    | confirmed | deaths | recovered |  active |
 | :----------------- | :--------: | --------: | -----: | --------: | ------: |
-| US                 | 2020-04-18 |   732,197 | 38,664 |    64,840 | 628,693 |
-| Brazil             | 2020-04-18 |    36,658 |  2,354 |    14,026 |  20,278 |
-| Canada             | 2020-04-18 |    34,355 |  1,399 |    10,964 |  21,992 |
-| Peru               | 2020-04-18 |    14,420 |    348 |     6,684 |   7,388 |
-| Chile              | 2020-04-18 |     9,730 |    126 |     4,035 |   5,569 |
-| Ecuador            | 2020-04-18 |     9,022 |    456 |     1,008 |   7,558 |
-| Mexico             | 2020-04-18 |     6,875 |    546 |     2,125 |   4,204 |
-| Dominican Republic | 2020-04-18 |     4,335 |    217 |       312 |   3,806 |
-| Panama             | 2020-04-18 |     4,210 |    116 |       122 |   3,972 |
-| Colombia           | 2020-04-18 |     3,439 |    153 |       634 |   2,652 |
-| Argentina          | 2020-04-18 |     2,758 |    129 |       685 |   1,944 |
+| US                 | 2020-04-19 |   759,086 | 40,661 |    70,337 | 648,088 |
+| Brazil             | 2020-04-19 |    38,654 |  2,462 |    22,130 |  14,062 |
+| Canada             | 2020-04-19 |    35,632 |  1,563 |    11,847 |  22,222 |
+| Peru               | 2020-04-19 |    15,628 |    400 |     6,811 |   8,417 |
+| Chile              | 2020-04-19 |    10,088 |    133 |     4,338 |   5,617 |
+| Ecuador            | 2020-04-19 |     9,468 |    474 |     1,061 |   7,933 |
+| Mexico             | 2020-04-19 |     7,497 |    650 |     2,627 |   4,220 |
+| Dominican Republic | 2020-04-19 |     4,680 |    226 |       363 |   4,091 |
+| Panama             | 2020-04-19 |     4,273 |    120 |       140 |   4,013 |
+| Colombia           | 2020-04-19 |     3,792 |    179 |       711 |   2,902 |
+| Argentina          | 2020-04-19 |     2,839 |    132 |       709 |   1,998 |
 
 <img src="figures/northamerica-1.png" width="100%" />
 
@@ -192,12 +195,12 @@ very steep at this moment.
 
 | country              |    date    | confirmed | deaths | recovered | active |
 | :------------------- | :--------: | --------: | -----: | --------: | -----: |
-| Iran                 | 2020-04-18 |    80,868 |  5,031 |    55,987 | 19,850 |
-| Israel               | 2020-04-18 |    13,265 |    164 |     3,456 |  9,645 |
-| Saudi Arabia         | 2020-04-18 |     8,274 |     92 |     1,329 |  6,853 |
-| Pakistan             | 2020-04-18 |     7,638 |    143 |     1,832 |  5,663 |
-| United Arab Emirates | 2020-04-18 |     6,302 |     37 |     1,188 |  5,077 |
-| Qatar                | 2020-04-18 |     5,008 |      8 |       510 |  4,490 |
+| Iran                 | 2020-04-19 |    82,211 |  5,118 |    57,023 | 20,070 |
+| Israel               | 2020-04-19 |    13,491 |    172 |     3,754 |  9,565 |
+| Saudi Arabia         | 2020-04-19 |     9,362 |     97 |     1,398 |  7,867 |
+| Pakistan             | 2020-04-19 |     8,348 |    168 |     1,868 |  6,312 |
+| United Arab Emirates | 2020-04-19 |     6,781 |     41 |     1,286 |  5,454 |
+| Qatar                | 2020-04-19 |     5,448 |      8 |       518 |  4,922 |
 
 <img src="figures/middleeast-1.png" width="100%" />
 
@@ -217,15 +220,15 @@ very steep at this moment.
 
 | country      |    date    | confirmed | deaths | recovered | active |
 | :----------- | :--------: | --------: | -----: | --------: | -----: |
-| China        | 2020-04-18 |    83,787 |  4,636 |    77,614 |  1,537 |
-| Russia       | 2020-04-18 |    36,793 |    313 |     3,057 | 33,423 |
-| India        | 2020-04-18 |    15,722 |    521 |     2,463 | 12,738 |
-| Korea, South | 2020-04-18 |    10,653 |    232 |     7,937 |  2,484 |
-| Japan        | 2020-04-18 |    10,296 |    222 |     1,069 |  9,005 |
-| Australia    | 2020-04-18 |     6,547 |     67 |     4,124 |  2,356 |
-| Philippines  | 2020-04-18 |     6,087 |    397 |       516 |  5,174 |
-| Malaysia     | 2020-04-18 |     5,305 |     88 |     3,102 |  2,115 |
-| Thailand     | 2020-04-18 |     2,733 |     47 |     1,787 |    899 |
+| China        | 2020-04-19 |    83,805 |  4,636 |    77,690 |  1,479 |
+| Russia       | 2020-04-19 |    42,853 |    361 |     3,291 | 39,201 |
+| India        | 2020-04-19 |    17,615 |    559 |     2,854 | 14,202 |
+| Japan        | 2020-04-19 |    10,797 |    236 |     1,159 |  9,402 |
+| Korea, South | 2020-04-19 |    10,661 |    234 |     8,042 |  2,385 |
+| Australia    | 2020-04-19 |     6,547 |     67 |     4,124 |  2,356 |
+| Philippines  | 2020-04-19 |     6,259 |    409 |       572 |  5,278 |
+| Malaysia     | 2020-04-19 |     5,389 |     89 |     3,197 |  2,103 |
+| Thailand     | 2020-04-19 |     2,765 |     47 |     1,928 |    790 |
 
 <img src="figures/asia-1.png" width="100%" />
 
@@ -245,10 +248,10 @@ very steep at this moment.
 
 | country      |    date    | confirmed | deaths | recovered | active |
 | :----------- | :--------: | --------: | -----: | --------: | -----: |
-| South Africa | 2020-04-18 |     3,034 |     52 |       903 |  2,079 |
-| Egypt        | 2020-04-18 |     3,032 |    224 |       701 |  2,107 |
-| Morocco      | 2020-04-18 |     2,685 |    137 |       314 |  2,234 |
-| Algeria      | 2020-04-18 |     2,534 |    367 |       894 |  1,273 |
+| South Africa | 2020-04-19 |     3,158 |     54 |       903 |  2,201 |
+| Egypt        | 2020-04-19 |     3,144 |    239 |       732 |  2,173 |
+| Morocco      | 2020-04-19 |     2,855 |    141 |       327 |  2,387 |
+| Algeria      | 2020-04-19 |     2,629 |    375 |     1,047 |  1,207 |
 
 <img src="figures/africa-1.png" width="100%" />
 
