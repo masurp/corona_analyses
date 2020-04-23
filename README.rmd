@@ -227,7 +227,7 @@ ggsave("figures/plot_6.png",
        height = 7)
 ```
 
-### Africa
+#### Africa
 
 
 ```{r,results = 'asis'}
@@ -305,7 +305,7 @@ pg1 <- data %>%
   geom_dl(data = . %>% filter(country == "Austria"), 
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
-  xlim(0,65) +
+  xlim(0,75) +
   theme(legend.position = "none") +
   labs(x = "days after 100 cases", y = "total cases", color = "")
 
@@ -341,7 +341,7 @@ pg2 <- data %>%
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   scale_y_log10() +
-  xlim(0, 65) +
+  xlim(0, 75) +
   scale_color_brewer(palette = "Dark2") +
   theme(legend.position = "bottom") +
   labs(x = "days after 100 cases", y = "total cases (log)", color = "")
