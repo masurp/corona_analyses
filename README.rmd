@@ -167,7 +167,7 @@ data %>%
 
 ggsave("figures/plot_4.png",
        width = 9,
-       height = 3)
+       height = 6.5)
 ```
 
 #### Middle East
