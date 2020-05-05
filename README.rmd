@@ -93,7 +93,7 @@ data %>%
   mutate(days = 1:n()) %>%
   gather(key, value, -country, -date, -days) %>%
   plot_graph +
-  xlim(0, 65)
+  xlim(0, 85)
 
 ggsave("figures/plot_1.png",
        width = 7,
