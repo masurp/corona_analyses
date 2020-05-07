@@ -268,9 +268,9 @@ Here, I would like to explain some differences between visualizations that have 
 
 3. RIGHT: New cases per 7 days (y-axis) are plotted against total cases (x-axis), both axes are logarithmized (Idea explained in this [video](https://www.youtube.com/watch?v=54XLXg4fYsc). 
 
-We see clearly that each plot has benefits and weaknesses. The first example provides perhaps the best comparison of the total numbers and shows quite drastically how exponential growth curves look likes. S-curves represent positive developments towards a slower growth. Yet, changes are barely identifiable. The second example makes the actual growth more comparable and by logarithmizing the y-axsis, we can actually see changes in the growth. Here, it seesm that most countries are actually starting to slow the growth. Finally, the last example is hard to understand generally, but it shows best whether some sort of measure is working. The curve needs to sink drastically, otherwise, the growth is continuing uncontrollibly. 
+We see clearly that each plot has benefits and weaknesses. The first example provides perhaps the best comparison of the total numbers and shows quite drastically how exponential growth curves look likes (bear in mind that I cut off the growth curve of the US, which actually extends to more than 1 million cases. I did this to make the other growth curves more identifiable). S-curves represent positive developments towards a slower growth. Yet, changes are barely identifiable. The second example makes the actual growth more comparable and by logarithmizing the y-axsis, we can actually see changes in the growth. Here, it seesm that most countries are actually starting to slow the growth. Finally, the last example is hard to understand generally, but it shows best whether some sort of measure is working. The curve needs to sink drastically, otherwise, the growth is continuing uncontrollibly. 
 
-```{r warning = F, message = F, fig.height=4.5, fig.width = 13}
+```{r warning = F, message = F, fig.height=5.5, fig.width = 14}
 
 library(directlabels)
 
@@ -304,8 +304,13 @@ pg1 <- data %>%
             aes(x = days, y = confirmed), colour="#9e2e9e", size=.8) +
   geom_dl(data = . %>% filter(country == "Austria"), 
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "United Kingdom"), 
+            aes(x = days, y = confirmed), colour="#ff8000", size=.8) +
+  geom_dl(data = . %>% filter(country == "United Kingdom"), 
+          aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
-  xlim(0,75) +
+  xlim(0,85) +
+  ylim(0, 500000) +
   theme(legend.position = "none") +
   labs(x = "days after 100 cases", y = "total cases", color = "")
 
@@ -339,9 +344,13 @@ pg2 <- data %>%
             aes(x = days, y = confirmed), colour="#9e2e9e", size=.8) +
   geom_dl(data = . %>% filter(country == "Austria"), 
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "United Kingdom"), 
+            aes(x = days, y = confirmed), colour="#ff8000", size=.8) +
+  geom_dl(data = . %>% filter(country == "United Kingdom"), 
+          aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   scale_y_log10() +
-  xlim(0, 75) +
+  xlim(0, 85) +
   scale_color_brewer(palette = "Dark2") +
   theme(legend.position = "bottom") +
   labs(x = "days after 100 cases", y = "total cases (log)", color = "")
@@ -377,6 +386,10 @@ pg3 <- data %>%
             aes(x = confirmed, y = new_cases), colour="#9e2e9e", size=.8) +
   geom_dl(data = . %>% filter(country == "Austria"), 
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
+  geom_line(data = . %>% filter(country == "United Kingdom"), 
+            aes(x = confirmed, y = new_cases), colour="#ff8000", size=.8) +
+  geom_dl(data = . %>% filter(country == "United Kingdom"), 
+          aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   scale_x_log10() +
   scale_y_log10() +
   theme_linedraw() +
@@ -390,8 +403,8 @@ cowplot::plot_grid(pg1, pg2, pg3,
                    ncol = 3)
 
 ggsave("figures/plot_7.png",
-       width = 13,
-       height = 4.5,
+       width = 14,
+       height = 5.5,
        dpi = 600)
 
 

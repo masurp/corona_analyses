@@ -60,7 +60,7 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, I will update these figures every morning. The last update was made
-on 2020-05-07 15:21:27. The data of the John Hopkins University,
+on 2020-05-07 15:32:45. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
 situation on 2020-05-06 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
@@ -278,14 +278,17 @@ regard.
 
 We see clearly that each plot has benefits and weaknesses. The first
 example provides perhaps the best comparison of the total numbers and
-shows quite drastically how exponential growth curves look likes.
-S-curves represent positive developments towards a slower growth. Yet,
-changes are barely identifiable. The second example makes the actual
-growth more comparable and by logarithmizing the y-axsis, we can
-actually see changes in the growth. Here, it seesm that most countries
-are actually starting to slow the growth. Finally, the last example is
-hard to understand generally, but it shows best whether some sort of
-measure is working. The curve needs to sink drastically, otherwise, the
-growth is continuing uncontrollibly.
+shows quite drastically how exponential growth curves look likes (bear
+in mind that I cut off the growth curve of the US, which actually
+extends to more than 1 million cases. I did this to make the other
+growth curves more identifiable). S-curves represent positive
+developments towards a slower growth. Yet, changes are barely
+identifiable. The second example makes the actual growth more comparable
+and by logarithmizing the y-axsis, we can actually see changes in the
+growth. Here, it seesm that most countries are actually starting to slow
+the growth. Finally, the last example is hard to understand generally,
+but it shows best whether some sort of measure is working. The curve
+needs to sink drastically, otherwise, the growth is continuing
+uncontrollibly.
 
 <img src="figures/unnamed-chunk-7-1.png" width="100%" />
