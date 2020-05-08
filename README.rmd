@@ -312,7 +312,7 @@ pg1 <- data %>%
   xlim(0,85) +
   ylim(0, 500000) +
   theme(legend.position = "none") +
-  labs(x = "days after 100 cases", y = "total cases", color = "")
+  labs(x = "days after 100 cases", y = "total cases (limited to 500.000)", color = "")
 
 pg2 <- data %>%
   filter(confirmed >= 100) %>%
