@@ -46,14 +46,15 @@ If you are interested in the R code, please see the [README.rmd](https://github.
 library(tidycovid19)
 library(tidyverse)
 library(lubridate)
+library(see)
 
 # Function to plot figures
 plot_graph <- function(data, size = .75){
   ggplot(data, aes(x = days, y = value, color = key)) +
   geom_line(size = size) +
-  scale_color_brewer(palette = "Dark2") +
+  scale_color_manual(values = c("#cc0000", "#ff8000", "#1d1d63", "#00b359")) +
   facet_wrap(~country, scale = "free_y") +
-  theme_linedraw() +
+  theme_modern() +
   labs(x = "days after 100 cases", y = "cases", color = "")
 }
 
@@ -70,17 +71,7 @@ data <- data %>%
 
 In a first step, I am comparing China, South Korea, Italy, and Germany. Why these countries? These countries are at very different stages or show very different developments (in terms of size and patterns). China, for example, was the first to experience the outbreak and they seem to have contained the spreading of the virus by now. South Korea is similarly controlling the virus outbreak (the pattern follows China). Italy has been experiencing one of the worst outbreaks and drastic measures have been taken, we see the first signs that it slowly gets better. The virus has reached Germany considerably later. Although the growth rate was very steep in the beginning, it now starts to follow the pattern of China and South Korea. 
 
-```{r example,results = 'asis'}
-# Current cases 
-table <- data %>%
-  filter(date == Sys.Date()-1) %>%
-  filter(country == "China" | country == "Germany" | 
-         country == "Italy" | country == "Korea, South") %>%
-  arrange(desc(confirmed))
-papaja::apa_table(table, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
-```  
-
-```{r, fig.height=6, fig.width=8}
+```{r, fig.height=8.5, fig.width=10}
 # Example plot for China, Germany, Italy and South Korea
 data %>%
   filter(confirmed >= 100) %>%
@@ -96,8 +87,8 @@ data %>%
   xlim(0, 85)
 
 ggsave("figures/plot_1.png",
-       width = 7,
-       height = 6)
+       width = 10,
+       height = 8.5)
 ```
 
 
@@ -105,28 +96,16 @@ ggsave("figures/plot_1.png",
 
 #### Europe
 
-```{r europe, results = 'asis', comment = ""}
+```{r europe}
 europe <- c("Italy", "Spain", "Germany", "France", 
             "Switzerland", "United Kingdom", "Netherlands", 
             "Norway", "Austria", "Sweden", "Belgium", "Denmark",
             "Portugal", "Czechia", "Ireland", "Turkey",
             "Ireland", "Poland", "Romania", "Czechia",
-            "Serbia", "Luxembourg", "Finland", "Ukraine")
-
-# Current cases 
-table3 <- data %>%
-  filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country %in% europe) %>%
-  arrange(desc(confirmed))
-
-# Plot table
-papaja::apa_table(table3, 
-                  format = "html", 
-                  digits = 0, 
-                  align = c("l", "c", rep("r", 4)))
+            "Serbia", "Ukraine")
 ``` 
 
-```{r europe_plot, fig.height=7, fig.width = 9}
+```{r europe_plot, fig.height=9, fig.width = 14}
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% europe) %>%
@@ -138,25 +117,18 @@ data %>%
 
 ggsave("figures/plot_3.png",
        width = 9,
-       height = 5.75)
+       height = 14)
 ```
 
 #### North, Middle and South America
 
-```{r,results = 'asis'}
+```{r}
 america <- c("US", "Canada", "Brazil", "Chile",
              "Argentina", "Ecuador", "Mexico", "Peru",
-             "Panama", "Dominican Republic", "Colombia")
-
-# Current cases 
-table4 <- data %>%
-  filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country %in% america) %>%
-  arrange(desc(confirmed))
-papaja::apa_table(table4, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+             "Panama", "Dominican Republic", "Colombia", "Bolivia")
 ```  
 
-```{r northamerica, fig.height=6, fig.width = 9}
+```{r northamerica, fig.height=7, fig.width = 11.5}
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% america) %>%
@@ -166,25 +138,18 @@ data %>%
   plot_graph
 
 ggsave("figures/plot_4.png",
-       width = 9,
-       height = 6.5)
+       width = 11.5,
+       height = 7)
 ```
 
 #### Middle East
 
-```{r,results = 'asis'}
+```{r}
 middleeast <- c("Iran", "Qatar", "Saudi Arabia", "Qatar",
                 "Israel", "Pakistan", "United Arab Emirates")
-
-# Current cases 
-table5 <- data %>%
-  filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country %in% middleeast) %>%
-  arrange(desc(confirmed))
-papaja::apa_table(table5, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
 ```  
 
-```{r middleeast, fig.height=5, fig.width = 8}
+```{r middleeast, fig.height=5, fig.width = 9}
 data %>%
   filter(confirmed >=100) %>%
   filter(country %in% middleeast) %>%
@@ -194,26 +159,20 @@ data %>%
   plot_graph
 
 ggsave("figures/plot_5.png",
-       width = 8,
-       height = 7)
+       width = 5,
+       height = 9)
 ```
 
 #### Asia, Indonesia, Australia
 
-```{r,results = 'asis'}
+```{r}
 asia <- c("China", "Korea, South", "Japan", 
           "Malaysia", "Russia", "India", "Australia",
-          "Philippines", "Thailand")
-
-# Current cases 
-table6 <- data %>%
-  filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country %in% asia) %>%
-  arrange(desc(confirmed))
-papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+          "Philippines", "Thailand", "Laos", "Indonesia", "Singapore",
+          "Bangladesh")
 ```
 
-```{r asia, fig.height=7, fig.width = 8}
+```{r asia, fig.height=7, fig.width = 11.5}
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% asia) %>%
@@ -223,25 +182,18 @@ data %>%
   plot_graph
 
 ggsave("figures/plot_6.png",
-       width = 8,
+       width = 11.5,
        height = 7)
 ```
 
 #### Africa
 
 
-```{r,results = 'asis'}
-africa <- c("South Africa", "Egypt", "Algeria", "Morocco")
-
-# Current cases 
-table6 <- data %>%
-  filter(date == as.character(Sys.Date()-1)) %>%
-  filter(country %in% africa) %>%
-  arrange(desc(confirmed))
-papaja::apa_table(table6, format = "html", digits = 0, align = c("l", "c", rep("r", 4)))
+```{r}
+africa <- c("South Africa", "Egypt", "Algeria", "Morocco", "Ghana", "Nigeria")
 ```
 
-```{r africa, fig.height=7, fig.width = 8}
+```{r africa, fig.height=5, fig.width = 9}
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% africa) %>%
@@ -250,15 +202,18 @@ data %>%
   gather(key, value, -country, -date, -days) %>%
   plot_graph
 
-ggsave("figures/plot_8.png",
-       width = 8,
-       height = 7)
+ggsave("figures/plot_7.png",
+       width = 9,
+       height = 5)
 ```
 
 
 ### 3. Alternative visualizations
 
-One thing that is constantly debatted is how to visualize growth (of total confirmed cases) at all. Log-transform the y-axis or not? Plot against the date? Plot against days after 100th case? Plot something entirely different?
+
+### Total cases
+
+One thing that is constantly debatted is how to visualize the growth of total confirmed cases at all. Log-transform the y-axis or not? Plot against the date? Plot against days after 100th case? Plot something entirely different?
 
 Here, I would like to explain some differences between visualizations that have been used in the media. All of them are helpful in their own regard. 
 
@@ -266,11 +221,11 @@ Here, I would like to explain some differences between visualizations that have 
 
 2. MIDDLE: The y-axis is logarithmized. This figure is often shown in the news. 
 
-3. RIGHT: New cases per 7 days (y-axis) are plotted against total cases (x-axis), both axes are logarithmized (Idea explained in this [video](https://www.youtube.com/watch?v=54XLXg4fYsc). 
+3. RIGHT: New cases per 7 days (y-axis) are plotted against total cases (x-axis), both axes are logarithmized (Idea explained in this [video](https://www.youtube.com/watch?v=54XLXg4fYsc)). 
 
 We see clearly that each plot has benefits and weaknesses. The first example provides perhaps the best comparison of the total numbers and shows quite drastically how exponential growth curves look likes (bear in mind that I cut off the growth curve of the US, which actually extends to more than 1 million cases. I did this to make the other growth curves more identifiable). S-curves represent positive developments towards a slower growth. Yet, changes are barely identifiable. The second example makes the actual growth more comparable and by logarithmizing the y-axsis, we can actually see changes in the growth. Here, it seesm that most countries are actually starting to slow the growth. Finally, the last example is hard to understand generally, but it shows best whether some sort of measure is working. The curve needs to sink drastically, otherwise, the growth is continuing uncontrollibly. 
 
-```{r warning = F, message = F, fig.height=5.5, fig.width = 14}
+```{r warning = F, message = F, fig.height=4.5, fig.width = 13}
 
 library(directlabels)
 
@@ -402,12 +357,120 @@ cowplot::plot_grid(pg1, pg2, pg3,
                    axis = "lbr",
                    ncol = 3)
 
-ggsave("figures/plot_7.png",
-       width = 14,
+ggsave("figures/plot_8.png",
+       width = 15,
        height = 5.5,
        dpi = 600)
 
 
 ```
 
+
+#### Daily new cases
+
+Another visualization that is often used is based on changes in daily new cases. 
+
+##### Europe
+
+
+```{r, fig.height=9, fig.width = 14}
+data %>%
+  mutate("one week" = confirmed - lag(confirmed, 7),
+         "two weeks" = confirmed - lag(confirmed, 14)) %>%
+  filter(confirmed >= 100) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  ungroup %>%
+  gather(daily_cases, value, "one week", "two weeks") %>%
+  filter(country %in% europe) %>%
+  ggplot(aes(x = days, y = value, color = daily_cases)) +
+  geom_line() +
+  scale_color_manual(values = c("#00ace6", "#ff8000")) +
+  facet_wrap(~country, scales = "free_y") +
+  see::theme_modern() +
+  labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
+```
+
+
+##### America
+
+```{r, , fig.height=7, fig.width = 10.5}
+data %>%
+  mutate("one week" = confirmed - lag(confirmed, 7),
+         "two weeks" = confirmed - lag(confirmed, 14)) %>%
+  filter(confirmed >= 100) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  ungroup %>%
+  gather(daily_cases, value, "one week", "two weeks") %>%
+  filter(country %in% america) %>%
+  ggplot(aes(x = days, y = value, color = daily_cases)) +
+  geom_line() +
+  scale_color_manual(values = c("#00ace6", "#ff8000")) +
+  facet_wrap(~country, scales = "free_y") +
+  see::theme_modern() +
+  labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
+```
+
+
+##### Middle East
+
+```{r, fig.height=7, fig.width = 10.5}
+data %>%
+  mutate("one week" = confirmed - lag(confirmed, 7),
+         "two weeks" = confirmed - lag(confirmed, 14)) %>%
+  filter(confirmed >= 100) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  ungroup %>%
+  gather(daily_cases, value, "one week", "two weeks") %>%
+  filter(country %in% middleeast) %>%
+  ggplot(aes(x = days, y = value, color = daily_cases)) +
+  geom_line() +
+  scale_color_manual(values = c("#00ace6", "#ff8000")) +
+  facet_wrap(~country, scales = "free_y") +
+  see::theme_modern() +
+  labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
+```
+
+
+##### Asia
+
+```{r, , fig.height=7, fig.width = 11.5}
+data %>%
+  mutate("one week" = confirmed - lag(confirmed, 7),
+         "two weeks" = confirmed - lag(confirmed, 14)) %>%
+  filter(confirmed >= 100) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  ungroup %>%
+  gather(daily_cases, value, "one week", "two weeks") %>%
+  filter(country %in% asia) %>%
+  ggplot(aes(x = days, y = value, color = daily_cases)) +
+  geom_line() +
+  scale_color_manual(values = c("#00ace6", "#ff8000")) +
+  facet_wrap(~country, scales = "free_y") +
+  see::theme_modern() +
+  labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
+```
+
+##### Africa
+
+```{r, , fig.height=6, fig.width = 10}
+data %>%
+  mutate("one week" = confirmed - lag(confirmed, 7),
+         "two weeks" = confirmed - lag(confirmed, 14)) %>%
+  filter(confirmed >= 100) %>%
+  group_by(country) %>%
+  mutate(days = 1:n()) %>%
+  ungroup %>%
+  gather(daily_cases, value, "one week", "two weeks") %>%
+  filter(country %in% africa) %>%
+  ggplot(aes(x = days, y = value, color = daily_cases)) +
+  geom_line() +
+  scale_color_manual(values = c("#00ace6", "#ff8000")) +
+  facet_wrap(~country, scales = "free_y") +
+  see::theme_modern() +
+  labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
+```
 
