@@ -59,8 +59,8 @@ these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-Yes, I will update these figures every morning. The last update was made
-on 2020-05-11 08:20:00. The data of the John Hopkins University,
+Yes, these figures are updated every morning. The last update was made
+on 2020-05-11 11:47:54. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
 situation on 2020-05-10 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
@@ -71,19 +71,7 @@ the actual numbers are higher.
 If you are interested in the R code, please see the
 [README.rmd](https://github.com/masurp/corona_analyses/blob/master/README.rmd).
 
-### 1\. Analyzing China, South Korea, Italy, and Germany
-
-In a first step, I am comparing China, South Korea, Italy, and Germany.
-Why these countries? These countries are at very different stages or
-show very different developments (in terms of size and patterns). China,
-for example, was the first to experience the outbreak and they seem to
-have contained the spreading of the virus by now. South Korea is
-similarly controlling the virus outbreak (the pattern follows China).
-Italy has been experiencing one of the worst outbreaks and drastic
-measures have been taken, we see the first signs that it slowly gets
-better. The virus has reached Germany considerably later. Although the
-growth rate was very steep in the beginning, it now starts to follow the
-pattern of China and South Korea.
+### 1\. Examplary patterns
 
 <img src="figures/unnamed-chunk-2-1.png" width="100%" />
 
