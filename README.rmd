@@ -468,3 +468,8 @@ data %>%
   see::theme_modern() +
   labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
 ```
+
+
+
+
+
