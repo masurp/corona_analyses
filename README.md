@@ -60,9 +60,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, these figures are updated every morning. The last update was made
-on 2020-05-22 07:44:54. The data of the John Hopkins University,
+on 2020-05-23 09:10:06. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-05-21 at 23:59:00. Also bear in mind that the
+situation on 2020-05-22 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
