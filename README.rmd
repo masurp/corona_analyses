@@ -72,6 +72,9 @@ data <- data %>%
 ```{r, fig.height=8.5, fig.width=14}
 highest <- c("US", "Russia", "United Kingdom", "Italy", "Germany", "China")
 
+  
+
+
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% highest) %>%
