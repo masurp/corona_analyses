@@ -60,9 +60,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, these figures are updated every morning. The last update was made
-on 2020-05-29 08:26:48. The data of the John Hopkins University,
+on 2020-05-30 14:31:32. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-05-28 at 23:59:00. Also bear in mind that the
+situation on 2020-05-29 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
@@ -73,11 +73,31 @@ If you are interested in the R code, please see the
 
 ### 1\. Examplary patterns
 
-    ## Warning: Removed 8 row(s) containing missing values (geom_path).
+<caption>
 
-<img src="figures/unnamed-chunk-2-1.png" width="100%" />
+(\#tab:unnamed-chunk-2)
 
-    ## Warning: Removed 8 row(s) containing missing values (geom_path).
+</caption>
+
+<div data-custom-style="Table Caption">
+
+\*\*
+
+</div>
+
+| country        |    date    |    confirmed |     deaths |  recovered |       active | new\_cases |
+| :------------- | :--------: | -----------: | ---------: | ---------: | -----------: | ---------: |
+| US             | 2020-05-29 | 1,746,019.00 | 102,809.00 | 406,446.00 | 1,236,764.00 |  24,266.00 |
+| Brazil         | 2020-05-29 |   465,166.00 |  27,878.00 | 189,476.00 |   247,812.00 |  26,928.00 |
+| Russia         | 2020-05-29 |   387,623.00 |   4,374.00 | 159,257.00 |   223,992.00 |   8,572.00 |
+| United Kingdom | 2020-05-29 |   272,607.00 |  38,243.00 |   1,172.00 |   233,192.00 |   2,099.00 |
+| Spain          | 2020-05-29 |   238,564.00 |  27,121.00 | 150,376.00 |    61,067.00 |     658.00 |
+| Italy          | 2020-05-29 |   232,248.00 |  33,229.00 | 152,844.00 |    46,175.00 |     516.00 |
+| Germany        | 2020-05-29 |   182,922.00 |   8,504.00 | 164,245.00 |    10,173.00 |     726.00 |
+| India          | 2020-05-29 |   173,491.00 |   4,980.00 |  82,627.00 |    85,884.00 |   8,105.00 |
+| China          | 2020-05-29 |    84,123.00 |   4,638.00 |  79,382.00 |       103.00 |      17.00 |
+
+<img src="figures/unnamed-chunk-3-1.png" width="100%" />
 
 ### 2\. Worldwide developments
 
@@ -139,7 +159,7 @@ but it shows best whether some sort of measure is working. The curve
 needs to sink drastically, otherwise, the growth is continuing
 uncontrollibly.
 
-<img src="figures/unnamed-chunk-7-1.png" width="100%" />
+<img src="figures/unnamed-chunk-8-1.png" width="100%" />
 
 #### Daily new cases
 
@@ -148,20 +168,20 @@ new cases.
 
 ##### Europe
 
-<img src="figures/unnamed-chunk-8-1.png" width="100%" />
+<img src="figures/unnamed-chunk-9-1.png" width="100%" />
 
 ##### America
 
-<img src="figures/unnamed-chunk-9-1.png" width="100%" />
+<img src="figures/unnamed-chunk-10-1.png" width="100%" />
 
 ##### Middle East
 
-<img src="figures/unnamed-chunk-10-1.png" width="100%" />
+<img src="figures/unnamed-chunk-11-1.png" width="100%" />
 
 ##### Asia
 
-<img src="figures/unnamed-chunk-11-1.png" width="100%" />
+<img src="figures/unnamed-chunk-12-1.png" width="100%" />
 
 ##### Africa
 
-<img src="figures/unnamed-chunk-12-1.png" width="100%" />
+<img src="figures/unnamed-chunk-13-1.png" width="100%" />

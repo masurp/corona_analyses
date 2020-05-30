@@ -69,12 +69,23 @@ data <- data %>%
 
 ### 1. Examplary patterns
 
-```{r, fig.height=8.5, fig.width=14}
-highest <- c("US", "Russia", "United Kingdom", "Italy", "Germany", "China")
-
-  
+```{r, results='asis', message=F, warning=F}
+highest <- c("US", "Russia", "United Kingdom", "Italy", "Germany", "China", "Brazil", "Spain", "India")
 
 
+data %>%
+  filter(confirmed >= 100) %>%
+  group_by(country) %>%
+  mutate("new_cases" = confirmed - lag(confirmed)) %>%
+  ungroup %>%
+  filter(country %in% highest) %>%
+  filter(date == Sys.Date()-1) %>%
+  arrange(desc(confirmed)) %>%
+  papaja::apa_table(., 
+                    align = c("l", "c", rep("r", 5)))
+```
+
+```{r, fig.height=10.5, fig.width=14, message=F, warning=F}
 data %>%
   filter(confirmed >= 100) %>%
   filter(country %in% highest) %>%
@@ -86,7 +97,7 @@ data %>%
 
 ggsave("figures/plot_1.png",
        width = 14,
-       height = 8.5)
+       height = 10.5)
 ```
 
 
@@ -241,9 +252,9 @@ pg1 <- data %>%
             aes(x = days, y = confirmed), colour="#00b359", size=.8) +
   geom_dl(data = . %>% filter(country == "US"), 
           aes(label = country), color = "#00b359", method = list(dl.combine("last.points"), cex = .65)) +
-  geom_line(data = . %>% filter(country == "Korea, South"), 
+  geom_line(data = . %>% filter(country == "Brazil"), 
             aes(x = days, y = confirmed), colour="#ffcc00", size=.8) +
-  geom_dl(data = . %>% filter(country == "Korea, South"), 
+  geom_dl(data = . %>% filter(country == "Brazil"), 
           aes(label = country), color = "#ffcc00", method = list(dl.combine("last.points"), cex = .65)) +
   geom_line(data = . %>% filter(country == "Italy"), 
             aes(x = days, y = confirmed), colour="#1d1d63", size=.8) +
@@ -262,10 +273,10 @@ pg1 <- data %>%
   geom_dl(data = . %>% filter(country == "United Kingdom"), 
           aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
-  xlim(0,85) +
-  ylim(0, 500000) +
+  xlim(0,110) +
+  ylim(0, 1000000) +
   theme(legend.position = "none") +
-  labs(x = "days after 100 cases", y = "total cases (limited to 500.000)", color = "")
+  labs(x = "days after 100 cases", y = "total cases (limited to 1.000.000)", color = "")
 
 pg2 <- data %>%
   filter(confirmed >= 100) %>%
@@ -281,9 +292,9 @@ pg2 <- data %>%
             aes(x = days, y = confirmed), colour="#00b359", size=.8) +
   geom_dl(data = . %>% filter(country == "US"), 
           aes(label = country), color = "#00b359", method = list(dl.combine("last.points"), cex = .65)) +
-  geom_line(data = . %>% filter(country == "Korea, South"), 
+  geom_line(data = . %>% filter(country == "Brazil"), 
             aes(x = days, y = confirmed), colour="#ffcc00", size=.8) +
-  geom_dl(data = . %>% filter(country == "Korea, South"), 
+  geom_dl(data = . %>% filter(country == "Brazil"), 
           aes(label = country), color = "#ffcc00", method = list(dl.combine("last.points"), cex = .65)) +
   geom_line(data = . %>% filter(country == "Italy"), 
             aes(x = days, y = confirmed), colour="#1d1d63", size=.8) +
@@ -303,7 +314,7 @@ pg2 <- data %>%
           aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   scale_y_log10() +
-  xlim(0, 85) +
+  xlim(0, 110) +
   scale_color_brewer(palette = "Dark2") +
   theme(legend.position = "bottom") +
   labs(x = "days after 100 cases", y = "total cases (log)", color = "")
@@ -323,9 +334,9 @@ pg3 <- data %>%
             aes(x = confirmed, y = new_cases), colour="#00b359", size=.8) +
   geom_dl(data = . %>% filter(country == "US"), 
           aes(label = country), color = "#00b359", method = list(dl.combine("last.points"), cex = .65)) +
-  geom_line(data = . %>% filter(country == "Korea, South"), 
+  geom_line(data = . %>% filter(country == "Brazil"), 
             aes(x = confirmed, y = new_cases), colour="#ffcc00", size=.8) +
-  geom_dl(data = . %>% filter(country == "Korea, South"), 
+  geom_dl(data = . %>% filter(country == "Brazil"), 
           aes(label = country), color = "#ffcc00", method = list(dl.combine("last.points"), cex = .65)) +
   geom_line(data = . %>% filter(country == "Italy"), 
             aes(x = confirmed, y = new_cases), colour="#1d1d63", size=.8) +
