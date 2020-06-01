@@ -377,7 +377,7 @@ ggsave("figures/plot_8.png",
 
 #### Daily new cases
 
-Another visualization that is often used is based on changes in daily new cases. 
+Another visualization that is often used is based on changes in daily new cases (here averaged cross one or two weeks). 
 
 ##### Europe
 

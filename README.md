@@ -60,9 +60,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, these figures are updated every morning. The last update was made
-on 2020-05-30 14:31:32. The data of the John Hopkins University,
+on 2020-06-01 09:58:41. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-05-29 at 23:59:00. Also bear in mind that the
+situation on 2020-05-31 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
@@ -87,15 +87,15 @@ If you are interested in the R code, please see the
 
 | country        |    date    |    confirmed |     deaths |  recovered |       active | new\_cases |
 | :------------- | :--------: | -----------: | ---------: | ---------: | -----------: | ---------: |
-| US             | 2020-05-29 | 1,746,019.00 | 102,809.00 | 406,446.00 | 1,236,764.00 |  24,266.00 |
-| Brazil         | 2020-05-29 |   465,166.00 |  27,878.00 | 189,476.00 |   247,812.00 |  26,928.00 |
-| Russia         | 2020-05-29 |   387,623.00 |   4,374.00 | 159,257.00 |   223,992.00 |   8,572.00 |
-| United Kingdom | 2020-05-29 |   272,607.00 |  38,243.00 |   1,172.00 |   233,192.00 |   2,099.00 |
-| Spain          | 2020-05-29 |   238,564.00 |  27,121.00 | 150,376.00 |    61,067.00 |     658.00 |
-| Italy          | 2020-05-29 |   232,248.00 |  33,229.00 | 152,844.00 |    46,175.00 |     516.00 |
-| Germany        | 2020-05-29 |   182,922.00 |   8,504.00 | 164,245.00 |    10,173.00 |     726.00 |
-| India          | 2020-05-29 |   173,491.00 |   4,980.00 |  82,627.00 |    85,884.00 |   8,105.00 |
-| China          | 2020-05-29 |    84,123.00 |   4,638.00 |  79,382.00 |       103.00 |      17.00 |
+| US             | 2020-05-31 | 1,790,172.00 | 104,381.00 | 444,758.00 | 1,241,033.00 |  20,007.00 |
+| Brazil         | 2020-05-31 |   514,849.00 |  29,314.00 | 206,555.00 |   278,980.00 |  16,409.00 |
+| Russia         | 2020-05-31 |   405,843.00 |   4,693.00 | 171,883.00 |   229,267.00 |   9,268.00 |
+| United Kingdom | 2020-05-31 |   276,156.00 |  38,571.00 |   1,190.00 |   236,395.00 |   1,937.00 |
+| Spain          | 2020-05-31 |   239,479.00 |  27,127.00 | 150,376.00 |    61,976.00 |     251.00 |
+| Italy          | 2020-05-31 |   232,997.00 |  33,415.00 | 157,507.00 |    42,075.00 |     333.00 |
+| India          | 2020-05-31 |   190,609.00 |   5,408.00 |  91,852.00 |    93,349.00 |   8,782.00 |
+| Germany        | 2020-05-31 |   183,410.00 |   8,540.00 | 165,352.00 |     9,518.00 |     221.00 |
+| China          | 2020-05-31 |    84,146.00 |   4,638.00 |  79,389.00 |       119.00 |      18.00 |
 
 <img src="figures/unnamed-chunk-3-1.png" width="100%" />
 
@@ -164,7 +164,7 @@ uncontrollibly.
 #### Daily new cases
 
 Another visualization that is often used is based on changes in daily
-new cases.
+new cases (here averaged cross one or two weeks).
 
 ##### Europe
 
