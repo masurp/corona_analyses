@@ -60,9 +60,9 @@ these visualization in commerce is strictly prohibited.
 #### Will these figures be updated?
 
 Yes, these figures are updated every morning. The last update was made
-on 2020-06-05 15:14:52. The data of the John Hopkins University,
+on 2020-06-06 10:44:12. The data of the John Hopkins University,
 however, are always updated at 23:59. What you see is hence the
-situation on 2020-06-04 at 23:59:00. Also bear in mind that the
+situation on 2020-06-05 at 23:59:00. Also bear in mind that the
 reporting of cases is somewhat delayed so that it is very likely that
 the actual numbers are higher.
 
@@ -87,15 +87,15 @@ If you are interested in the R code, please see the
 
 | country        |    date    |    confirmed |     deaths |  recovered |       active | new\_cases |
 | :------------- | :--------: | -----------: | ---------: | ---------: | -----------: | ---------: |
-| US             | 2020-06-04 | 1,872,660.00 | 108,211.00 | 485,002.00 | 1,279,447.00 |  21,140.00 |
-| Brazil         | 2020-06-04 |   614,941.00 |  34,021.00 | 254,963.00 |   325,957.00 |  30,925.00 |
-| Russia         | 2020-06-04 |   440,538.00 |   5,376.00 | 204,197.00 |   230,965.00 |   8,823.00 |
-| United Kingdom | 2020-06-04 |   283,079.00 |  39,987.00 |   1,219.00 |   241,873.00 |   1,809.00 |
-| Spain          | 2020-06-04 |   240,660.00 |  27,133.00 | 150,376.00 |    63,151.00 |     334.00 |
-| Italy          | 2020-06-04 |   234,013.00 |  33,689.00 | 161,895.00 |    38,429.00 |     177.00 |
-| India          | 2020-06-04 |   226,713.00 |   6,363.00 | 108,450.00 |   111,900.00 |   9,889.00 |
-| Germany        | 2020-06-04 |   184,472.00 |   8,635.00 | 167,909.00 |     7,928.00 |     351.00 |
-| China          | 2020-06-04 |    84,171.00 |   4,638.00 |  79,415.00 |       118.00 |      11.00 |
+| US             | 2020-06-05 | 1,897,380.00 | 109,132.00 | 491,706.00 | 1,296,542.00 |  24,720.00 |
+| Brazil         | 2020-06-05 |   614,941.00 |  34,021.00 |       0.00 |   580,920.00 |       0.00 |
+| Russia         | 2020-06-05 |   449,256.00 |   5,520.00 | 212,237.00 |   231,499.00 |   8,718.00 |
+| United Kingdom | 2020-06-05 |   284,734.00 |  40,344.00 |   1,228.00 |   243,162.00 |   1,655.00 |
+| Spain          | 2020-06-05 |   240,978.00 |  27,134.00 | 150,376.00 |    63,468.00 |     318.00 |
+| India          | 2020-06-05 |   236,184.00 |   6,649.00 | 113,233.00 |   116,302.00 |   9,471.00 |
+| Italy          | 2020-06-05 |   234,531.00 |  33,774.00 | 163,781.00 |    36,976.00 |     518.00 |
+| Germany        | 2020-06-05 |   184,924.00 |   8,658.00 | 168,480.00 |     7,786.00 |     452.00 |
+| China          | 2020-06-05 |    84,177.00 |   4,638.00 |  79,420.00 |       119.00 |       6.00 |
 
 <img src="figures/unnamed-chunk-3-1.png" width="100%" />
 
