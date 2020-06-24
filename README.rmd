@@ -273,7 +273,7 @@ pg1 <- data %>%
   geom_dl(data = . %>% filter(country == "United Kingdom"), 
           aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
-  xlim(0,110) +
+  xlim(0,140) +
   ylim(0, 1000000) +
   theme(legend.position = "none") +
   labs(x = "days after 100 cases", y = "total cases (limited to 1.000.000)", color = "")
@@ -314,13 +314,13 @@ pg2 <- data %>%
           aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   scale_y_log10() +
-  xlim(0, 110) +
+  xlim(0, 140) +
   scale_color_brewer(palette = "Dark2") +
   theme(legend.position = "bottom") +
   labs(x = "days after 100 cases", y = "total cases (log)", color = "")
 
 pg3 <- data %>%
-  filter(confirmed >= 100) %>%
+  filter(confirmed >= 1000) %>%
   group_by(country) %>%
   mutate(new_cases = confirmed - lag(confirmed, 7)) %>%
   ungroup %>%
