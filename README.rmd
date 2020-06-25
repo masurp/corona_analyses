@@ -92,8 +92,7 @@ data %>%
   group_by(country) %>%
   mutate(days = 1:n()) %>%
   gather(key, value, -country, -date, -days) %>%
-  plot_graph +
-  xlim(0, 85)
+  plot_graph
 
 ggsave("figures/plot_1.png",
        width = 14,
