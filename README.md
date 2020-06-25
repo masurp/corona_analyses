@@ -9,7 +9,8 @@ believe are quite problematic and that I am missing the any news
 coverage on the pandemic.
 
 1.  Visualizations of the growth curves often log-transform the x-axis
-    instead of showing the actual *exponential* growth.
+    instead of showing or at least comparing it with the actual
+    *exponential* growth.
 2.  Visualizations almost never plot *total* cases against a) deaths, b)
     recovered, AND c) active cases.
 
@@ -59,12 +60,11 @@ these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-Yes, these figures are updated every morning. The last update was made
-on 2020-06-24 12:06:45. The data of the John Hopkins University,
-however, are always updated at 23:59. What you see is hence the
-situation on 2020-06-23 at 23:59:00. Also bear in mind that the
-reporting of cases is somewhat delayed so that it is very likely that
-the actual numbers are higher.
+The last update was made on 2020-06-25 09:05:42. The data of the John
+Hopkins University, however, are always updated at 23:59. What you see
+is hence the situation on 2020-06-24 at 23:59:00. Also bear in mind that
+the reporting of cases is somewhat delayed so that it is very likely
+that the actual numbers are higher.
 
 ## Visualizations
 
@@ -131,8 +131,8 @@ against the date? Plot against days after 100th case? Plot something
 entirely different?
 
 Here, I would like to explain some differences between visualizations
-that have been used in the media. All of them are helpful in their own
-regard.
+that have been used in the media or on Twitter. All of them are helpful
+in their own regard.
 
 1.  LEFT: Here, I plotted total cases against days after the 100th cases
     *without* logarithmizing the y-axis.
@@ -148,16 +148,19 @@ We see clearly that each plot has benefits and weaknesses. The first
 example provides perhaps the best comparison of the total numbers and
 shows quite drastically how exponential growth curves look likes (bear
 in mind that I cut off the growth curve of the US, which actually
-extends to more than 1 million cases. I did this to make the other
-growth curves more identifiable). S-curves represent positive
-developments towards a slower growth. Yet, changes are barely
-identifiable. The second example makes the actual growth more comparable
-and by logarithmizing the y-axsis, we can actually see changes in the
-growth. Here, it seesm that most countries are actually starting to slow
-the growth. Finally, the last example is hard to understand generally,
-but it shows best whether some sort of measure is working. The curve
-needs to sink drastically, otherwise, the growth is continuing
-uncontrollibly.
+extends to more than 1,5 million cases. I did this to make the other
+growth curves visible). S-curves represent positive developments towards
+a slower growth. Yet, changes are barely identifiable.
+
+The second example makes the actual growth more comparable and by
+logarithmizing the y-axsis, we can actually see changes in the growth.
+Here, it seems that most countries are actually starting to slow the
+growth. Yet, the huge difference between e.g., Austria and the US is not
+as visible as in the first plot.
+
+Finally, the last example is a bit harder to understand, but it shows
+best whether some sort of measure is working. The curve needs to sink
+drastically, otherwise, the growth is continuing uncontrollibly.
 
 <img src="figures/unnamed-chunk-8-1.png" width="100%" />
 
