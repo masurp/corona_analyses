@@ -132,7 +132,7 @@ ggsave("figures/plot_3.png",
 
 ```{r}
 america <- c("US", "Canada", "Brazil", "Chile",
-             "Argentina", "Ecuador", "Mexico", "Peru",
+             "Argentina", "Uruguay", "Mexico", "Peru",
              "Panama", "Dominican Republic", "Colombia", "Bolivia")
 ```  
 
