@@ -408,7 +408,8 @@ data %>%
 
 ```{r, , fig.height=7, fig.width = 10.5}
 data %>%
-  mutate("one week" = confirmed - lag(confirmed, 7),
+  mutate(cases_pd = confirmed - lag(confirmed, 1),
+         "one week" = confirmed - lag(confirmed, 7),
          "two weeks" = confirmed - lag(confirmed, 14)) %>%
   filter(confirmed >= 100) %>%
   group_by(country) %>%
