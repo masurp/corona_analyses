@@ -1,31 +1,6 @@
 
 # Visualizing the Corona (COVID-19) pandemic
 
-## Basic idea
-
-I generally think that the news do a good job in describing and
-visualizing the corona pandemic. However, there are two things that I
-believe are quite problematic and that I am missing the any news
-coverage on the pandemic.
-
-1.  Visualizations of the growth curves often log-transform the x-axis
-    instead of showing or at least comparing it with the actual
-    *exponential* growth.
-2.  Visualizations almost never plot *total* cases against a) deaths, b)
-    recovered, AND c) active cases.
-
-With regard to the former, I recently wrote [this
-blogpost](http://philippmasur.de/blog/2020/03/13/understanding-exponential-growth-the-corona-pandemic/)
-that explains why exponential growth is so hard to grasp. With regard to
-the latter, I believe that visualizations would become a bit more
-informative if we plot total cases, active cases, recovered cases, and
-deaths. If we plot all *four* curves simultaneously, patterns emerge
-that might tell us something about the “phase”" that a country is it. We
-may also see whether a country succeeds in stopping the infections (BUT:
-see disclaimer further below\!). In what follows, I am using the data on
-worldwide total infections, death rates, and number of recoveries to
-produce these (potentially) a bit more insightful visualizations.
-
 #### Where does the data come frome?
 
 The analyses and visualizations are based on the data provided by the
@@ -39,30 +14,21 @@ sets are used to constantly update this visual dashboard:
 to understand the pandemic, they are nonetheless very imprecise. When we
 want to make sense of positive test results (i.e., total cases and in
 the long run mortality rates and recovering processes), we need to know
-how many tests were conducted. South Korea, for example, has tested \>
-270,000 people, which amounts to more than 5,200 tests per million
-inhabitants. The numbers in South Korea are hence more trustworthy than
-the numbers of all other countries. A high diagnostic capacity at scale
-is hence key to epidemic control as it provides us with precise
-estimates and growth rate predictions (for more information on this, see
-[this
+how many tests were conducted (for more information on this, see [this
 article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8)
-in Science). For this reasons, I believe that the value of these
-visualization lies NOT in comparing the actual numbers, but in
-understanding the patterns that emerge by comparing all four curves.
+in Science).
 
 Furthermore, I would like to emphasize that I am not an expert on
 epidemology or virus outbreaks and I am not working in the health
 sector. On this page, I am only visualizing the data by the John Hopkins
-University in a different way that most news or other outlets do.
-Reliance on the these visualizations for medical guidance or use of
-these visualization in commerce is strictly prohibited.
+University. Reliance on the these visualizations for medical guidance or
+use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-The last update was made on 2020-10-13 19:14:20. The data of the John
+The last update was made on 2020-10-22 08:49:39. The data of the John
 Hopkins University, however, are always updated at 23:59. What you see
-is hence the situation on 2020-10-12 at 23:59:00. Also bear in mind that
+is hence the situation on 2020-10-21 at 23:59:00. Also bear in mind that
 the reporting of cases is somewhat delayed so that it is very likely
 that the actual numbers are higher.
 
@@ -87,15 +53,15 @@ If you are interested in the R code, please see the
 
 | country        |    date    |    confirmed |     deaths |    recovered |       active | new\_cases |
 | :------------- | :--------: | -----------: | ---------: | -----------: | -----------: | ---------: |
-| US             | 2020-10-12 | 7,804,199.00 | 215,085.00 | 3,106,728.00 | 4,482,386.00 |  41,653.00 |
-| India          | 2020-10-12 | 7,175,880.00 | 109,856.00 | 6,227,295.00 |   838,729.00 |  55,342.00 |
-| Brazil         | 2020-10-12 | 5,103,408.00 | 150,689.00 | 4,526,393.00 |   426,326.00 |   8,429.00 |
-| Russia         | 2020-10-12 | 1,305,093.00 |  22,594.00 | 1,019,905.00 |   262,594.00 |  13,406.00 |
-| Spain          | 2020-10-12 |   888,968.00 |  33,124.00 |   150,376.00 |   705,468.00 |  27,856.00 |
-| United Kingdom | 2020-10-12 |   620,458.00 |  42,965.00 |     2,511.00 |   574,982.00 |  14,011.00 |
-| Italy          | 2020-10-12 |   359,569.00 |  36,205.00 |   240,600.00 |    82,764.00 |   4,619.00 |
-| Germany        | 2020-10-12 |   332,850.00 |   9,640.00 |   278,391.00 |    44,819.00 |   6,541.00 |
-| China          | 2020-10-12 |    90,830.00 |   4,739.00 |    85,690.00 |       401.00 |      18.00 |
+| US             | 2020-10-21 | 8,336,031.00 | 222,176.00 | 3,323,354.00 | 4,790,501.00 |  62,735.00 |
+| India          | 2020-10-21 | 7,651,107.00 | 115,914.00 | 6,795,103.00 |   740,090.00 |       0.00 |
+| Brazil         | 2020-10-21 | 5,298,772.00 | 155,403.00 | 4,526,393.00 |   616,976.00 |  24,818.00 |
+| Russia         | 2020-10-21 | 1,438,219.00 |  24,786.00 | 1,091,264.00 |   322,169.00 |  15,444.00 |
+| Spain          | 2020-10-21 | 1,005,295.00 |  34,366.00 |   150,376.00 |   820,553.00 |  16,973.00 |
+| United Kingdom | 2020-10-21 |   792,194.00 |  44,248.00 |     2,636.00 |   745,310.00 |  26,707.00 |
+| Italy          | 2020-10-21 |   449,648.00 |  36,832.00 |   257,374.00 |   155,442.00 |  15,199.00 |
+| Germany        | 2020-10-21 |   397,922.00 |   9,911.00 |   304,173.00 |    83,838.00 |  12,331.00 |
+| China          | 2020-10-21 |    91,044.00 |   4,739.00 |    85,899.00 |       406.00 |      22.00 |
 
 <img src="figures/unnamed-chunk-3-1.png" width="100%" />
 

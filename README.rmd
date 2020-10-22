@@ -16,23 +16,14 @@ knitr::opts_chunk$set(
 
 # Visualizing the Corona (COVID-19) pandemic
 
-## Basic idea
-
-I generally think that the news do a good job in describing and visualizing the corona pandemic. However, there are two things that I believe are quite problematic and that I am missing the any news coverage on the pandemic. 
-
-1. Visualizations of the growth curves often log-transform the x-axis instead of showing or at least comparing it with the actual *exponential* growth.
-2. Visualizations almost never plot *total* cases against a) deaths, b) recovered, AND c) active cases. 
-
-With regard to the former, I recently wrote [this blogpost](http://philippmasur.de/blog/2020/03/13/understanding-exponential-growth-the-corona-pandemic/) that explains why exponential growth is so hard to grasp. With regard to the latter, I believe that visualizations would become a bit more informative if we plot total cases, active cases, recovered cases, and deaths. If we plot all *four* curves simultaneously, patterns emerge that might tell us something about the "phase"" that a country is it. We may also see whether a country succeeds in stopping the infections (BUT: see disclaimer further below!). In what follows, I am using the data on worldwide total infections, death rates, and number of recoveries to produce these (potentially) a bit more insightful visualizations. 
-
 #### Where does the data come frome?
 
 The analyses and visualizations are based on the data provided by the John Hopkins University in the [Official 2019 Novel Coronavirus COVID-19 (2019-nCoV) Data Repository](https://github.com/CSSEGISandData/COVID-19). The same data sets are used to constantly update this visual dashboard: https://coronavirus.jhu.edu/map.html
 
 **IMPORTANT DISCLAIMER:**
-Although I do believe that these data help us to understand the pandemic, they are nonetheless very imprecise. When we want to make sense of positive test results (i.e., total cases and in the long run mortality rates and recovering processes), we need to know how many tests were conducted. South Korea, for example, has tested > 270,000 people, which amounts to more than 5,200 tests per million inhabitants. The numbers in South Korea are hence more trustworthy than the numbers of all other countries. A high diagnostic capacity at scale is hence key to epidemic control as it provides us with precise estimates and growth rate predictions (for more information on this, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science). For this reasons, I believe that the value of these visualization lies NOT in comparing the actual numbers, but in understanding the patterns that emerge by comparing all four curves. 
+Although I do believe that these data help us to understand the pandemic, they are nonetheless very imprecise. When we want to make sense of positive test results (i.e., total cases and in the long run mortality rates and recovering processes), we need to know how many tests were conducted (for more information on this, see [this article](https://www.sciencemag.org/news/2020/03/coronavirus-cases-have-dropped-sharply-south-korea-whats-secret-its-success?fbclid=IwAR3BnhqQMxCdu8-fQelEkWIDQn-j9UASV773Xl-WbIy8l7M5ZVSQpHFgkL8) in Science). 
 
-Furthermore, I would like to emphasize that I am not an expert on epidemology or virus outbreaks and I am not working in the health sector. On this page, I am only visualizing the data by the John Hopkins University in a different way that most news or other outlets do. Reliance on the these visualizations for medical guidance or use of these visualization in commerce is strictly prohibited.
+Furthermore, I would like to emphasize that I am not an expert on epidemology or virus outbreaks and I am not working in the health sector. On this page, I am only visualizing the data by the John Hopkins University. Reliance on the these visualizations for medical guidance or use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
