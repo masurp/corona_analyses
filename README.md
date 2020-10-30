@@ -26,9 +26,9 @@ use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-The last update was made on 2020-10-22 08:49:39. The data of the John
+The last update was made on 2020-10-30 10:24:40. The data of the John
 Hopkins University, however, are always updated at 23:59. What you see
-is hence the situation on 2020-10-21 at 23:59:00. Also bear in mind that
+is hence the situation on 2020-10-29 at 23:59:00. Also bear in mind that
 the reporting of cases is somewhat delayed so that it is very likely
 that the actual numbers are higher.
 
@@ -53,41 +53,19 @@ If you are interested in the R code, please see the
 
 | country        |    date    |    confirmed |     deaths |    recovered |       active | new\_cases |
 | :------------- | :--------: | -----------: | ---------: | -----------: | -----------: | ---------: |
-| US             | 2020-10-21 | 8,336,031.00 | 222,176.00 | 3,323,354.00 | 4,790,501.00 |  62,735.00 |
-| India          | 2020-10-21 | 7,651,107.00 | 115,914.00 | 6,795,103.00 |   740,090.00 |       0.00 |
-| Brazil         | 2020-10-21 | 5,298,772.00 | 155,403.00 | 4,526,393.00 |   616,976.00 |  24,818.00 |
-| Russia         | 2020-10-21 | 1,438,219.00 |  24,786.00 | 1,091,264.00 |   322,169.00 |  15,444.00 |
-| Spain          | 2020-10-21 | 1,005,295.00 |  34,366.00 |   150,376.00 |   820,553.00 |  16,973.00 |
-| United Kingdom | 2020-10-21 |   792,194.00 |  44,248.00 |     2,636.00 |   745,310.00 |  26,707.00 |
-| Italy          | 2020-10-21 |   449,648.00 |  36,832.00 |   257,374.00 |   155,442.00 |  15,199.00 |
-| Germany        | 2020-10-21 |   397,922.00 |   9,911.00 |   304,173.00 |    83,838.00 |  12,331.00 |
-| China          | 2020-10-21 |    91,044.00 |   4,739.00 |    85,899.00 |       406.00 |      22.00 |
+| US             | 2020-10-29 | 8,944,934.00 | 228,656.00 | 3,554,336.00 | 5,161,942.00 |  88,521.00 |
+| India          | 2020-10-29 | 8,088,851.00 | 121,090.00 | 7,373,375.00 |   594,386.00 |  48,648.00 |
+| Russia         | 2020-10-29 | 1,570,446.00 |  27,111.00 | 1,179,465.00 |   363,870.00 |  17,418.00 |
+| France         | 2020-10-29 | 1,327,852.00 |  36,058.00 |   120,723.00 | 1,171,071.00 |  47,637.00 |
+| Spain          | 2020-10-29 | 1,160,083.00 |  35,639.00 |   150,376.00 |   974,068.00 |  23,580.00 |
+| United Kingdom | 2020-10-29 |   968,456.00 |  46,045.00 |     2,799.00 |   919,612.00 |  23,078.00 |
+| Italy          | 2020-10-29 |   616,595.00 |  38,122.00 |   279,282.00 |   299,191.00 |  26,829.00 |
+| Germany        | 2020-10-29 |   498,354.00 |  10,305.00 |   340,436.00 |   147,613.00 |  11,382.00 |
+| Netherlands    | 2020-10-29 |   336,629.00 |   7,321.00 |     5,804.00 |   323,504.00 |  10,321.00 |
 
 <img src="figures/unnamed-chunk-3-1.png" width="100%" />
 
-### 2\. Worldwide developments
-
-#### Europe
-
-<img src="figures/europe_plot-1.png" width="100%" />
-
-#### North, Middle and South America
-
-<img src="figures/northamerica-1.png" width="100%" />
-
-#### Middle East
-
-<img src="figures/middleeast-1.png" width="100%" />
-
-#### Asia, Indonesia, Australia
-
-<img src="figures/asia-1.png" width="100%" />
-
-#### Africa
-
-<img src="figures/africa-1.png" width="100%" />
-
-### 3\. Alternative visualizations
+### 2\. Comparing visualizations
 
 ### Total cases
 
@@ -110,25 +88,10 @@ in their own regard.
     (x-axis), both axes are logarithmized (Idea explained in this
     [video](https://www.youtube.com/watch?v=54XLXg4fYsc)).
 
-We see clearly that each plot has benefits and weaknesses. The first
-example provides perhaps the best comparison of the total numbers and
-shows quite drastically how exponential growth curves look likes (bear
-in mind that I cut off the growth curve of the US, which actually
-extends to more than 1,5 million cases. I did this to make the other
-growth curves visible). S-curves represent positive developments towards
-a slower growth. Yet, changes are barely identifiable.
+<img src="figures/unnamed-chunk-4-1.png" width="100%" />
 
-The second example makes the actual growth more comparable and by
-logarithmizing the y-axsis, we can actually see changes in the growth.
-Here, it seems that most countries are actually starting to slow the
-growth. Yet, the huge difference between e.g., Austria and the US is not
-as visible as in the first plot.
-
-Finally, the last example is a bit harder to understand, but it shows
-best whether some sort of measure is working. The curve needs to sink
-drastically, otherwise, the growth is continuing uncontrollibly.
-
-<img src="figures/unnamed-chunk-8-1.png" width="100%" />
+*Note:* Green = USA, Blue = Italy, Red = Germany, Pink = Austria, Orange
+= United Kingdom
 
 #### Daily new cases
 
@@ -137,20 +100,20 @@ new cases (here averaged cross one or two weeks).
 
 ##### Europe
 
-<img src="figures/unnamed-chunk-9-1.png" width="100%" />
+<img src="figures/unnamed-chunk-5-1.png" width="100%" />
 
 ##### America
 
-<img src="figures/unnamed-chunk-10-1.png" width="100%" />
+<img src="figures/unnamed-chunk-6-1.png" width="100%" />
 
 ##### Middle East
 
-<img src="figures/unnamed-chunk-11-1.png" width="100%" />
+<img src="figures/unnamed-chunk-7-1.png" width="100%" />
 
 ##### Asia
 
-<img src="figures/unnamed-chunk-12-1.png" width="100%" />
+<img src="figures/unnamed-chunk-8-1.png" width="100%" />
 
 ##### Africa
 
-<img src="figures/unnamed-chunk-13-1.png" width="100%" />
+<img src="figures/unnamed-chunk-9-1.png" width="100%" />

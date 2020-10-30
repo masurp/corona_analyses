@@ -61,7 +61,7 @@ data <- data %>%
 ### 1. Examplary patterns
 
 ```{r, results='asis', message=F, warning=F}
-highest <- c("US", "Russia", "United Kingdom", "Italy", "Germany", "China", "Brazil", "Spain", "India")
+highest <- c("US", "Russia", "United Kingdom", "Italy", "Germany", "Netherlands", "France", "Spain", "India")
 
 
 data %>%
@@ -91,123 +91,7 @@ ggsave("figures/plot_1.png",
 ```
 
 
-### 2. Worldwide developments
-
-#### Europe
-
-```{r europe}
-europe <- c("Italy", "Spain", "Germany", "France", 
-            "Switzerland", "United Kingdom", "Netherlands", 
-            "Norway", "Austria", "Sweden", "Belgium", "Denmark",
-            "Portugal", "Czechia", "Ireland", "Turkey",
-            "Ireland", "Poland", "Romania", "Czechia",
-            "Serbia", "Ukraine")
-``` 
-
-```{r europe_plot, fig.height=9, fig.width = 14}
-data %>%
-  filter(confirmed >= 100) %>%
-  filter(country %in% europe) %>%
-  group_by(country) %>%
-  mutate(days = 1:n()) %>%
-  gather(key, value, -country, -date, -days) %>%
-  plot_graph(size = .6) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-
-ggsave("figures/plot_3.png",
-       width = 9,
-       height = 14)
-```
-
-#### North, Middle and South America
-
-```{r}
-america <- c("US", "Canada", "Brazil", "Chile",
-             "Argentina", "Uruguay", "Mexico", "Peru",
-             "Panama", "Dominican Republic", "Colombia", "Bolivia")
-```  
-
-```{r northamerica, fig.height=7, fig.width = 11.5}
-data %>%
-  filter(confirmed >= 100) %>%
-  filter(country %in% america) %>%
-  group_by(country) %>%
-  mutate(days = 1:n()) %>%
-  gather(key, value, -country, -date, -days) %>%
-  plot_graph
-
-ggsave("figures/plot_4.png",
-       width = 11.5,
-       height = 7)
-```
-
-#### Middle East
-
-```{r}
-middleeast <- c("Iran", "Qatar", "Saudi Arabia", "Qatar",
-                "Israel", "Pakistan", "United Arab Emirates")
-```  
-
-```{r middleeast, fig.height=5, fig.width = 9}
-data %>%
-  filter(confirmed >=100) %>%
-  filter(country %in% middleeast) %>%
-  group_by(country) %>%
-  mutate(days = 1:n()) %>%
-  gather(key, value, -country, -date, -days) %>%
-  plot_graph
-
-ggsave("figures/plot_5.png",
-       width = 5,
-       height = 9)
-```
-
-#### Asia, Indonesia, Australia
-
-```{r}
-asia <- c("China", "Korea, South", "Japan", 
-          "Malaysia", "Russia", "India", "Australia",
-          "Philippines", "Thailand", "Laos", "Indonesia", "Singapore",
-          "Bangladesh")
-```
-
-```{r asia, fig.height=7, fig.width = 11.5}
-data %>%
-  filter(confirmed >= 100) %>%
-  filter(country %in% asia) %>%
-  group_by(country) %>%
-  mutate(days = 1:n()) %>%
-  gather(key, value, -country, -date, -days) %>%
-  plot_graph
-
-ggsave("figures/plot_6.png",
-       width = 11.5,
-       height = 7)
-```
-
-#### Africa
-
-
-```{r}
-africa <- c("South Africa", "Egypt", "Algeria", "Morocco", "Ghana", "Nigeria")
-```
-
-```{r africa, fig.height=5, fig.width = 9}
-data %>%
-  filter(confirmed >= 100) %>%
-  filter(country %in% africa) %>%
-  group_by(country) %>%
-  mutate(days = 1:n()) %>%
-  gather(key, value, -country, -date, -days) %>%
-  plot_graph
-
-ggsave("figures/plot_7.png",
-       width = 9,
-       height = 5)
-```
-
-
-### 3. Alternative visualizations
+### 2. Comparing visualizations
 
 
 ### Total cases
@@ -222,11 +106,6 @@ Here, I would like to explain some differences between visualizations that have 
 
 3. RIGHT: New cases per 7 days (y-axis) are plotted against total cases (x-axis), both axes are logarithmized (Idea explained in this [video](https://www.youtube.com/watch?v=54XLXg4fYsc)). 
 
-We see clearly that each plot has benefits and weaknesses. The first example provides perhaps the best comparison of the total numbers and shows quite drastically how exponential growth curves look likes (bear in mind that I cut off the growth curve of the US, which actually extends to more than 1,5 million cases. I did this to make the other growth curves visible). S-curves represent positive developments towards a slower growth. Yet, changes are barely identifiable. 
-
-The second example makes the actual growth more comparable and by logarithmizing the y-axsis, we can actually see changes in the growth. Here, it seems that most countries are actually starting to slow the growth. Yet, the huge difference between e.g., Austria and the US is not as visible as in the first plot.
-
-Finally, the last example is a bit harder to understand, but it shows best whether some sort of measure is working. The curve needs to sink drastically, otherwise, the growth is continuing uncontrollibly. 
 
 ```{r warning = F, message = F, fig.height=4.5, fig.width = 13}
 
@@ -292,7 +171,6 @@ pg2 <- data %>%
           aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
   scale_y_log10() +
-  xlim(0, 250) +
   scale_color_brewer(palette = "Dark2") +
   theme(legend.position = "bottom") +
   labs(x = "days after 100 cases", y = "total cases (log)", color = "")
@@ -344,6 +222,8 @@ ggsave("figures/plot_8.png",
 
 ```
 
+*Note:* Green = USA, Blue = Italy, Red = Germany, Pink = Austria, Orange = United Kingdom
+
 
 #### Daily new cases
 
@@ -353,6 +233,12 @@ Another visualization that is often used is based on changes in daily new cases 
 
 
 ```{r, fig.height=9, fig.width = 14}
+
+europe <- c("Italy", "Spain", "Germany", "France", "Switzerland", 
+            "United Kingdom", "Netherlands", "Norway", "Austria", "Sweden", 
+            "Belgium", "Denmark", "Portugal", "Czechia", "Ireland", 
+            "Turkey", "Poland", "Romania", "Serbia", "Ukraine")
+
 data %>%
   mutate("one week" = confirmed - lag(confirmed, 7),
          "two weeks" = confirmed - lag(confirmed, 14)) %>%
@@ -365,7 +251,7 @@ data %>%
   ggplot(aes(x = days, y = value, color = daily_cases)) +
   geom_line() +
   scale_color_manual(values = c("#00ace6", "#ff8000")) +
-  facet_wrap(~country, scales = "free_y") +
+  facet_wrap(~country, scales = "free_y", ncol = 5) +
   see::theme_modern() +
   labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
 ```
@@ -373,7 +259,11 @@ data %>%
 
 ##### America
 
-```{r, , fig.height=7, fig.width = 10.5}
+```{r, , fig.height=9, fig.width = 14}
+america <- c("US", "Canada", "Brazil", "Chile", "Argentina",
+             "Uruguay", "Mexico", "Peru", "Venezuela", "Cuba",
+             "Panama", "Dominican Republic", "Colombia", "Bolivia", "Nicaragua",
+             "Guatemala", "Ecuador", "Honduras", "Belize", "Haiti")
 data %>%
   mutate(cases_pd = confirmed - lag(confirmed, 1),
          "one week" = confirmed - lag(confirmed, 7),
@@ -387,7 +277,7 @@ data %>%
   ggplot(aes(x = days, y = value, color = daily_cases)) +
   geom_line() +
   scale_color_manual(values = c("#00ace6", "#ff8000")) +
-  facet_wrap(~country, scales = "free_y") +
+  facet_wrap(~country, scales = "free_y", ncol = 5) +
   see::theme_modern() +
   labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
 ```
@@ -395,7 +285,11 @@ data %>%
 
 ##### Middle East
 
-```{r, fig.height=7, fig.width = 10.5}
+```{r, fig.height=6.75, fig.width = 14}
+middleeast <- c("Egypt", "Turkey", "Iran", "Qatar", "Saudi Arabia",
+                "Qatar", "Iraq", "Yemen", "Syria", "Lebanon", 
+                "Israel", "Jordan", "Pakistan", "United Arab Emirates",
+                "Oman")
 data %>%
   mutate("one week" = confirmed - lag(confirmed, 7),
          "two weeks" = confirmed - lag(confirmed, 14)) %>%
@@ -408,7 +302,7 @@ data %>%
   ggplot(aes(x = days, y = value, color = daily_cases)) +
   geom_line() +
   scale_color_manual(values = c("#00ace6", "#ff8000")) +
-  facet_wrap(~country, scales = "free_y") +
+  facet_wrap(~country, scales = "free_y", ncol = 5) +
   see::theme_modern() +
   labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
 ```
@@ -416,7 +310,12 @@ data %>%
 
 ##### Asia
 
-```{r, , fig.height=7, fig.width = 11.5}
+```{r, , fig.height=6.75, fig.width = 14}
+asia <- c("China", "Korea, South", "Japan", "India", "Myanmar",
+          "Malaysia", "Russia", "India", "Australia", "Philippines",
+          "Thailand", "Laos", "Indonesia", "Singapore", "Vietnam",
+          "Bangladesh", "Taiwan", "Cambodia", "Uzbekistan")
+
 data %>%
   mutate("one week" = confirmed - lag(confirmed, 7),
          "two weeks" = confirmed - lag(confirmed, 14)) %>%
@@ -429,14 +328,20 @@ data %>%
   ggplot(aes(x = days, y = value, color = daily_cases)) +
   geom_line() +
   scale_color_manual(values = c("#00ace6", "#ff8000")) +
-  facet_wrap(~country, scales = "free_y") +
+  facet_wrap(~country, scales = "free_y", ncol = 5) +
   see::theme_modern() +
   labs(x = "days after 100 cases", y = "number of new cases", color = "new cases")
 ```
 
 ##### Africa
 
-```{r, , fig.height=6, fig.width = 10}
+```{r, , fig.height=11.25, fig.width = 14}
+africa <- c("South Africa", "Egypt", "Algeria", "Morocco", "Ghana",
+            "Nigeria", "Kenya", "Ghana", "Ethiopia", "Senegal",
+            "Uganda", "Sudan", "Madagascar", "Cameroon", "Angola", 
+            "Somalia", "Zimbabwe", "Cote d'Ivoire", "Rwanda", "Libya",
+            "Congo (Brazzaville)", "Congo (Kinshasa)", "Central African Republic", "Burkina Faso")
+
 data %>%
   mutate("one week" = confirmed - lag(confirmed, 7),
          "two weeks" = confirmed - lag(confirmed, 14)) %>%
