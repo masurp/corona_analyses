@@ -138,10 +138,10 @@ pg1 <- data %>%
   geom_dl(data = . %>% filter(country == "United Kingdom"), 
           aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
-  xlim(0, 250) +
-  ylim(0, 1500000) +
+  xlim(0, 350) +
+  ylim(0, 2000000) +
   theme(legend.position = "none") +
-  labs(x = "days after 100 cases", y = "total cases (limited to 1.000.000)", color = "")
+  labs(x = "days after 100 cases", y = "total cases (limited to 2.000.000)", color = "")
 
 pg2 <- data %>%
   filter(confirmed >= 100) %>%
