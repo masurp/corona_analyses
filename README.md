@@ -26,9 +26,9 @@ use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-The last update was made on 2021-01-04 10:21:25. The data of the John
+The last update was made on 2021-01-07 12:51:43. The data of the John
 Hopkins University, however, are always updated at 23:59. What you see
-is hence the situation on 2021-01-03 at 23:59:00. Also bear in mind that
+is hence the situation on 2021-01-06 at 23:59:00. Also bear in mind that
 the reporting of cases is somewhat delayed so that it is very likely
 that the actual numbers are higher.
 
@@ -37,33 +37,32 @@ that the actual numbers are higher.
 If you are interested in the R code, please see the
 [README.rmd](https://github.com/masurp/corona_analyses/blob/master/README.rmd).
 
-### 1\. Examplary patterns
+### 1\. Daily new cases
 
-<caption>
+The blue line is the moving average of new cases per 7 days. The grey
+bars represent the new cases per day.
 
-(\#tab:unnamed-chunk-2)
+#### Europe
 
-</caption>
+<img src="figures/unnamed-chunk-2-1.png" width="100%" />
 
-<div data-custom-style="Table Caption">
-
-\*\*
-
-</div>
-
-| country        |    date    |     confirmed |     deaths |    recovered |        active | new\_cases |
-| :------------- | :--------: | ------------: | ---------: | -----------: | ------------: | ---------: |
-| US             | 2021-01-03 | 20,636,663.00 | 351,580.00 |         0.00 | 20,285,083.00 | 210,479.00 |
-| India          | 2021-01-03 | 10,340,469.00 | 149,649.00 | 9,946,867.00 |    243,953.00 |  16,504.00 |
-| Russia         | 2021-01-03 |  3,203,743.00 |  57,730.00 | 2,591,937.00 |    554,076.00 |  23,845.00 |
-| France         | 2021-01-03 |  2,712,975.00 |  65,164.00 |   201,308.00 |  2,446,503.00 |  12,495.00 |
-| United Kingdom | 2021-01-03 |  2,662,699.00 |  75,137.00 |     6,094.00 |  2,581,468.00 |  55,157.00 |
-| Italy          | 2021-01-03 |  2,155,446.00 |  75,332.00 | 1,503,900.00 |    576,214.00 |  14,245.00 |
-| Spain          | 2021-01-03 |  1,928,265.00 |  50,837.00 |   150,376.00 |  1,727,052.00 |       0.00 |
-| Germany        | 2021-01-03 |  1,783,896.00 |  34,791.00 | 1,422,151.00 |    326,954.00 |  10,356.00 |
-| Netherlands    | 2021-01-03 |    832,702.00 |  11,707.00 |     9,919.00 |    811,076.00 |   7,453.00 |
+#### America
 
 <img src="figures/unnamed-chunk-3-1.png" width="100%" />
+
+#### Middle East
+
+<img src="figures/unnamed-chunk-4-1.png" width="100%" />
+
+#### Asia
+
+    ## Warning: Removed 1 rows containing missing values (position_stack).
+
+<img src="figures/unnamed-chunk-5-1.png" width="100%" />
+
+##### Africa
+
+<img src="figures/unnamed-chunk-6-1.png" width="100%" />
 
 ### 2\. Comparing visualizations
 
@@ -88,32 +87,7 @@ in their own regard.
     (x-axis), both axes are logarithmized (Idea explained in this
     [video](https://www.youtube.com/watch?v=54XLXg4fYsc)).
 
-<img src="figures/unnamed-chunk-4-1.png" width="100%" />
+<img src="figures/unnamed-chunk-7-1.png" width="100%" />
 
 *Note:* Green = USA, Blue = Italy, Red = Germany, Pink = Austria, Orange
 = United Kingdom
-
-#### Daily new cases
-
-Another visualization that is often used is based on changes in daily
-new cases (here averaged cross one or two weeks).
-
-##### Europe
-
-<img src="figures/unnamed-chunk-5-1.png" width="100%" />
-
-##### America
-
-<img src="figures/unnamed-chunk-6-1.png" width="100%" />
-
-##### Middle East
-
-<img src="figures/unnamed-chunk-7-1.png" width="100%" />
-
-##### Asia
-
-<img src="figures/unnamed-chunk-8-1.png" width="100%" />
-
-##### Africa
-
-<img src="figures/unnamed-chunk-9-1.png" width="100%" />
