@@ -26,9 +26,9 @@ use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-The last update was made on 2021-01-08 09:56:31. The data of the John
+The last update was made on 2021-01-17 20:00:33. The data of the John
 Hopkins University, however, are always updated at 23:59. What you see
-is hence the situation on 2021-01-07 at 23:59:00. Also bear in mind that
+is hence the situation on 2021-01-16 at 23:59:00. Also bear in mind that
 the reporting of cases is somewhat delayed so that it is very likely
 that the actual numbers are higher.
 
@@ -55,8 +55,6 @@ bars represent the new cases per day.
 <img src="figures/unnamed-chunk-4-1.png" width="100%" />
 
 #### Asia
-
-    ## Warning: Removed 1 rows containing missing values (position_stack).
 
 <img src="figures/unnamed-chunk-5-1.png" width="100%" />
 

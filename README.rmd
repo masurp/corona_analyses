@@ -67,7 +67,7 @@ The blue line is the moving average of new cases per 7 days. The grey bars repre
 #### Europe
 
 
-```{r, fig.height=9, fig.width = 14, warning = F, message = F}
+```{r, fig.height=7.5, fig.width = 12, warning = F, message = F}
 library(zoo)
 europe <- c("Italy", "Spain", "Germany", "France", "Switzerland", 
             "United Kingdom", "Netherlands", "Norway", "Austria", "Sweden", 
@@ -93,7 +93,7 @@ data %>%
 
 #### America
 
-```{r, , fig.height=9, fig.width = 14}
+```{r, , fig.height=7.5, fig.width = 12}
 america <- c("US", "Canada", "Brazil", "Chile", "Argentina",
              "Uruguay", "Mexico", "Peru", "Venezuela", "Cuba",
              "Panama", "Dominican Republic", "Colombia", "Bolivia", "Nicaragua",
@@ -117,7 +117,7 @@ data %>%
 
 #### Middle East
 
-```{r, fig.height=6.75, fig.width = 14}
+```{r, fig.height=6, fig.width = 12}
 middleeast <- c("Egypt", "Turkey", "Iran", "Qatar", "Saudi Arabia",
                 "Qatar", "Iraq", "Yemen", "Syria", "Lebanon", 
                 "Israel", "Jordan", "Pakistan", "United Arab Emirates",
@@ -141,7 +141,7 @@ data %>%
 
 #### Asia
 
-```{r, , fig.height=6.75, fig.width = 14}
+```{r, , fig.height=6, fig.width = 12, warning = F, message = F}
 asia <- c("China", "Korea, South", "Japan", "India", "Myanmar",
           "Malaysia", "Russia", "India", "Australia", "Philippines",
           "Thailand", "Laos", "Indonesia", "Singapore", "Vietnam",
@@ -165,7 +165,7 @@ data %>%
 
 ##### Africa
 
-```{r, , fig.height=11.25, fig.width = 14}
+```{r, , fig.height=9.75, fig.width = 12}
 africa <- c("South Africa", "Egypt", "Algeria", "Morocco", "Ghana",
             "Nigeria", "Kenya", "Ghana", "Ethiopia", "Senegal",
             "Uganda", "Sudan", "Madagascar", "Cameroon", "Angola", 
