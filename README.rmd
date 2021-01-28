@@ -191,9 +191,6 @@ data %>%
 
 ### 2. Comparing visualizations
 
-
-### Total cases
-
 One thing that is constantly debatted is how to visualize the growth of total confirmed cases at all. Log-transform the y-axis or not? Plot against the date? Plot against days after 100th case? Plot something entirely different?
 
 Here, I would like to explain some differences between visualizations that have been used in the media or on Twitter. All of them are helpful in their own regard. 
@@ -322,4 +319,11 @@ ggsave("figures/plot_8.png",
 
 *Note:* Green = USA, Blue = Italy, Red = Germany, Pink = Austria, Orange = United Kingdom
 
+
+### Overview
+
+```{r}
+merged <- download_merged_data(cached = TRUE, silent = TRUE)
+map_covid19(merged, type = "confirmed")
+```
 

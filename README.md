@@ -26,9 +26,9 @@ use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-The last update was made on 2021-01-26 08:52:58. The data of the John
+The last update was made on 2021-01-28 15:18:08. The data of the John
 Hopkins University, however, are always updated at 23:59. What you see
-is hence the situation on 2021-01-25 at 23:59:00. Also bear in mind that
+is hence the situation on 2021-01-27 at 23:59:00. Also bear in mind that
 the reporting of cases is somewhat delayed so that it is very likely
 that the actual numbers are higher.
 
@@ -37,7 +37,7 @@ that the actual numbers are higher.
 If you are interested in the R code, please see the
 [README.rmd](https://github.com/masurp/corona_analyses/blob/master/README.rmd).
 
-### 1\. Daily new cases
+### 1. Daily new cases
 
 The blue line is the moving average of new cases per 7 days. The grey
 bars represent the new cases per day.
@@ -62,9 +62,7 @@ bars represent the new cases per day.
 
 <img src="figures/unnamed-chunk-6-1.png" width="100%" />
 
-### 2\. Comparing visualizations
-
-### Total cases
+### 2. Comparing visualizations
 
 One thing that is constantly debatted is how to visualize the growth of
 total confirmed cases at all. Log-transform the y-axis or not? Plot
@@ -89,3 +87,7 @@ in their own regard.
 
 *Note:* Green = USA, Blue = Italy, Red = Germany, Pink = Austria, Orange
 = United Kingdom
+
+### Overview
+
+<img src="figures/unnamed-chunk-8-1.png" width="100%" />
