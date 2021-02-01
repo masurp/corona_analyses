@@ -324,6 +324,7 @@ ggsave("figures/plot_8.png",
 
 ```{r}
 merged <- download_merged_data(cached = TRUE, silent = TRUE)
-map_covid19(merged, type = "confirmed")
+map_covid19(merged, type = "confirmed", diverging_color_scale = T)
+  
 ```
 
