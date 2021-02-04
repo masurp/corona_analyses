@@ -58,8 +58,6 @@ data <- data %>%
 
 ```
 
-
-
 ### 1. Daily new cases
 
 The blue line is the moving average of new cases per 7 days. The grey bars represent the new cases per day. 
@@ -312,7 +310,7 @@ cowplot::plot_grid(pg1, pg2, pg3,
 ggsave("figures/plot_8.png",
        width = 15,
        height = 5.5,
-       dpi = 600)
+       dpi = 600) 
 
 
 ```
