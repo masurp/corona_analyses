@@ -222,9 +222,9 @@ pg1 <- data %>%
             aes(x = days, y = confirmed), colour="#cc0000", size=.8) +
   geom_dl(data = . %>% filter(country == "Germany"), 
           aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
-  geom_line(data = . %>% filter(country == "Austria"), 
+  geom_line(data = . %>% filter(country == "Netherlands"), 
             aes(x = days, y = confirmed), colour="#9e2e9e", size=.8) +
-  geom_dl(data = . %>% filter(country == "Austria"), 
+  geom_dl(data = . %>% filter(country == "Netherlands"), 
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   geom_line(data = . %>% filter(country == "United Kingdom"), 
             aes(x = days, y = confirmed), colour="#ff8000", size=.8) +
@@ -254,9 +254,9 @@ pg2 <- data %>%
             aes(x = days, y = confirmed), colour="#cc0000", size=.8) +
   geom_dl(data = . %>% filter(country == "Germany"), 
           aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
-  geom_line(data = . %>% filter(country == "Austria"), 
+  geom_line(data = . %>% filter(country == "Netherlands"), 
             aes(x = days, y = confirmed), colour="#9e2e9e", size=.8) +
-  geom_dl(data = . %>% filter(country == "Austria"), 
+  geom_dl(data = . %>% filter(country == "Netherlands"), 
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   geom_line(data = . %>% filter(country == "United Kingdom"), 
             aes(x = days, y = confirmed), colour="#ff8000", size=.8) +
@@ -287,9 +287,9 @@ pg3 <- data %>%
             aes(x = confirmed, y = new_cases), colour="#cc0000", size=.8) +
   geom_dl(data = . %>% filter(country == "Germany"), 
           aes(label = country), color = "#cc0000", method = list(dl.combine("last.points"), cex = .65)) +
-  geom_line(data = . %>% filter(country == "Austria"), 
+  geom_line(data = . %>% filter(country == "Netherlands"), 
             aes(x = confirmed, y = new_cases), colour="#9e2e9e", size=.8) +
-  geom_dl(data = . %>% filter(country == "Austria"), 
+  geom_dl(data = . %>% filter(country == "Netherlands"), 
           aes(label = country), color = "#9e2e9e", method = list(dl.combine("last.points"), cex = .65)) +
   geom_line(data = . %>% filter(country == "United Kingdom"), 
             aes(x = confirmed, y = new_cases), colour="#ff8000", size=.8) +
