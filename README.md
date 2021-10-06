@@ -26,9 +26,9 @@ use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-The last update was made on 2021-09-29 17:13:27. The data of the John
+The last update was made on 2021-10-06 17:55:05. The data of the John
 Hopkins University, however, are always updated at 23:59. What you see
-is hence the situation on 2021-09-28 at 23:59:00. Also bear in mind that
+is hence the situation on 2021-10-05 at 23:59:00. Also bear in mind that
 the reporting of cases is somewhat delayed so that it is very likely
 that the actual numbers are higher.
 
