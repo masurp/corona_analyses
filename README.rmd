@@ -231,8 +231,6 @@ pg1 <- data %>%
   geom_dl(data = . %>% filter(country == "United Kingdom"), 
           aes(label = country), color = "#ff8000", method = list(dl.combine("last.points"), cex = .65)) +
   theme_linedraw() +
-  xlim(0, 350) +
-  ylim(0, 10000000) +
   theme(legend.position = "none") +
   labs(x = "days after 100 cases", y = "total cases (limited to 10 Million)", color = "")
 
