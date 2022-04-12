@@ -26,9 +26,9 @@ use of these visualization in commerce is strictly prohibited.
 
 #### Will these figures be updated?
 
-The last update was made on 2021-11-18 07:18:48. The data of the John
+The last update was made on 2022-04-12 07:52:11. The data of the John
 Hopkins University, however, are always updated at 23:59. What you see
-is hence the situation on 2021-11-17 at 23:59:00. Also bear in mind that
+is hence the situation on 2022-04-11 at 23:59:00. Also bear in mind that
 the reporting of cases is somewhat delayed so that it is very likely
 that the actual numbers are higher.
 
@@ -87,7 +87,3 @@ in their own regard.
 
 *Note:* Green = USA, Blue = Italy, Red = Germany, Pink = Austria, Orange
 = United Kingdom
-
-### Overview
-
-<img src="figures/unnamed-chunk-8-1.png" width="100%" />
